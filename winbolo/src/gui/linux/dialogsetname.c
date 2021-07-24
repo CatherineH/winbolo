@@ -57,7 +57,7 @@ gboolean dialogSetNameOK(GtkWidget *widget, GdkEventKey *event, gpointer user_da
   str = gtk_entry_get_text(GTK_ENTRY(idc_setnametxt));
   strncpy(newName, str, sizeof(newName));
   newName[PLAYER_NAME_LAST] = '\0';
-  
+
   utilStripName(newName);
   if (newName[0] == EMPTY_CHAR) {
     MessageBox("Sorry, you can not leave this blank", DIALOG_BOX_TITLE);
@@ -91,7 +91,7 @@ gboolean dialogSetNameOK(GtkWidget *widget, GdkEventKey *event, gpointer user_da
   }
   return FALSE;
 }
-    
+
 gboolean dialogSetNameKey(GtkWidget *widget, GdkEventKey *event, gpointer user_data) {
   if (event->keyval == 65293) {
     dialogSetNameOK(dialogSetNameUs, NULL, NULL);
@@ -127,38 +127,33 @@ GtkWidget* dialogSetNameCreate(bool inGame) {
 
   vbox1 = gtk_vbox_new (FALSE, 0);
   gtk_widget_ref (vbox1);
-  gtk_object_set_data_full (GTK_OBJECT (dialogSetName), "vbox1", vbox1,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (vbox1, GTK_OBJECT (dialogSetName), "vbox1");
   gtk_widget_show (vbox1);
   gtk_container_add (GTK_CONTAINER (dialogSetName), vbox1);
 
   label1 = gtk_label_new ("Enter the new player name for your tank");
   gtk_widget_ref (label1);
-  gtk_object_set_data_full (GTK_OBJECT (dialogSetName), "label1", label1,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (label1, GTK_OBJECT (dialogSetName), "label1");
   gtk_widget_show (label1);
   gtk_box_pack_start (GTK_BOX (vbox1), label1, FALSE, FALSE, 0);
   gtk_label_set_justify (GTK_LABEL (label1), GTK_JUSTIFY_LEFT);
 
   hbox1 = gtk_hbox_new (FALSE, 0);
   gtk_widget_ref (hbox1);
-  gtk_object_set_data_full (GTK_OBJECT (dialogSetName), "hbox1", hbox1,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (hbox1, GTK_OBJECT (dialogSetName), "hbox1");
   gtk_widget_show (hbox1);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox1, TRUE, TRUE, 0);
   gtk_container_set_border_width (GTK_CONTAINER (hbox1), 10);
 
   idc_setnametxt = gtk_entry_new ();
   gtk_widget_ref (idc_setnametxt);
-  gtk_object_set_data_full (GTK_OBJECT (dialogSetName), "idc_setnametxt", idc_setnametxt,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (idc_setnametxt, GTK_OBJECT (dialogSetName), "idc_setnametxt");
   gtk_widget_show (idc_setnametxt);
   gtk_box_pack_start (GTK_BOX (hbox1), idc_setnametxt, TRUE, TRUE, 0);
 
   button1 = gtk_button_new_with_label ("OK");
   gtk_widget_ref (button1);
-  gtk_object_set_data_full (GTK_OBJECT (dialogSetName), "button1", button1,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (button1, GTK_OBJECT (dialogSetName), "button1");
   gtk_widget_show (button1);
   gtk_box_pack_start (GTK_BOX (hbox1), button1, TRUE, TRUE, 0);
 
@@ -177,4 +172,3 @@ GtkWidget* dialogSetNameCreate(bool inGame) {
   dialogSetNameUs = dialogSetName;
   return dialogSetName;
 }
-

@@ -37,7 +37,7 @@ bool dialogAllianceIsShowing = FALSE;
 
 void dialogAllianceSetName(char *playerName, BYTE playerNum) {
   char output[FILENAME_MAX];
-  
+
   dialogAlliancePlayerNum = playerNum;
   strcpy(output, playerName);
   strcat(output, langGetText(STR_DLGALLIANCE_BLURB));
@@ -58,7 +58,7 @@ gboolean dialogAllianceAccept(GtkWidget *widget, GdkEventButton *event, gpointer
 gboolean dialogAllianceReject(GtkWidget *widget, GdkEventButton *event, gpointer user_data) {
   dialogAllianceIsShowing = FALSE;
   gtk_widget_hide(dialogAllianceUs);
-    
+
   return FALSE;
 }
 
@@ -76,37 +76,32 @@ GtkWidget* dialogAllianceCreate (void) {
 
   vbox1 = gtk_vbox_new (FALSE, 0);
   gtk_widget_ref (vbox1);
-  gtk_object_set_data_full (GTK_OBJECT (dialogAlliance), "vbox1", vbox1,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (vbox1, GTK_OBJECT (dialogAlliance), "vbox1");
   gtk_widget_show (vbox1);
   gtk_container_add (GTK_CONTAINER (dialogAlliance), vbox1);
 
   label1 = gtk_label_new ("%s requests alliance. Accept?\n");
   gtk_widget_ref (label1);
-  gtk_object_set_data_full (GTK_OBJECT (dialogAlliance), "label1", label1,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (label1, GTK_OBJECT (dialogAlliance), "label1");
   gtk_widget_show (label1);
   gtk_box_pack_start (GTK_BOX (vbox1), label1, FALSE, FALSE, 0);
 
   hbox1 = gtk_hbox_new (FALSE, 0);
   gtk_widget_ref (hbox1);
-  gtk_object_set_data_full (GTK_OBJECT (dialogAlliance), "hbox1", hbox1,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (hbox1, GTK_OBJECT (dialogAlliance), "hbox1");
   gtk_widget_show (hbox1);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox1, TRUE, TRUE, 0);
 
   button1 = gtk_button_new_with_label ("Accept");
   gtk_widget_ref (button1);
-  gtk_object_set_data_full (GTK_OBJECT (dialogAlliance), "button1", button1,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (button1, GTK_OBJECT (dialogAlliance), "button1");
   gtk_widget_show (button1);
   gtk_box_pack_start (GTK_BOX (hbox1), button1, TRUE, TRUE, 0);
   GTK_WIDGET_UNSET_FLAGS (button1, GTK_CAN_FOCUS);
 
   button2 = gtk_button_new_with_label ("Reject");
   gtk_widget_ref (button2);
-  gtk_object_set_data_full (GTK_OBJECT (dialogAlliance), "button2", button2,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (button2, GTK_OBJECT (dialogAlliance), "button2");
   gtk_widget_show (button2);
   gtk_box_pack_start (GTK_BOX (hbox1), button2, TRUE, TRUE, 0);
 
@@ -116,4 +111,3 @@ GtkWidget* dialogAllianceCreate (void) {
   dialogAllianceUs = dialogAlliance;
   return dialogAlliance;
 }
-

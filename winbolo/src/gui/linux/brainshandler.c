@@ -24,7 +24,7 @@
 *Purpose:
 *  Handles front end brain operations. Menu setting etc.
 *
-*NOTE: This file must be compiled with optimisations 
+*NOTE: This file must be compiled with optimisations
 *      disabled under Visual Studio (VC++) 5 with any
 *      or none of the service packs installed due to a
 *      a compiler bug causing crashes whenever a brain
@@ -53,7 +53,7 @@ typedef unsigned int UNIT;
 
 #define EMPTY_STRING '\\'
 #define BRAINMAIN_PROC "BrainMain"
-#define MAX_PATH 1024 
+#define MAX_PATH 1024
 
 #define SHARED_LIB_EXT ".so"
 #define BRAINS_DIR_STRING "brains"
@@ -74,7 +74,7 @@ BrainInfo bInfo; /* The Brain Info */
 bool brainsLoadedOnce = FALSE; /* We only want this to be displayed once */
 short (*brainsProc)(BrainInfo*);
 
-G_MODULE_IMPORT short BrainMain(BrainInfo *bi); 
+G_MODULE_IMPORT short BrainMain(BrainInfo *bi);
 
 extern gchar *applicationPath;
 extern GtkWidget *brains1_menu;
@@ -85,7 +85,7 @@ extern GSList *brainsGroup;
 extern bool isInMenu;
 GSList *brainsLoadedList = NULL;
 
-void brainsHandlerManual(HWND hWnd); 
+void brainsHandlerManual(HWND hWnd);
 bool brainsHandlerStart(HWND hWnd, char *str, char *name);
 
 
@@ -98,13 +98,13 @@ void brainsHandlerSelect(GtkWidget *widget, gpointer user_data) {
 
   if (GTK_CHECK_MENU_ITEM(widget)->active == TRUE && isInMenu == FALSE) {
     isInMenu = TRUE;
-    gtk_label_get(GTK_LABEL(GTK_BIN(widget)->child), &menuStr); 
-    
+    gtk_label_get(GTK_LABEL(GTK_BIN(widget)->child), &menuStr);
+
     /* First shut down the last brain if it is running */
     if (brainsRunning == TRUE) {
       brainsHandlerManual(NULL);
     }
- 
+
     /* Get the brains name */
     strcpy(str, brainsLocalDir);
     strcat(str, menuStr);
@@ -120,7 +120,7 @@ void brainsHandlerSelect(GtkWidget *widget, gpointer user_data) {
      strcat(str, menuStr);
      strcat(str, SHARED_LIB_EXT);
    }
-   
+
     /* Try starting the new brain */
     brainsRunning = brainsHandlerStart(NULL, str, menuStr);
 
@@ -134,7 +134,7 @@ void brainsHandlerSelect(GtkWidget *widget, gpointer user_data) {
 
 //  if (id != brainsRunningId || brainsRunning == FALSE) {
 //  FIXME
- 
+
 
 }
 
@@ -161,11 +161,11 @@ bool brainsHandlerLoadBrainMenuItems(GtkWidget *menu) {
   gchar *ext;
   GtkWidget *item;
   char fileName[FILENAME_MAX];
-  
+
   returnValue = TRUE;
   strcpy(checkPath, brainsLocalDir);
-  
- 
+
+
   if (brainsLoadedList != NULL) {
     g_slist_free(brainsLoadedList);
   }
@@ -182,7 +182,7 @@ bool brainsHandlerLoadBrainMenuItems(GtkWidget *menu) {
           item = gtk_radio_menu_item_new_with_label(brainsGroup, fileName);
 	  brainsGroup = gtk_radio_menu_item_group (GTK_RADIO_MENU_ITEM(item));
 	  gtk_widget_ref(item);
-          gtk_object_set_data_full (GTK_OBJECT (window), fileName, item, (GtkDestroyNotify) gtk_widget_unref);
+          gtk_container_child_set (fileName, GTK_OBJECT (window), "fileName");
           gtk_widget_show (item);
           gtk_container_add (GTK_CONTAINER (brains1_menu), item);
 	  gtk_signal_connect(GTK_OBJECT(item), "activate", GTK_SIGNAL_FUNC(brainsHandlerSelect), 0);
@@ -195,7 +195,7 @@ bool brainsHandlerLoadBrainMenuItems(GtkWidget *menu) {
     }
     closedir(dir);
   }
-  
+
   /* Global Path */
   strcpy(checkPath, brainsDir);
   dir = opendir(checkPath);
@@ -210,7 +210,7 @@ bool brainsHandlerLoadBrainMenuItems(GtkWidget *menu) {
           item = gtk_radio_menu_item_new_with_label(brainsGroup, fileName);
 	  brainsGroup = gtk_radio_menu_item_group (GTK_RADIO_MENU_ITEM(item));
 	  gtk_widget_ref(item);
-          gtk_object_set_data_full (GTK_OBJECT (window), fileName, item, (GtkDestroyNotify) gtk_widget_unref);
+          gtk_container_child_set (fileName, GTK_OBJECT (window), "fileName");
           gtk_widget_show (item);
           gtk_container_add (GTK_CONTAINER (brains1_menu), item);
 	  gtk_signal_connect(GTK_OBJECT(item), "activate", GTK_SIGNAL_FUNC(brainsHandlerSelect), 0);
@@ -239,7 +239,7 @@ bool winUtilWBSubDirExist(char *path) {
 
   return returnValue;
 }
-  
+
 
 
 /*********************************************************
@@ -269,7 +269,7 @@ bool brainsHandlerLoadBrains(HWND hWnd) {
   strcat(brainsDir, BRAINS_DIR_STRING);
   strcpy(brainsLocalDir, g_get_home_dir());
   strcat(brainsLocalDir, "/.linbolo/brains/");
-  
+
   brainsNum = 0;
   brainsInst = NULL;
   brainsRunning = FALSE;
@@ -349,7 +349,7 @@ void brainsHandlerManual(HWND hWnd) {
     clientMutexRelease();
     gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(manual1), TRUE);
   }
-} 
+}
 
 /*********************************************************
 *NAME:          brainsHandlerStart
@@ -401,7 +401,7 @@ bool brainsHandlerStart(HWND hWnd, char *str, char *name) {
     }
   }
   clientMutexRelease();
-  return returnValue; 
+  return returnValue;
 }
 
 /*********************************************************
@@ -494,5 +494,5 @@ void brainHandlerRun(HWND hWnd) {
     brainsProcExecuting = FALSE;
   } else if (brainsRunning == TRUE) {
   }
-  clientMutexRelease(); 
+  clientMutexRelease();
 }

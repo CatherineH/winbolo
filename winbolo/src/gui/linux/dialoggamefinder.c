@@ -84,7 +84,7 @@ gboolean dialogGameFinderSelect(GtkWidget *widget, gpointer user_data);
 * list box.
 *
 *ARGUMENTS:
-* 
+*
 *********************************************************/
 void dialogGameFinderClear() {
   gtk_label_set_text(GTK_LABEL(idc_address), EMPTY_STRING);
@@ -98,7 +98,7 @@ void dialogGameFinderClear() {
   gtk_label_set_text(GTK_LABEL(idc_gamefindpass), EMPTY_STRING);
   gtk_label_set_text(GTK_LABEL(idc_gamefindbrains), EMPTY_STRING);
   gtk_label_set_text(GTK_LABEL(idc_gamefindmapname), EMPTY_STRING);
-  
+
   gtk_widget_set_sensitive (idc_gamefindjoin, FALSE);
   gtk_widget_set_sensitive (idc_gamefindrejoin, FALSE);
 
@@ -170,7 +170,7 @@ gboolean dialogGameFinderReJoin(GtkWidget *widget,  GdkEventButton *event, gpoin
 
 gboolean dialogGameFinderNew(GtkWidget *widget,  GdkEventButton *event, gpointer user_data) {
   if (useTracker  == TRUE) {
-    gameFrontSetDlgState(dialogGameFindUs, openInternetSetup); 
+    gameFrontSetDlgState(dialogGameFindUs, openInternetSetup);
   } else {
     gameFrontSetDlgState(dialogGameFindUs, openLanSetup);
   }
@@ -239,7 +239,7 @@ void dialogGameFinderBuildList() {
   int total; /* Total number of games found */
   char server[FILENAME_MAX]; /* Server name */
   GtkWidget *item;
-  
+
   gtk_widget_set_sensitive (idc_gamefindjoin, FALSE);
   gtk_widget_set_sensitive (idc_gamefindrejoin, FALSE);
   total = currentGamesItemCount(&cg);
@@ -296,7 +296,7 @@ void dialogGameFinderFixMotd(char *motd) {
 * Does the search for games.
 *
 *ARGUMENTS:
-* 
+*
 **********************************************************/
 void dialogGameFinderSearch() {
   char addr[FILENAME_MAX]; /* Tracker address */
@@ -332,7 +332,7 @@ void dialogGameFinderSearch() {
 gboolean dialogGameFinderRefresh(GtkWidget *widget,  GdkEventButton *event, gpointer user_data) {
 //  SetCursor(LoadCursor(NULL, IDC_WAIT));
   motd[0] = '\0';
- 
+
   gtk_widget_set_sensitive (button4, FALSE);
   gtk_widget_set_sensitive (button2, FALSE);
   gtk_widget_set_sensitive (button7, FALSE);
@@ -344,7 +344,7 @@ gboolean dialogGameFinderRefresh(GtkWidget *widget,  GdkEventButton *event, gpoi
   gdk_threads_leave();
   while(g_main_iteration(FALSE));
   gdk_threads_enter();
- 
+
   dialogGameFinderClear();
   currentGamesDestroy(&cg);
   cg = currentGamesCreate();
@@ -357,15 +357,15 @@ gboolean dialogGameFinderRefresh(GtkWidget *widget,  GdkEventButton *event, gpoi
   gtk_widget_set_sensitive (button7, TRUE);
   gtk_widget_set_sensitive (button6, TRUE);
   gtk_widget_set_sensitive (button8, TRUE);
-  
+
   if (useTracker == TRUE) {
     gtk_widget_set_sensitive (button1, TRUE);
     gtk_widget_set_sensitive (button9, TRUE);
   }
 
-  
-  
-  
+
+
+
   return FALSE;
 }
 
@@ -441,7 +441,7 @@ gboolean dialogGameFinderRefresh(GtkWidget *widget,  GdkEventButton *event, gpoi
       gtk_label_set_text(GTK_LABEL(idc_gamefindtype), langGetText(STR_DLGGAMEFINDER_STRICTTOURNAMENT));
       break;
   }
-  
+
   gtk_widget_set_sensitive (idc_gamefindjoin, TRUE);
   gtk_widget_set_sensitive (idc_gamefindrejoin, TRUE);
 
@@ -504,52 +504,45 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
   gtk_window_set_policy (GTK_WINDOW (dialogGameFinder), FALSE, FALSE, FALSE);
   vbox1 = gtk_vbox_new (FALSE, 0);
   gtk_widget_ref (vbox1);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "vbox1", vbox1,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (vbox1, GTK_OBJECT (dialogGameFinder), "vbox1");
   gtk_widget_show (vbox1);
   gtk_container_add (GTK_CONTAINER (dialogGameFinder), vbox1);
 
   hbox1 = gtk_hbox_new (FALSE, 0);
   gtk_widget_ref (hbox1);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "hbox1", hbox1,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (hbox1, GTK_OBJECT (dialogGameFinder), "hbox1");
   gtk_widget_show (hbox1);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox1, TRUE, TRUE, 0);
 
   list1 = gtk_list_new ();
   gtk_widget_ref (list1);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "list1", list1,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (list1, GTK_OBJECT (dialogGameFinder), "list1");
   gtk_widget_show (list1);
   gtk_box_pack_start (GTK_BOX (hbox1), list1, TRUE, TRUE, 10);
 
   vbox2 = gtk_vbox_new (FALSE, 0);
   gtk_widget_ref (vbox2);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "vbox2", vbox2,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (vbox2, GTK_OBJECT (dialogGameFinder), "vbox2");
   gtk_widget_show (vbox2);
   gtk_box_pack_start (GTK_BOX (hbox1), vbox2, TRUE, TRUE, 0);
 
   frame1 = gtk_frame_new ("Selected Game Information");
   gtk_widget_ref (frame1);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "frame1", frame1,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (frame1, GTK_OBJECT (dialogGameFinder), "frame1");
   gtk_widget_show (frame1);
   gtk_box_pack_start (GTK_BOX (vbox2), frame1, TRUE, TRUE, 0);
   gtk_container_set_border_width (GTK_CONTAINER (frame1), 7);
 
   table2 = gtk_table_new (11, 2, FALSE);
   gtk_widget_ref (table2);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "table2", table2,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (table2, GTK_OBJECT (dialogGameFinder), "table2");
   gtk_widget_show (table2);
   gtk_container_add (GTK_CONTAINER (frame1), table2);
   gtk_container_set_border_width (GTK_CONTAINER (table2), 7);
 
   label4 = gtk_label_new ("Version: ");
   gtk_widget_ref (label4);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "label4", label4,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (label4, GTK_OBJECT (dialogGameFinder), "label4");
   gtk_widget_show (label4);
   gtk_table_attach (GTK_TABLE (table2), label4, 0, 1, 3, 4,
                     (GtkAttachOptions) (GTK_FILL),
@@ -559,8 +552,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   label3 = gtk_label_new ("Server Port: ");
   gtk_widget_ref (label3);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "label3", label3,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (label3, GTK_OBJECT (dialogGameFinder), "label3");
   gtk_widget_show (label3);
   gtk_table_attach (GTK_TABLE (table2), label3, 0, 1, 1, 2,
                     (GtkAttachOptions) (GTK_FILL),
@@ -570,8 +562,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   label2 = gtk_label_new ("Server Address: ");
   gtk_widget_ref (label2);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "label2", label2,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (label2, GTK_OBJECT (dialogGameFinder), "label2");
   gtk_widget_show (label2);
   gtk_table_attach (GTK_TABLE (table2), label2, 0, 1, 0, 1,
                     (GtkAttachOptions) (GTK_FILL),
@@ -581,8 +572,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   label5 = gtk_label_new ("Number of Players:");
   gtk_widget_ref (label5);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "label5", label5,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (label5, GTK_OBJECT (dialogGameFinder), "label5");
   gtk_widget_show (label5);
   gtk_table_attach (GTK_TABLE (table2), label5, 0, 1, 4, 5,
                     (GtkAttachOptions) (GTK_FILL),
@@ -592,8 +582,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   label6 = gtk_label_new ("Game Type: ");
   gtk_widget_ref (label6);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "label6", label6,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (label6, GTK_OBJECT (dialogGameFinder), "label6");
   gtk_widget_show (label6);
   gtk_table_attach (GTK_TABLE (table2), label6, 0, 1, 5, 6,
                     (GtkAttachOptions) (GTK_FILL),
@@ -603,8 +592,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   label7 = gtk_label_new ("No of free Bases: ");
   gtk_widget_ref (label7);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "label7", label7,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (label7, GTK_OBJECT (dialogGameFinder), "label7");
   gtk_widget_show (label7);
   gtk_table_attach (GTK_TABLE (table2), label7, 0, 1, 6, 7,
                     (GtkAttachOptions) (GTK_FILL),
@@ -613,8 +601,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   label8 = gtk_label_new ("No of free Pillboxes: ");
   gtk_widget_ref (label8);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "label8", label8,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (label8, GTK_OBJECT (dialogGameFinder), "label8");
   gtk_widget_show (label8);
   gtk_table_attach (GTK_TABLE (table2), label8, 0, 1, 7, 8,
                     (GtkAttachOptions) (GTK_FILL),
@@ -623,8 +610,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   label9 = gtk_label_new ("Hidden Mines: ");
   gtk_widget_ref (label9);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "label9", label9,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (label9, GTK_OBJECT (dialogGameFinder), "label9");
   gtk_widget_show (label9);
   gtk_table_attach (GTK_TABLE (table2), label9, 0, 1, 8, 9,
                     (GtkAttachOptions) (GTK_FILL),
@@ -633,8 +619,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   label11 = gtk_label_new ("Brains: ");
   gtk_widget_ref (label11);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "label11", label11,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (label11, GTK_OBJECT (dialogGameFinder), "label11");
   gtk_widget_show (label11);
   gtk_table_attach (GTK_TABLE (table2), label11, 0, 1, 10, 11,
                     (GtkAttachOptions) (GTK_FILL),
@@ -643,8 +628,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   label10 = gtk_label_new ("Password: ");
   gtk_widget_ref (label10);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "label10", label10,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (label10, GTK_OBJECT (dialogGameFinder), "label10");
   gtk_widget_show (label10);
   gtk_table_attach (GTK_TABLE (table2), label10, 0, 1, 9, 10,
                     (GtkAttachOptions) (GTK_FILL),
@@ -654,8 +638,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   idc_address = gtk_label_new ("");
   gtk_widget_ref (idc_address);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "idc_address", idc_address,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (idc_address, GTK_OBJECT (dialogGameFinder), "idc_address");
   gtk_widget_show (idc_address);
   gtk_table_attach (GTK_TABLE (table2), idc_address, 1, 2, 0, 1,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -664,8 +647,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   idc_gamefindport = gtk_label_new ("");
   gtk_widget_ref (idc_gamefindport);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "idc_gamefindport", idc_gamefindport,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (idc_gamefindport, GTK_OBJECT (dialogGameFinder), "idc_gamefindport");
   gtk_widget_show (idc_gamefindport);
   gtk_table_attach (GTK_TABLE (table2), idc_gamefindport, 1, 2, 1, 2,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -673,8 +655,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   idc_gamefindversion = gtk_label_new ("");
   gtk_widget_ref (idc_gamefindversion);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "idc_gamefindversion", idc_gamefindversion,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (idc_gamefindversion, GTK_OBJECT (dialogGameFinder), "idc_gamefindversion");
   gtk_widget_show (idc_gamefindversion);
   gtk_table_attach (GTK_TABLE (table2), idc_gamefindversion, 1, 2, 3, 4,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -682,8 +663,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   idc_gamefindnumplayers = gtk_label_new ("");
   gtk_widget_ref (idc_gamefindnumplayers);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "idc_gamefindnumplayers", idc_gamefindnumplayers,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (idc_gamefindnumplayers, GTK_OBJECT (dialogGameFinder), "idc_gamefindnumplayers");
   gtk_widget_show (idc_gamefindnumplayers);
   gtk_table_attach (GTK_TABLE (table2), idc_gamefindnumplayers, 1, 2, 4, 5,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -691,8 +671,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   idc_gamefindtype = gtk_label_new ("");
   gtk_widget_ref (idc_gamefindtype);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "idc_gamefindtype", idc_gamefindtype,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (idc_gamefindtype, GTK_OBJECT (dialogGameFinder), "idc_gamefindtype");
   gtk_widget_show (idc_gamefindtype);
   gtk_table_attach (GTK_TABLE (table2), idc_gamefindtype, 1, 2, 5, 6,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -700,8 +679,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   idc_gamefindbases = gtk_label_new ("");
   gtk_widget_ref (idc_gamefindbases);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "idc_gamefindbases", idc_gamefindbases,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (idc_gamefindbases, GTK_OBJECT (dialogGameFinder), "idc_gamefindbases");
   gtk_widget_show (idc_gamefindbases);
   gtk_table_attach (GTK_TABLE (table2), idc_gamefindbases, 1, 2, 6, 7,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -710,8 +688,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   idc_gamefindpills = gtk_label_new ("");
   gtk_widget_ref (idc_gamefindpills);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "idc_gamefindpills", idc_gamefindpills,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (idc_gamefindpills, GTK_OBJECT (dialogGameFinder), "idc_gamefindpills");
   gtk_widget_show (idc_gamefindpills);
   gtk_table_attach (GTK_TABLE (table2), idc_gamefindpills, 1, 2, 7, 8,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -720,8 +697,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   idc_gamefindmines = gtk_label_new ("");
   gtk_widget_ref (idc_gamefindmines);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "idc_gamefindmines", idc_gamefindmines,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (idc_gamefindmines, GTK_OBJECT (dialogGameFinder), "idc_gamefindmines");
   gtk_widget_show (idc_gamefindmines);
   gtk_table_attach (GTK_TABLE (table2), idc_gamefindmines, 1, 2, 8, 9,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -730,8 +706,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   idc_gamefindpass = gtk_label_new ("");
   gtk_widget_ref (idc_gamefindpass);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "idc_gamefindpass", idc_gamefindpass,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (idc_gamefindpass, GTK_OBJECT (dialogGameFinder), "idc_gamefindpass");
   gtk_widget_show (idc_gamefindpass);
   gtk_table_attach (GTK_TABLE (table2), idc_gamefindpass, 1, 2, 9, 10,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -740,8 +715,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   idc_gamefindbrains = gtk_label_new ("");
   gtk_widget_ref (idc_gamefindbrains);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "idc_gamefindbrains", idc_gamefindbrains,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (idc_gamefindbrains, GTK_OBJECT (dialogGameFinder), "idc_gamefindbrains");
   gtk_widget_show (idc_gamefindbrains);
   gtk_table_attach (GTK_TABLE (table2), idc_gamefindbrains, 1, 2, 10, 11,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -750,8 +724,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   label25 = gtk_label_new ("Map Name: ");
   gtk_widget_ref (label25);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "label25", label25,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (label25, GTK_OBJECT (dialogGameFinder), "label25");
   gtk_widget_show (label25);
   gtk_table_attach (GTK_TABLE (table2), label25, 0, 1, 2, 3,
                     (GtkAttachOptions) (GTK_FILL),
@@ -761,8 +734,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   idc_gamefindmapname = gtk_label_new ("");
   gtk_widget_ref (idc_gamefindmapname);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "idc_gamefindmapname", idc_gamefindmapname,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (idc_gamefindmapname, GTK_OBJECT (dialogGameFinder), "idc_gamefindmapname");
   gtk_widget_show (idc_gamefindmapname);
   gtk_table_attach (GTK_TABLE (table2), idc_gamefindmapname, 1, 2, 2, 3,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -770,23 +742,20 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   idc_gamefindstatus = gtk_label_new ("Status: Idle");
   gtk_widget_ref (idc_gamefindstatus);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "idc_gamefindstatus", idc_gamefindstatus,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (idc_gamefindstatus, GTK_OBJECT (dialogGameFinder), "idc_gamefindstatus");
   gtk_widget_show (idc_gamefindstatus);
   gtk_box_pack_start (GTK_BOX (vbox2), idc_gamefindstatus, FALSE, TRUE, 3);
   gtk_misc_set_alignment (GTK_MISC (idc_gamefindstatus), 0.04, 0.5);
 
   table1 = gtk_table_new (3, 4, FALSE);
   gtk_widget_ref (table1);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "table1", table1,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (table1, GTK_OBJECT (dialogGameFinder), "table1");
   gtk_widget_show (table1);
   gtk_box_pack_start (GTK_BOX (vbox1), table1, TRUE, TRUE, 15);
 
   button2 = gtk_button_new_with_label ("Join by Address");
   gtk_widget_ref (button2);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "button2", button2,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (button2, GTK_OBJECT (dialogGameFinder), "button2");
   gtk_widget_show (button2);
   gtk_table_attach (GTK_TABLE (table1), button2, 2, 3, 0, 1,
                     (GtkAttachOptions) (0),
@@ -794,8 +763,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   button1 = gtk_button_new_with_label ("Tracker Setup");
   gtk_widget_ref (button1);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "button1", button1,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (button1, GTK_OBJECT (dialogGameFinder), "button1");
   gtk_widget_show (button1);
   gtk_table_attach (GTK_TABLE (table1), button1, 0, 1, 0, 1,
                     (GtkAttachOptions) (GTK_FILL),
@@ -803,8 +771,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   button8 = gtk_button_new_with_label ("Set Player Name");
   gtk_widget_ref (button8);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "button8", button8,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (button8, GTK_OBJECT (dialogGameFinder), "button8");
   gtk_widget_show (button8);
   gtk_table_attach (GTK_TABLE (table1), button8, 0, 1, 1, 2,
                     (GtkAttachOptions) (GTK_FILL),
@@ -812,8 +779,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   button9 = gtk_button_new_with_label ("Message of the Day");
   gtk_widget_ref (button9);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "button9", button9,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (button9, GTK_OBJECT (dialogGameFinder), "button9");
   gtk_widget_show (button9);
   gtk_table_attach (GTK_TABLE (table1), button9, 0, 1, 2, 3,
                     (GtkAttachOptions) (GTK_FILL),
@@ -821,8 +787,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   button4 = gtk_button_new_with_label ("Refresh");
   gtk_widget_ref (button4);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "button4", button4,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (button4, GTK_OBJECT (dialogGameFinder), "button4");
   gtk_widget_show (button4);
   gtk_table_attach (GTK_TABLE (table1), button4, 2, 3, 1, 2,
                     (GtkAttachOptions) (GTK_FILL),
@@ -830,8 +795,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   button6 = gtk_button_new_with_label ("New");
   gtk_widget_ref (button6);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "button6", button6,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (button6, GTK_OBJECT (dialogGameFinder), "button6");
   gtk_widget_show (button6);
   gtk_table_attach (GTK_TABLE (table1), button6, 2, 3, 2, 3,
                     (GtkAttachOptions) (GTK_FILL),
@@ -839,8 +803,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   idc_gamefindjoin = gtk_button_new_with_label ("Join");
   gtk_widget_ref (idc_gamefindjoin);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "idc_gamefindjoin", idc_gamefindjoin,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (idc_gamefindjoin, GTK_OBJECT (dialogGameFinder), "idc_gamefindjoin");
   gtk_widget_show (idc_gamefindjoin);
   gtk_table_attach (GTK_TABLE (table1), idc_gamefindjoin, 3, 4, 0, 1,
                     (GtkAttachOptions) (GTK_FILL),
@@ -849,8 +812,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   idc_gamefindrejoin = gtk_button_new_with_label ("Rejoin");
   gtk_widget_ref (idc_gamefindrejoin);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "idc_gamefindrejoin", idc_gamefindrejoin,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (idc_gamefindrejoin, GTK_OBJECT (dialogGameFinder), "idc_gamefindrejoin");
   gtk_widget_show (idc_gamefindrejoin);
   gtk_table_attach (GTK_TABLE (table1), idc_gamefindrejoin, 3, 4, 1, 2,
                     (GtkAttachOptions) (GTK_FILL),
@@ -859,8 +821,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   button7 = gtk_button_new_with_label ("Cancel");
   gtk_widget_ref (button7);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "button7", button7,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (button7, GTK_OBJECT (dialogGameFinder), "button7");
   gtk_widget_show (button7);
   gtk_table_attach (GTK_TABLE (table1), button7, 3, 4, 2, 3,
                     (GtkAttachOptions) (GTK_FILL),
@@ -868,8 +829,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   label13 = gtk_label_new ("");
   gtk_widget_ref (label13);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "label13", label13,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (label13, GTK_OBJECT (dialogGameFinder), "label13");
   gtk_widget_show (label13);
   gtk_table_attach (GTK_TABLE (table1), label13, 1, 2, 1, 2,
                     (GtkAttachOptions) (0),
@@ -877,8 +837,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   label14 = gtk_label_new ("");
   gtk_widget_ref (label14);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "label14", label14,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (label14, GTK_OBJECT (dialogGameFinder), "label14");
   gtk_widget_show (label14);
   gtk_table_attach (GTK_TABLE (table1), label14, 1, 2, 2, 3,
                     (GtkAttachOptions) (0),
@@ -886,8 +845,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   label12 = gtk_label_new ("                                                            ");
   gtk_widget_ref (label12);
-  gtk_object_set_data_full (GTK_OBJECT (dialogGameFinder), "label12", label12,
-                            (GtkDestroyNotify) gtk_widget_unref);
+  gtk_container_child_set (label12, GTK_OBJECT (dialogGameFinder), "label12");
   gtk_widget_show (label12);
   gtk_table_attach (GTK_TABLE (table1), label12, 1, 2, 0, 1,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -929,4 +887,3 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   return dialogGameFinder;
 }
-

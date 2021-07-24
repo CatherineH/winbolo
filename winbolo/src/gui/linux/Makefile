@@ -15,9 +15,9 @@
 
 
 CC = gcc
-CFLAGS = -g `sdl-config --cflags` `pkg-config --cflags gtk+-3.0` -Wno-int-conversion 
+CFLAGS = -g `sdl-config --cflags` `pkg-config --cflags gtk+-3.0` -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration -Wno-format -Wno-deprecated-declarations
 #-s
-#CFLAGS = -s -O3 -ffast-math -fomit-frame-pointer -mpentium -march=pentium `sdl-config --cflags` `pkg-config --cflags gtk+-3.0` `glib-config --cflags` 
+#CFLAGS = -s -O3 -ffast-math -fomit-frame-pointer -mpentium -march=pentium `sdl-config --cflags` `pkg-config --cflags gtk+-3.0` `glib-config --cflags`
 BOLODIR = ../../bolo/
 GUIDIR = ../
 WBNETDIR = ../../winbolonet/
@@ -36,7 +36,7 @@ all: linbolo
 clean:
 	rm *.o
 	rm linbolo
-	
+
 zlib:   adler32.o compress.o crc32.o deflate.o gzio.o \
 	inffast.o inflate.o inftrees.o trees.o ioapi.o uncompr.o \
 	unzip.o zip.o zutil.o
@@ -60,7 +60,7 @@ linbolo:    global.o bases.o util.o crc.o pillbox.o lgm.o shells.o tank.o \
 	http.o dnslookups.o dialogwinbolonet.o zlib mathWinbolo.o \
 	servercore.o servermessages.o debug_file_output.o \
 	servernet.o servertransport.o threads.o \
-	bigd.o bigdigits.o bigdigitsRand.o bigdRand.o 
+	bigd.o bigdigits.o bigdigitsRand.o bigdRand.o
 	${CC} -o ${APPNAME} `sdl-config --libs` `gtk-config --libs` ${CFLAGS} \
 	-lSDL_ttf -lSDL_mixer `glib-config --libs gthread` \
 	-L -L/usr/X11/lib -lX11 \
@@ -86,7 +86,7 @@ linbolo:    global.o bases.o util.o crc.o pillbox.o lgm.o shells.o tank.o \
 	unzip.o zip.o zutil.o bigd.o bigdigits.o bigdigitsRand.o bigdRand.o \
 	mathWinbolo.o debug_file_output.o \
 	servercore.o servermessages.o \
-	servernet.o servertransport.o threads.o 
+	servernet.o servertransport.o threads.o
 
 
 winbolonet.o: ${WBNETDIR}winbolonet.c ${WBNETDIR}winbolonet.h
@@ -105,13 +105,13 @@ debug_file_output.o: ${BOLODIR}debug_file_output.c ${BOLODIR}debug_file_output.h
 	${CC} ${CFLAGS} -c ${BOLODIR}debug_file_output.c
 
 
-main.o: main.c 
+main.o: main.c
 	${CC} ${CFLAGS} -c main.c -Wno-int-conversion -Wno-implicit-function-declaration
 
-dialogkeysetup.o: dialogkeysetup.c dialogkeysetup.h 
+dialogkeysetup.o: dialogkeysetup.c dialogkeysetup.h
 	${CC} ${CFLAGS} -c dialogkeysetup.c
 
-dnslookups.o: dnslookups.c 
+dnslookups.o: dnslookups.c
 	${CC} ${CFLAGS} -c dnslookups.c
 
 brainshandler.o: brainshandler.c
@@ -128,7 +128,7 @@ dialogalliance.o: dialogalliance.c dialogalliance.h
 
 dialoggamefinder.o: dialoggamefinder.c dialoggamefinder.h
 	${CC} ${CFLAGS} -c dialoggamefinder.c
-	
+
 dialogpassword.o: dialogpassword.c
 	${CC} ${CFLAGS} -c dialogpassword.c
 
@@ -256,7 +256,7 @@ labels.o: ${BOLODIR}labels.c ${BOLODIR}labels.h
 
 messages.o: ${BOLODIR}messages.c ${BOLODIR}messages.h
 	${CC} ${CFLAGS} -c ${BOLODIR}messages.c
-	
+
 mines.o: ${BOLODIR}mines.c ${BOLODIR}mines.h
 	${CC} ${CFLAGS} -c ${BOLODIR}mines.c
 
@@ -265,25 +265,25 @@ minesexp.o: ${BOLODIR}minesexp.c ${BOLODIR}minesexp.h
 
 netmt.o: ${BOLODIR}netmt.c ${BOLODIR}netmt.h
 	${CC} ${CFLAGS} -c ${BOLODIR}netmt.c
-	
+
 netpnb.o: ${BOLODIR}netpnb.c ${BOLODIR}netpnb.h
 	${CC} ${CFLAGS} -c ${BOLODIR}netpnb.c
 
 players.o: ${BOLODIR}players.c ${BOLODIR}players.h
 	${CC} ${CFLAGS} -c ${BOLODIR}players.c
-	
+
 rubble.o: ${BOLODIR}rubble.c ${BOLODIR}rubble.h
 	${CC} ${CFLAGS} -c ${BOLODIR}rubble.c
-	
+
 screenbrainmap.o: ${BOLODIR}screenbrainmap.c ${BOLODIR}screenbrainmap.h
 	${CC} ${CFLAGS} -c ${BOLODIR}screenbrainmap.c
-	
+
 screenbullet.o: ${BOLODIR}screenbullet.c ${BOLODIR}screenbullet.h
 	${CC} ${CFLAGS} -c ${BOLODIR}screenbullet.c
-	
+
 screencalc.o: ${BOLODIR}screencalc.c ${BOLODIR}screencalc.h
 	${CC} ${CFLAGS} -c ${BOLODIR}screencalc.c
-	
+
 screenlgm.o: ${BOLODIR}screenlgm.c ${BOLODIR}screenlgm.h
 	${CC} ${CFLAGS} -c ${BOLODIR}screenlgm.c
 
@@ -292,7 +292,7 @@ screentank.o: ${BOLODIR}screentank.c ${BOLODIR}screentank.h
 
 scroll.o: ${BOLODIR}scroll.c ${BOLODIR}scroll.h
 	${CC} ${CFLAGS} -c ${BOLODIR}scroll.c
-	
+
 sounddist.o: ${BOLODIR}sounddist.c ${BOLODIR}sounddist.h
 	${CC} ${CFLAGS} -c ${BOLODIR}sounddist.c
 
@@ -397,4 +397,3 @@ servertransport.o: ${SERVERDIR}servertransport.c ${SERVERDIR}servertransport.h
 
 threads.o: ${SERVERDIR}threads.c ${SERVERDIR}threads.h
 	${CC}  ${CFLAGS} -c ${SERVERDIR}threads.c
-
