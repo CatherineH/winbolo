@@ -119,10 +119,10 @@ gboolean dialogGameSetupChooseMap(GtkWidget *widget,  GdkEventButton *event, gpo
   filew = gtk_file_selection_new ("Open Map File...");
   //TODO: replace with new-style file dialog
   /*
-  gtk_signal_connect(filew, "destroy", (GtkSignalFunc) DestroyDialog, &filew);
+  g_signal_connect(filew, "destroy", (GtkSignalFunc) DestroyDialog, &filew);
 
-  gtk_signal_connect(GTK_OBJECT (GTK_FILE_SELECTION (filew)->ok_button), "clicked", (GtkSignalFunc) file_ok_sel, filew );
-  gtk_signal_connect(GTK_OBJECT (GTK_FILE_SELECTION (filew)->cancel_button), "clicked", (GtkSignalFunc) file_cancel_sel, filew);
+  g_signal_connect(GTK_OBJECT (GTK_FILE_SELECTION (filew)->ok_button), "clicked", (GtkSignalFunc) file_ok_sel, filew );
+  g_signal_connect(GTK_OBJECT (GTK_FILE_SELECTION (filew)->cancel_button), "clicked", (GtkSignalFunc) file_cancel_sel, filew);
   gtk_widget_show (filew);
   */
   /* --- Make sure we keep the focus --- */
@@ -372,19 +372,19 @@ GtkWidget* dialogGameSetupCreate(void) {
   GtkWidget *idc_gamesetupcancel;
 
   dialogGameSetup = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_object_set_data (dialogGameSetup, "dialogGameSetup", dialogGameSetup);
+  g_object_set_data (dialogGameSetup, "dialogGameSetup", dialogGameSetup);
   gtk_window_set_policy (GTK_WINDOW (dialogGameSetup), FALSE, FALSE, FALSE);
   gtk_container_set_border_width (GTK_CONTAINER (dialogGameSetup), 15);
   gtk_window_set_title (GTK_WINDOW (dialogGameSetup), "Game Setup");
 
   vbox1 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_ref (vbox1);
+  g_object_ref (vbox1);
   gtk_container_child_set (vbox1, dialogGameSetup, "vbox1");
   gtk_widget_show (vbox1);
   gtk_container_add (GTK_CONTAINER (dialogGameSetup), vbox1);
 
   label1 = gtk_label_new ("Please select the options you want for your new game:");
-  gtk_widget_ref (label1);
+  g_object_ref (label1);
 
   gtk_container_child_set (label1, dialogGameSetup, "label1");
   gtk_widget_show (label1);
@@ -393,21 +393,21 @@ GtkWidget* dialogGameSetupCreate(void) {
   gtk_label_set_justify (GTK_LABEL (label1), GTK_JUSTIFY_LEFT);
 
   hbox1 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_ref (hbox1);
+  g_object_ref (hbox1);
 
   gtk_container_child_set (hbox1, dialogGameSetup, "hbox1");
   gtk_widget_show (hbox1);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox1, TRUE, TRUE, 9);
 
   idc_gamesetupchoosemap = gtk_button_new_with_label ("Choose map");
-  gtk_widget_ref (idc_gamesetupchoosemap);
+  g_object_ref (idc_gamesetupchoosemap);
 
   gtk_container_child_set (idc_gamesetupchoosemap, dialogGameSetup, "idc_gamesetupchoosemap");
   gtk_widget_show (idc_gamesetupchoosemap);
   gtk_box_pack_start (GTK_BOX (hbox1), idc_gamesetupchoosemap, FALSE, FALSE, 0);
 
   idc_gamesetupselectedmap = gtk_label_new ("Selected Map: Everard Island (Inbuilt)");
-  gtk_widget_ref (idc_gamesetupselectedmap);
+  g_object_ref (idc_gamesetupselectedmap);
 
   gtk_container_child_set (idc_gamesetupselectedmap, dialogGameSetup, "idc_gamesetupselectedmap");
   gtk_widget_show (idc_gamesetupselectedmap);
@@ -417,7 +417,7 @@ GtkWidget* dialogGameSetupCreate(void) {
 
   idc_gamesetupradio1 = gtk_radio_button_new_with_label (vbox1_group, "Open Game (each tank comes pre-armed)");
   vbox1_group = gtk_radio_button_group (GTK_RADIO_BUTTON (idc_gamesetupradio1));
-  gtk_widget_ref (idc_gamesetupradio1);
+  g_object_ref (idc_gamesetupradio1);
 
   gtk_container_child_set (idc_gamesetupradio1, dialogGameSetup, "idc_gamesetupradio1");
   gtk_widget_show (idc_gamesetupradio1);
@@ -425,57 +425,57 @@ GtkWidget* dialogGameSetupCreate(void) {
 
   idc_gamesetupradio2 = gtk_radio_button_new_with_label (vbox1_group, "Tournament (free ammunition early in the game)");
   vbox1_group = gtk_radio_button_group (GTK_RADIO_BUTTON (idc_gamesetupradio2));
-  gtk_widget_ref (idc_gamesetupradio2);
+  g_object_ref (idc_gamesetupradio2);
   gtk_container_child_set (idc_gamesetupradio2, dialogGameSetup, "idc_gamesetupradio2");
   gtk_widget_show (idc_gamesetupradio2);
   gtk_box_pack_start (GTK_BOX (vbox1), idc_gamesetupradio2, FALSE, FALSE, 0);
 
   idc_gamesetupradio3 = gtk_radio_button_new_with_label (vbox1_group, "Strict Tournament (no free ammunition at all)");
   vbox1_group = gtk_radio_button_group (GTK_RADIO_BUTTON (idc_gamesetupradio3));
-  gtk_widget_ref (idc_gamesetupradio3);
+  g_object_ref (idc_gamesetupradio3);
   gtk_container_child_set (idc_gamesetupradio3, dialogGameSetup, "idc_gamesetupradio3");
   gtk_widget_show (idc_gamesetupradio3);
   gtk_box_pack_start (GTK_BOX (vbox1), idc_gamesetupradio3, FALSE, FALSE, 0);
 
   idc_gamesetuphiddenmines = gtk_check_button_new_with_label ("Allow Hidden Mines");
-  gtk_widget_ref (idc_gamesetuphiddenmines);
+  g_object_ref (idc_gamesetuphiddenmines);
   gtk_container_child_set (idc_gamesetuphiddenmines, dialogGameSetup, "idc_gamesetuphiddenmines");
   gtk_widget_show (idc_gamesetuphiddenmines);
   gtk_box_pack_start (GTK_BOX (vbox1), idc_gamesetuphiddenmines, FALSE, FALSE, 3);
 
   hbox2 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_ref (hbox2);
+  g_object_ref (hbox2);
   gtk_container_child_set (hbox2, dialogGameSetup, "hbox2");
   gtk_widget_show (hbox2);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox2, FALSE, FALSE, 0);
 
   idc_gamesetupcomptanks1 = gtk_check_button_new_with_label ("Allow Computer Tanks");
-  gtk_widget_ref (idc_gamesetupcomptanks1);
+  g_object_ref (idc_gamesetupcomptanks1);
   gtk_container_child_set (idc_gamesetupcomptanks1, dialogGameSetup, "idc_gamesetupcomptanks1");
   gtk_widget_show (idc_gamesetupcomptanks1);
   gtk_box_pack_start (GTK_BOX (hbox2), idc_gamesetupcomptanks1, FALSE, FALSE, 0);
 
   idc_gamesetupcomptanks2 = gtk_check_button_new_with_label ("and give them an advantage");
-  gtk_widget_ref (idc_gamesetupcomptanks2);
+  g_object_ref (idc_gamesetupcomptanks2);
   gtk_container_child_set (idc_gamesetupcomptanks2, dialogGameSetup, "idc_gamesetupcomptanks2");
   gtk_widget_set_sensitive (idc_gamesetupcomptanks2, FALSE);
   gtk_widget_show (idc_gamesetupcomptanks2);
   gtk_box_pack_start (GTK_BOX (hbox2), idc_gamesetupcomptanks2, FALSE, FALSE, 0);
 
   hbox3 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_ref (hbox3);
+  g_object_ref (hbox3);
   gtk_container_child_set (hbox3, dialogGameSetup, "hbox3");
   gtk_widget_show (hbox3);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox3, TRUE, TRUE, 2);
 
   idc_gamesetupgamepassword = gtk_check_button_new_with_label ("Game Password");
-  gtk_widget_ref (idc_gamesetupgamepassword);
+  g_object_ref (idc_gamesetupgamepassword);
   gtk_container_child_set (idc_gamesetupgamepassword, dialogGameSetup, "idc_gamesetupgamepassword");
   gtk_widget_show (idc_gamesetupgamepassword);
   gtk_box_pack_start (GTK_BOX (hbox3), idc_gamesetupgamepassword, FALSE, FALSE, 0);
 
   idc_gamesetuptextpassword = gtk_entry_new ();
-  gtk_widget_ref (idc_gamesetuptextpassword);
+  g_object_ref (idc_gamesetuptextpassword);
 
   gtk_container_child_set (idc_gamesetuptextpassword, dialogGameSetup, "idc_gamesetuptextpassword");
   gtk_widget_show (idc_gamesetuptextpassword);
@@ -484,85 +484,85 @@ GtkWidget* dialogGameSetupCreate(void) {
   gtk_entry_set_visibility (GTK_ENTRY (idc_gamesetuptextpassword), FALSE);
 
   hbox4 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_ref (hbox4);
+  g_object_ref (hbox4);
   gtk_container_child_set (hbox4, dialogGameSetup, "hbox4");
   gtk_widget_show (hbox4);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox4, TRUE, TRUE, 5);
 
   idc_gamesetupstartdelay = gtk_check_button_new_with_label ("Game start delay");
-  gtk_widget_ref (idc_gamesetupstartdelay);
+  g_object_ref (idc_gamesetupstartdelay);
   gtk_container_child_set (idc_gamesetupstartdelay, dialogGameSetup, "idc_gamesetupstartdelay");
   gtk_widget_show (idc_gamesetupstartdelay);
   gtk_box_pack_start (GTK_BOX (hbox4), idc_gamesetupstartdelay, FALSE, FALSE, 0);
 
   idc_gamesetuptxtstartdelay = gtk_entry_new ();
-  gtk_widget_ref (idc_gamesetuptxtstartdelay);
+  g_object_ref (idc_gamesetuptxtstartdelay);
   gtk_container_child_set (idc_gamesetuptxtstartdelay, dialogGameSetup, "idc_gamesetuptxtstartdelay");
   gtk_widget_show (idc_gamesetuptxtstartdelay);
   gtk_box_pack_start (GTK_BOX (hbox4), idc_gamesetuptxtstartdelay, TRUE, TRUE, 0);
   gtk_widget_set_sensitive (idc_gamesetuptxtstartdelay, FALSE);
 
   label3 = gtk_label_new ("seconds");
-  gtk_widget_ref (label3);
+  g_object_ref (label3);
   gtk_container_child_set (label3, dialogGameSetup, "label3");
   gtk_widget_show (label3);
   gtk_box_pack_start (GTK_BOX (hbox4), label3, FALSE, FALSE, 0);
   gtk_misc_set_padding (GTK_MISC (label3), 10, 0);
 
   hbox5 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_ref (hbox5);
+  g_object_ref (hbox5);
 
   gtk_container_child_set (hbox5, dialogGameSetup, "hbox5");
   gtk_widget_show (hbox5);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox5, TRUE, TRUE, 0);
 
   idc_gamesetuptimelimit = gtk_check_button_new_with_label ("Game time limit");
-  gtk_widget_ref (idc_gamesetuptimelimit);
+  g_object_ref (idc_gamesetuptimelimit);
   gtk_container_child_set (idc_gamesetuptimelimit, dialogGameSetup, "idc_gamesetuptimelimit");
   gtk_widget_show (idc_gamesetuptimelimit);
   gtk_box_pack_start (GTK_BOX (hbox5), idc_gamesetuptimelimit, FALSE, FALSE, 0);
 
   idc_gamesetuptxtlimit = gtk_entry_new ();
-  gtk_widget_ref (idc_gamesetuptxtlimit);
+  g_object_ref (idc_gamesetuptxtlimit);
   gtk_container_child_set (idc_gamesetuptxtlimit, dialogGameSetup, "idc_gamesetuptxtlimit");
   gtk_widget_show (idc_gamesetuptxtlimit);
   gtk_box_pack_start (GTK_BOX (hbox5), idc_gamesetuptxtlimit, TRUE, TRUE, 0);
   gtk_widget_set_sensitive (idc_gamesetuptxtlimit, FALSE);
 
   label4 = gtk_label_new ("minutes");
-  gtk_widget_ref (label4);
+  g_object_ref (label4);
   gtk_container_child_set (label4, dialogGameSetup, "label4");
   gtk_widget_show (label4);
   gtk_box_pack_start (GTK_BOX (hbox5), label4, FALSE, FALSE, 0);
   gtk_misc_set_padding (GTK_MISC (label4), 10, 0);
 
   hbox6 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_ref (hbox6);
+  g_object_ref (hbox6);
   gtk_container_child_set (hbox6, dialogGameSetup, "hbox6");
   gtk_widget_show (hbox6);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox6, TRUE, TRUE, 10);
 
   idc_gamesetupok = gtk_button_new_with_label ("OK");
-  gtk_widget_ref (idc_gamesetupok);
+  g_object_ref (idc_gamesetupok);
   gtk_container_child_set (idc_gamesetupok, dialogGameSetup, "idc_gamesetupok");
   gtk_widget_show (idc_gamesetupok);
   gtk_box_pack_start (GTK_BOX (hbox6), idc_gamesetupok, TRUE, TRUE, 20);
 
   idc_gamesetupcancel = gtk_button_new_with_label ("Cancel");
-  gtk_widget_ref (idc_gamesetupcancel);
+  g_object_ref (idc_gamesetupcancel);
   gtk_container_child_set (idc_gamesetupcancel, dialogGameSetup, "idc_gamesetupcancel");
   gtk_widget_show (idc_gamesetupcancel);
   gtk_box_pack_start (GTK_BOX (hbox6), idc_gamesetupcancel, TRUE, TRUE, 20);
 
-  gtk_signal_connect(idc_gamesetupcancel, "clicked", G_CALLBACK(dialogGameSetupCancel), 0);
-  gtk_signal_connect(idc_gamesetupok, "clicked", G_CALLBACK(dialogGameSetupOK), 0);
-  gtk_signal_connect(dialogGameSetup, "delete_event", G_CALLBACK(dialogGameSetupCancel), 0);
-  gtk_signal_connect(dialogGameSetup, "show", G_CALLBACK(dialogGameSetupShow), 0);
-  gtk_signal_connect(idc_gamesetupgamepassword, "clicked", G_CALLBACK(dialogGameSetupPassword), 0);
-  gtk_signal_connect(idc_gamesetuptimelimit, "clicked", G_CALLBACK(dialogGameSetupTimeLimit), 0);
-  gtk_signal_connect(idc_gamesetupstartdelay, "clicked", G_CALLBACK(dialogGameSetupStartDelay), 0);
-  gtk_signal_connect(idc_gamesetupcomptanks1, "clicked", G_CALLBACK(dialogGameSetupCompTanks), 0);
-  gtk_signal_connect(idc_gamesetupchoosemap, "clicked", G_CALLBACK(dialogGameSetupChooseMap), 0);
+  g_signal_connect(idc_gamesetupcancel, "clicked", G_CALLBACK(dialogGameSetupCancel), 0);
+  g_signal_connect(idc_gamesetupok, "clicked", G_CALLBACK(dialogGameSetupOK), 0);
+  g_signal_connect(dialogGameSetup, "delete_event", G_CALLBACK(dialogGameSetupCancel), 0);
+  g_signal_connect(dialogGameSetup, "show", G_CALLBACK(dialogGameSetupShow), 0);
+  g_signal_connect(idc_gamesetupgamepassword, "clicked", G_CALLBACK(dialogGameSetupPassword), 0);
+  g_signal_connect(idc_gamesetuptimelimit, "clicked", G_CALLBACK(dialogGameSetupTimeLimit), 0);
+  g_signal_connect(idc_gamesetupstartdelay, "clicked", G_CALLBACK(dialogGameSetupStartDelay), 0);
+  g_signal_connect(idc_gamesetupcomptanks1, "clicked", G_CALLBACK(dialogGameSetupCompTanks), 0);
+  g_signal_connect(idc_gamesetupchoosemap, "clicked", G_CALLBACK(dialogGameSetupChooseMap), 0);
 
   gtk_window_set_position (GTK_WINDOW (dialogGameSetup), GTK_WIN_POS_CENTER);
   dialogGameSetupUs = dialogGameSetup;

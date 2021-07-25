@@ -113,122 +113,122 @@ GtkWidget* dialogGameInfoCreate(void) {
   gameType *t;
 
   dialogGameInfo = gtk_dialog_new();
-  gtk_object_set_data (dialogGameInfo, "dialogGameInfo", dialogGameInfo);
+  g_object_set_data (dialogGameInfo, "dialogGameInfo", dialogGameInfo);
   gtk_widget_set_usize (dialogGameInfo, 300, 150);
   gtk_container_set_border_width (GTK_CONTAINER (dialogGameInfo), 15);
   gtk_window_set_title (GTK_WINDOW (dialogGameInfo), "LinBolo Game Information");
     gtk_window_set_policy(GTK_WINDOW(dialogGameInfo), FALSE, FALSE, FALSE);
   vbox1 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_ref (vbox1);
+  g_object_ref (vbox1);
   gtk_container_child_set (vbox1, dialogGameInfo, "vbox1");
   gtk_widget_show (vbox1);
   gtk_container_add (GTK_CONTAINER (dialogGameInfo), vbox1);
 
   hbox6 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_ref (hbox6);
+  g_object_ref (hbox6);
   gtk_container_child_set (hbox6, dialogGameInfo, "hbox6");
   gtk_widget_show (hbox6);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox6, TRUE, TRUE, 0);
 
   label12 = gtk_label_new ("Map Name:");
-  gtk_widget_ref (label12);
+  g_object_ref (label12);
   gtk_container_child_set (label12, dialogGameInfo, "label12");
   gtk_widget_show (label12);
   gtk_box_pack_start (GTK_BOX (hbox6), label12, FALSE, FALSE, 0);
 
   lblMapName = gtk_label_new ("");
-  gtk_widget_ref (lblMapName);
+  g_object_ref (lblMapName);
 
   gtk_container_child_set (lblMapName, dialogGameInfo, "lblMapName");
   gtk_widget_show (lblMapName);
   gtk_box_pack_end (GTK_BOX (hbox6), lblMapName, FALSE, FALSE, 0);
 
   hbox7 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_ref (hbox7);
+  g_object_ref (hbox7);
   gtk_container_child_set (hbox7, dialogGameInfo, "hbox7");
   gtk_widget_show (hbox7);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox7, TRUE, TRUE, 0);
 
   label14 = gtk_label_new ("Number of Players:");
-  gtk_widget_ref (label14);
+  g_object_ref (label14);
   gtk_container_child_set (label14, dialogGameInfo, "label14");
   gtk_widget_show (label14);
   gtk_box_pack_start (GTK_BOX (hbox7), label14, FALSE, FALSE, 0);
 
   lblNumPlayers = gtk_label_new ("");
-  gtk_widget_ref (lblNumPlayers);
+  g_object_ref (lblNumPlayers);
   gtk_container_child_set (lblNumPlayers, dialogGameInfo, "lblNumPlayers");
   gtk_widget_show (lblNumPlayers);
   gtk_box_pack_end (GTK_BOX (hbox7), lblNumPlayers, FALSE, FALSE, 0);
 
   hbox8 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_ref (hbox8);
+  g_object_ref (hbox8);
   gtk_container_child_set (hbox8, dialogGameInfo, "hbox8");
   gtk_widget_show (hbox8);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox8, TRUE, TRUE, 0);
 
   label16 = gtk_label_new ("Game Type:");
-  gtk_widget_ref (label16);
+  g_object_ref (label16);
   gtk_container_child_set (label16, dialogGameInfo, "label16");
   gtk_widget_show (label16);
   gtk_box_pack_start (GTK_BOX (hbox8), label16, FALSE, FALSE, 0);
 
   lblGameType = gtk_label_new ("");
-  gtk_widget_ref (lblGameType);
+  g_object_ref (lblGameType);
   gtk_container_child_set (lblGameType, dialogGameInfo, "lblGameType");
   gtk_widget_show (lblGameType);
   gtk_box_pack_end (GTK_BOX (hbox8), lblGameType, FALSE, FALSE, 0);
 
   hbox9 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_ref (hbox9);
+  g_object_ref (hbox9);
   gtk_container_child_set (hbox9, dialogGameInfo, "hbox9");
   gtk_widget_show (hbox9);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox9, TRUE, TRUE, 0);
 
   label18 = gtk_label_new ("Hidden Mines:");
-  gtk_widget_ref (label18);
+  g_object_ref (label18);
   gtk_container_child_set (label18, dialogGameInfo, "label18");
   gtk_widget_show (label18);
   gtk_box_pack_start (GTK_BOX (hbox9), label18, FALSE, FALSE, 0);
 
   lblHiddenMines = gtk_label_new ("");
-  gtk_widget_ref (lblHiddenMines);
+  g_object_ref (lblHiddenMines);
   gtk_container_child_set (lblHiddenMines, dialogGameInfo, "lblHiddenMines");
   gtk_widget_show (lblHiddenMines);
   gtk_box_pack_end (GTK_BOX (hbox9), lblHiddenMines, FALSE, FALSE, 0);
 
   hbox10 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_ref (hbox10);
+  g_object_ref (hbox10);
   gtk_container_child_set (hbox10, dialogGameInfo, "hbox10");
   gtk_widget_show (hbox10);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox10, TRUE, TRUE, 0);
 
   label20 = gtk_label_new ("Computer Tanks Allowed:");
-  gtk_widget_ref (label20);
+  g_object_ref (label20);
   gtk_container_child_set (label20, dialogGameInfo, "label20");
   gtk_widget_show (label20);
   gtk_box_pack_start (GTK_BOX (hbox10), label20, FALSE, FALSE, 0);
 
   lblCompTanks = gtk_label_new ("");
-  gtk_widget_ref (lblCompTanks);
+  g_object_ref (lblCompTanks);
   gtk_container_child_set (lblCompTanks, dialogGameInfo, "lblCompTanks");
   gtk_widget_show (lblCompTanks);
   gtk_box_pack_end (GTK_BOX (hbox10), lblCompTanks, FALSE, FALSE, 0);
 
   hbox11 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_ref (hbox11);
+  g_object_ref (hbox11);
   gtk_container_child_set (hbox11, dialogGameInfo, "hbox11");
   gtk_widget_show (hbox11);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox11, TRUE, TRUE, 0);
 
   label22 = gtk_label_new ("Game Time Limit:");
-  gtk_widget_ref (label22);
+  g_object_ref (label22);
   gtk_container_child_set (label22, dialogGameInfo, "label22");
   gtk_widget_show (label22);
   gtk_box_pack_start (GTK_BOX (hbox11), label22, FALSE, FALSE, 0);
 
   lblGameTimeLimit = gtk_label_new ("");
-  gtk_widget_ref (lblGameTimeLimit);
+  g_object_ref (lblGameTimeLimit);
   gtk_container_child_set (lblGameTimeLimit, dialogGameInfo, "lblGameTimeLimit");
   gtk_widget_show (lblGameTimeLimit);
   gtk_box_pack_end (GTK_BOX (hbox11), lblGameTimeLimit, FALSE, FALSE, 0);
@@ -290,6 +290,6 @@ GtkWidget* dialogGameInfoCreate(void) {
   dialogGameInfoUpdate(NULL);
 
   timerGameInfo = gtk_timeout_add (SECOND, dialogGameInfoUpdate, (gpointer) NULL);
-   gtk_signal_connect(dialogGameInfo, "delete_event", G_CALLBACK(dialogGameInfoClose), NULL);
+   g_signal_connect(dialogGameInfo, "delete_event", G_CALLBACK(dialogGameInfoClose), NULL);
    return dialogGameInfo;
 }

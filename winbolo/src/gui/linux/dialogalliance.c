@@ -70,43 +70,43 @@ GtkWidget* dialogAllianceCreate (void) {
   GtkWidget *button2;
 
   dialogAlliance = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_object_set_data (dialogAlliance, "dialogAlliance", dialogAlliance);
+  g_object_set_data (dialogAlliance, "dialogAlliance", dialogAlliance);
   gtk_container_set_border_width (GTK_CONTAINER (dialogAlliance), 15);
   gtk_window_set_title (GTK_WINDOW (dialogAlliance), "Alliance Request");
 
   vbox1 = gtk_vbox_new (FALSE, 0);
-  gtk_widget_ref (vbox1);
+  g_object_ref (vbox1);
   gtk_container_child_set (vbox1, dialogAlliance, "vbox1");
   gtk_widget_show (vbox1);
   gtk_container_add (GTK_CONTAINER (dialogAlliance), vbox1);
 
   label1 = gtk_label_new ("%s requests alliance. Accept?\n");
-  gtk_widget_ref (label1);
+  g_object_ref (label1);
   gtk_container_child_set (label1, dialogAlliance, "label1");
   gtk_widget_show (label1);
   gtk_box_pack_start (GTK_BOX (vbox1), label1, FALSE, FALSE, 0);
 
   hbox1 = gtk_hbox_new (FALSE, 0);
-  gtk_widget_ref (hbox1);
+  g_object_ref (hbox1);
   gtk_container_child_set (hbox1, dialogAlliance, "hbox1");
   gtk_widget_show (hbox1);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox1, TRUE, TRUE, 0);
 
   button1 = gtk_button_new_with_label ("Accept");
-  gtk_widget_ref (button1);
+  g_object_ref (button1);
   gtk_container_child_set (button1, dialogAlliance, "button1");
   gtk_widget_show (button1);
   gtk_box_pack_start (GTK_BOX (hbox1), button1, TRUE, TRUE, 0);
   gtk_widget_set_can_focus(button1, TRUE);
 
   button2 = gtk_button_new_with_label ("Reject");
-  gtk_widget_ref (button2);
+  g_object_ref (button2);
   gtk_container_child_set (button2, dialogAlliance, "button2");
   gtk_widget_show (button2);
   gtk_box_pack_start (GTK_BOX (hbox1), button2, TRUE, TRUE, 0);
 
-  gtk_signal_connect(button1, "clicked", G_CALLBACK(dialogAllianceAccept), 0);
-  gtk_signal_connect(button2, "clicked", G_CALLBACK(dialogAllianceReject), 0);
+  g_signal_connect(button1, "clicked", G_CALLBACK(dialogAllianceAccept), 0);
+  g_signal_connect(button2, "clicked", G_CALLBACK(dialogAllianceReject), 0);
 
   dialogAllianceUs = dialogAlliance;
   return dialogAlliance;

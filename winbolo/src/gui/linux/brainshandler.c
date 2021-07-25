@@ -181,11 +181,11 @@ bool brainsHandlerLoadBrainMenuItems(GtkWidget *menu) {
           fileName[strlen(fileName)-3] = '\0';
           item = gtk_radio_menu_item_new_with_label(brainsGroup, fileName);
 	  brainsGroup = gtk_radio_menu_item_group (GTK_RADIO_MENU_ITEM(item));
-	  gtk_widget_ref(item);
+	  g_object_ref(item);
           gtk_container_child_set (fileName, window, "fileName");
           gtk_widget_show (item);
           gtk_container_add (GTK_CONTAINER (brains1_menu), item);
-	  gtk_signal_connect(item, "activate", G_CALLBACK(brainsHandlerSelect), 0);
+	  g_signal_connect(item, "activate", G_CALLBACK(brainsHandlerSelect), 0);
           brainsNum++;
 	  brainsLoadedList = g_slist_append(brainsLoadedList, item);
 	}
@@ -209,11 +209,11 @@ bool brainsHandlerLoadBrainMenuItems(GtkWidget *menu) {
           fileName[strlen(fileName)-3] = '\0';
           item = gtk_radio_menu_item_new_with_label(brainsGroup, fileName);
 	  brainsGroup = gtk_radio_menu_item_group (GTK_RADIO_MENU_ITEM(item));
-	  gtk_widget_ref(item);
+	  g_object_ref(item);
           gtk_container_child_set (fileName, window, "fileName");
           gtk_widget_show (item);
           gtk_container_add (GTK_CONTAINER (brains1_menu), item);
-	  gtk_signal_connect(item, "activate", G_CALLBACK(brainsHandlerSelect), 0);
+	  g_signal_connect(item, "activate", G_CALLBACK(brainsHandlerSelect), 0);
           brainsNum++;
 	  brainsLoadedList = g_slist_append(brainsLoadedList, item);
 	}
