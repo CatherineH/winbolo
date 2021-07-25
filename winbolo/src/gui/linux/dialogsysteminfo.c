@@ -143,125 +143,125 @@ GtkWidget* dialogSystemInfoCreate(void) {
   GtkWidget *label24;
 
   dialogSystemInfo = gtk_dialog_new ();
-  gtk_object_set_data (GTK_OBJECT (dialogSystemInfo), "dialogSystemInfo", dialogSystemInfo);
+  gtk_object_set_data (dialogSystemInfo, "dialogSystemInfo", dialogSystemInfo);
   gtk_widget_set_usize (dialogSystemInfo, 300, 150);
   gtk_container_set_border_width (GTK_CONTAINER (dialogSystemInfo), 15);
   gtk_window_set_title (GTK_WINDOW (dialogSystemInfo), "LinBolo System Information");
     gtk_window_set_policy(GTK_WINDOW(dialogSystemInfo), FALSE, FALSE, FALSE);
   vbox1 = gtk_vbox_new (FALSE, 0);
   gtk_widget_ref (vbox1);
-  gtk_container_child_set (vbox1, GTK_OBJECT (dialogSystemInfo), "vbox1");
+  gtk_container_child_set (vbox1, dialogSystemInfo, "vbox1");
   gtk_widget_show (vbox1);
   gtk_container_add (GTK_CONTAINER (dialogSystemInfo), vbox1);
 
   hbox7 = gtk_hbox_new (FALSE, 0);
   gtk_widget_ref (hbox7);
-  gtk_container_child_set (hbox7, GTK_OBJECT (dialogSystemInfo), "hbox7");
+  gtk_container_child_set (hbox7, dialogSystemInfo, "hbox7");
   gtk_widget_show (hbox7);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox7, TRUE, TRUE, 0);
 
   label13 = gtk_label_new ("CPU Usage: ");
   gtk_widget_ref (label13);
-  gtk_container_child_set (label13, GTK_OBJECT (dialogSystemInfo), "label13");
+  gtk_container_child_set (label13, dialogSystemInfo, "label13");
   gtk_widget_show (label13);
   gtk_box_pack_start (GTK_BOX (hbox7), label13, FALSE, FALSE, 0);
 
   label26 = gtk_label_new ("");
   gtk_widget_ref (label26);
-  gtk_container_child_set (label26, GTK_OBJECT (dialogSystemInfo), "label26");
+  gtk_container_child_set (label26, dialogSystemInfo, "label26");
   gtk_widget_show (label26);
   gtk_box_pack_start (GTK_BOX (vbox1), label26, FALSE, FALSE, 0);
 
   hbox8 = gtk_hbox_new (FALSE, 0);
   gtk_widget_ref (hbox8);
-  gtk_container_child_set (hbox8, GTK_OBJECT (dialogSystemInfo), "hbox8");
+  gtk_container_child_set (hbox8, dialogSystemInfo, "hbox8");
   gtk_widget_show (hbox8);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox8, TRUE, TRUE, 0);
 
   label14 = gtk_label_new ("Simulation modelling: ");
   gtk_widget_ref (label14);
-  gtk_container_child_set (label14, GTK_OBJECT (dialogSystemInfo), "label14");
+  gtk_container_child_set (label14, dialogSystemInfo, "label14");
   gtk_widget_show (label14);
   gtk_box_pack_start (GTK_BOX (hbox8), label14, FALSE, FALSE, 0);
 
   lblSimModelling = gtk_label_new ("0.00%");
   gtk_widget_ref (lblSimModelling);
-  gtk_container_child_set (lblSimModelling, GTK_OBJECT (dialogSystemInfo), "lblSimModelling");
+  gtk_container_child_set (lblSimModelling, dialogSystemInfo, "lblSimModelling");
   gtk_widget_show (lblSimModelling);
   gtk_box_pack_end (GTK_BOX (hbox8), lblSimModelling, FALSE, FALSE, 0);
   gtk_label_set_justify (GTK_LABEL (lblSimModelling), GTK_JUSTIFY_FILL);
 
   hbox9 = gtk_hbox_new (FALSE, 0);
   gtk_widget_ref (hbox9);
-  gtk_container_child_set (hbox9, GTK_OBJECT (dialogSystemInfo), "hbox9");
+  gtk_container_child_set (hbox9, dialogSystemInfo, "hbox9");
   gtk_widget_show (hbox9);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox9, TRUE, TRUE, 0);
 
   label16 = gtk_label_new ("Communication processing:");
   gtk_widget_ref (label16);
-  gtk_container_child_set (label16, GTK_OBJECT (dialogSystemInfo), "label16");
+  gtk_container_child_set (label16, dialogSystemInfo, "label16");
   gtk_widget_show (label16);
   gtk_box_pack_start (GTK_BOX (hbox9), label16, FALSE, FALSE, 0);
 
   lblCommProcessing = gtk_label_new ("0.00%");
   gtk_widget_ref (lblCommProcessing);
-  gtk_container_child_set (lblCommProcessing, GTK_OBJECT (dialogSystemInfo), "lblCommProcessing");
+  gtk_container_child_set (lblCommProcessing, dialogSystemInfo, "lblCommProcessing");
   gtk_widget_show (lblCommProcessing);
   gtk_box_pack_end (GTK_BOX (hbox9), lblCommProcessing, FALSE, FALSE, 0);
   gtk_label_set_justify (GTK_LABEL (lblCommProcessing), GTK_JUSTIFY_LEFT);
 
   hbox10 = gtk_hbox_new (FALSE, 0);
   gtk_widget_ref (hbox10);
-  gtk_container_child_set (hbox10, GTK_OBJECT (dialogSystemInfo), "hbox10");
+  gtk_container_child_set (hbox10, dialogSystemInfo, "hbox10");
   gtk_widget_show (hbox10);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox10, TRUE, TRUE, 0);
 
   label18 = gtk_label_new ("Graphics display:");
   gtk_widget_ref (label18);
-  gtk_container_child_set (label18, GTK_OBJECT (dialogSystemInfo), "label18");
+  gtk_container_child_set (label18, dialogSystemInfo, "label18");
   gtk_widget_show (label18);
   gtk_box_pack_start (GTK_BOX (hbox10), label18, FALSE, FALSE, 0);
 
   lblGraphics = gtk_label_new ("0.00%");
   gtk_widget_ref (lblGraphics);
-  gtk_container_child_set (lblGraphics, GTK_OBJECT (dialogSystemInfo), "lblGraphics");
+  gtk_container_child_set (lblGraphics, dialogSystemInfo, "lblGraphics");
   gtk_widget_show (lblGraphics);
   gtk_box_pack_end (GTK_BOX (hbox10), lblGraphics, FALSE, FALSE, 0);
   gtk_label_set_justify (GTK_LABEL (lblGraphics), GTK_JUSTIFY_RIGHT);
 
   hbox11 = gtk_hbox_new (FALSE, 0);
   gtk_widget_ref (hbox11);
-  gtk_container_child_set (hbox11, GTK_OBJECT (dialogSystemInfo), "hbox11");
+  gtk_container_child_set (hbox11, dialogSystemInfo, "hbox11");
   gtk_widget_show (hbox11);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox11, FALSE, FALSE, 0);
 
   label20 = gtk_label_new ("AI tank control processing:");
   gtk_widget_ref (label20);
-  gtk_container_child_set (label20, GTK_OBJECT (dialogSystemInfo), "label20");
+  gtk_container_child_set (label20, dialogSystemInfo, "label20");
   gtk_widget_show (label20);
   gtk_box_pack_start (GTK_BOX (hbox11), label20, FALSE, FALSE, 0);
 
   lblAi = gtk_label_new ("0.00%");
   gtk_widget_ref (lblAi);
-  gtk_container_child_set (lblAi, GTK_OBJECT (dialogSystemInfo), "lblAi");
+  gtk_container_child_set (lblAi, dialogSystemInfo, "lblAi");
   gtk_widget_show (lblAi);
   gtk_box_pack_end (GTK_BOX (hbox11), lblAi, FALSE, FALSE, 0);
 
   hbox12 = gtk_hbox_new (FALSE, 0);
   gtk_widget_ref (hbox12);
-  gtk_container_child_set (hbox12, GTK_OBJECT (dialogSystemInfo), "hbox12");
+  gtk_container_child_set (hbox12, dialogSystemInfo, "hbox12");
   gtk_widget_show (hbox12);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox12, TRUE, TRUE, 0);
 
   label22 = gtk_label_new ("Total:");
   gtk_widget_ref (label22);
-  gtk_container_child_set (label22, GTK_OBJECT (dialogSystemInfo), "label22");
+  gtk_container_child_set (label22, dialogSystemInfo, "label22");
   gtk_widget_show (label22);
   gtk_box_pack_start (GTK_BOX (hbox12), label22, FALSE, FALSE, 0);
 
   lblTotal = gtk_label_new ("0.00%");
   gtk_widget_ref (lblTotal);
-  gtk_container_child_set (lblTotal, GTK_OBJECT (dialogSystemInfo), "lblTotal");
+  gtk_container_child_set (lblTotal, dialogSystemInfo, "lblTotal");
   gtk_widget_show (lblTotal);
   gtk_box_pack_end (GTK_BOX (hbox12), lblTotal, FALSE, FALSE, 0);
   gtk_label_set_justify (GTK_LABEL (lblTotal), GTK_JUSTIFY_RIGHT);
@@ -270,30 +270,30 @@ GtkWidget* dialogSystemInfoCreate(void) {
 
   label27 = gtk_label_new ("");
   gtk_widget_ref (label27);
-  gtk_container_child_set (label27, GTK_OBJECT (dialogSystemInfo), "label27");
+  gtk_container_child_set (label27, dialogSystemInfo, "label27");
   gtk_widget_show (label27);
   gtk_box_pack_start (GTK_BOX (vbox1), label27, FALSE, FALSE, 0);
 
   hbox13 = gtk_hbox_new (FALSE, 0);
   gtk_widget_ref (hbox13);
-  gtk_container_child_set (hbox13, GTK_OBJECT (dialogSystemInfo), "hbox13");
+  gtk_container_child_set (hbox13, dialogSystemInfo, "hbox13");
   gtk_widget_show (hbox13);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox13, TRUE, TRUE, 0);
 
   label24 = gtk_label_new ("Graphics frames per second: ");
   gtk_widget_ref (label24);
-  gtk_container_child_set (label24, GTK_OBJECT (dialogSystemInfo), "label24");
+  gtk_container_child_set (label24, dialogSystemInfo, "label24");
   gtk_widget_show (label24);
   gtk_box_pack_start (GTK_BOX (hbox13), label24, FALSE, FALSE, 0);
 
   lblFPS = gtk_label_new ("2");
   gtk_widget_ref (lblFPS);
-  gtk_container_child_set (lblFPS, GTK_OBJECT (dialogSystemInfo), "lblFPS");
+  gtk_container_child_set (lblFPS, dialogSystemInfo, "lblFPS");
   gtk_widget_show (lblFPS);
   gtk_box_pack_end (GTK_BOX (hbox13), lblFPS, FALSE, FALSE, 0);
 
   sysInfoTimer = gtk_timeout_add (SECOND, dialogSysInfoUpdate, (gpointer) NULL);
-  gtk_signal_connect(GTK_OBJECT(dialogSystemInfo), "delete_event", GTK_SIGNAL_FUNC (dialogSystemInfoClose), NULL);
+  gtk_signal_connect(dialogSystemInfo, "delete_event", G_CALLBACK(dialogSystemInfoClose), NULL);
   dialogSysInfoUpdate(NULL);
   return dialogSystemInfo;
 }

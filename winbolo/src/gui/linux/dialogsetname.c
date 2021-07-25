@@ -118,7 +118,7 @@ GtkWidget* dialogSetNameCreate(bool inGame) {
   setNameInGame = inGame;
 
   dialogSetName = gtk_dialog_new();
-  gtk_object_set_data (GTK_OBJECT (dialogSetName), "dialogSetName", dialogSetName);
+  gtk_object_set_data (dialogSetName, "dialogSetName", dialogSetName);
   gtk_container_set_border_width (GTK_CONTAINER (dialogSetName), 10);
   gtk_window_set_title (GTK_WINDOW (dialogSetName), "Enter Player Name");
   gtk_window_set_position (GTK_WINDOW (dialogSetName), GTK_WIN_POS_CENTER);
@@ -127,39 +127,39 @@ GtkWidget* dialogSetNameCreate(bool inGame) {
 
   vbox1 = gtk_vbox_new (FALSE, 0);
   gtk_widget_ref (vbox1);
-  gtk_container_child_set (vbox1, GTK_OBJECT (dialogSetName), "vbox1");
+  gtk_container_child_set (vbox1, dialogSetName, "vbox1");
   gtk_widget_show (vbox1);
   gtk_container_add (GTK_CONTAINER (dialogSetName), vbox1);
 
   label1 = gtk_label_new ("Enter the new player name for your tank");
   gtk_widget_ref (label1);
-  gtk_container_child_set (label1, GTK_OBJECT (dialogSetName), "label1");
+  gtk_container_child_set (label1, dialogSetName, "label1");
   gtk_widget_show (label1);
   gtk_box_pack_start (GTK_BOX (vbox1), label1, FALSE, FALSE, 0);
   gtk_label_set_justify (GTK_LABEL (label1), GTK_JUSTIFY_LEFT);
 
   hbox1 = gtk_hbox_new (FALSE, 0);
   gtk_widget_ref (hbox1);
-  gtk_container_child_set (hbox1, GTK_OBJECT (dialogSetName), "hbox1");
+  gtk_container_child_set (hbox1, dialogSetName, "hbox1");
   gtk_widget_show (hbox1);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox1, TRUE, TRUE, 0);
   gtk_container_set_border_width (GTK_CONTAINER (hbox1), 10);
 
   idc_setnametxt = gtk_entry_new ();
   gtk_widget_ref (idc_setnametxt);
-  gtk_container_child_set (idc_setnametxt, GTK_OBJECT (dialogSetName), "idc_setnametxt");
+  gtk_container_child_set (idc_setnametxt, dialogSetName, "idc_setnametxt");
   gtk_widget_show (idc_setnametxt);
   gtk_box_pack_start (GTK_BOX (hbox1), idc_setnametxt, TRUE, TRUE, 0);
 
   button1 = gtk_button_new_with_label ("OK");
   gtk_widget_ref (button1);
-  gtk_container_child_set (button1, GTK_OBJECT (dialogSetName), "button1");
+  gtk_container_child_set (button1, dialogSetName, "button1");
   gtk_widget_show (button1);
   gtk_box_pack_start (GTK_BOX (hbox1), button1, TRUE, TRUE, 0);
 
-  gtk_signal_connect(GTK_OBJECT(dialogSetName), "delete_event", GTK_SIGNAL_FUNC (dialogSetNameClose), NULL);
-  gtk_signal_connect(GTK_OBJECT(button1), "clicked", GTK_SIGNAL_FUNC(dialogSetNameOK), 0);
-  gtk_signal_connect(GTK_OBJECT(idc_setnametxt), "key-press-event", GTK_SIGNAL_FUNC(dialogSetNameKey), 0);
+  gtk_signal_connect(dialogSetName, "delete_event", G_CALLBACK(dialogSetNameClose), NULL);
+  gtk_signal_connect(button1, "clicked", G_CALLBACK(dialogSetNameOK), 0);
+  gtk_signal_connect(idc_setnametxt, "key-press-event", G_CALLBACK(dialogSetNameKey), 0);
 
   /* Get the name */
   playerName[0] = '\0';

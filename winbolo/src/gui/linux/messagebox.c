@@ -58,7 +58,7 @@ GtkWidget* create_MessageBox (char *name, char *label) {
   GtkWidget *idc_messageboxok;
 
   MessageBox = gtk_dialog_new();
-  gtk_object_set_data (GTK_OBJECT (MessageBox), "name", MessageBox);
+  gtk_object_set_data (MessageBox, "name", MessageBox);
   gtk_window_set_title (GTK_WINDOW (MessageBox), name);
   gtk_window_set_policy (GTK_WINDOW (MessageBox), FALSE, FALSE, FALSE);
   gtk_window_set_position (GTK_WINDOW (MessageBox), GTK_WIN_POS_CENTER);
@@ -66,7 +66,7 @@ GtkWidget* create_MessageBox (char *name, char *label) {
 
   vbox1 = gtk_vbox_new (FALSE, 0);
   gtk_widget_ref (vbox1);
-  gtk_container_child_set (vbox1, GTK_OBJECT (MessageBox), "vbox1");
+  gtk_container_child_set (vbox1, MessageBox, "vbox1");
   gtk_container_set_border_width (GTK_CONTAINER (vbox1), 5);
   gtk_widget_show (vbox1);
   gtk_container_add (GTK_CONTAINER (MessageBox), vbox1);
@@ -74,13 +74,13 @@ GtkWidget* create_MessageBox (char *name, char *label) {
   label1 = gtk_label_new (label);
   gtk_label_set_justify (GTK_LABEL (label1), GTK_JUSTIFY_LEFT);
   gtk_widget_ref (label1);
-  gtk_container_child_set (label1, GTK_OBJECT (MessageBox), "label1");
+  gtk_container_child_set (label1, MessageBox, "label1");
   gtk_widget_show (label1);
   gtk_box_pack_start (GTK_BOX (vbox1), label1, FALSE, FALSE, 10);
 
   idc_messageboxok = gtk_button_new_with_label ("OK");
   gtk_widget_ref (idc_messageboxok);
-  gtk_container_child_set (idc_messageboxok, GTK_OBJECT (MessageBox), "idc_messageboxok");
+  gtk_container_child_set (idc_messageboxok, MessageBox, "idc_messageboxok");
   gtk_container_set_border_width (GTK_CONTAINER (idc_messageboxok), 5);
   gtk_widget_show (idc_messageboxok);
   gtk_box_pack_start (GTK_BOX (vbox1), idc_messageboxok, FALSE, FALSE, 5);
@@ -89,8 +89,8 @@ GtkWidget* create_MessageBox (char *name, char *label) {
   gtk_widget_grab_focus (idc_messageboxok);
   gtk_widget_grab_default (idc_messageboxok);
 
-  gtk_signal_connect(GTK_OBJECT(idc_messageboxok), "clicked", GTK_SIGNAL_FUNC(messageBoxOK), 0);
-  gtk_signal_connect(GTK_OBJECT(MessageBox), "delete_event", GTK_SIGNAL_FUNC(messageBoxClose), 0);
+  gtk_signal_connect(idc_messageboxok, "clicked", G_CALLBACK(messageBoxOK), 0);
+  gtk_signal_connect(MessageBox, "delete_event", G_CALLBACK(messageBoxClose), 0);
   mbUs = MessageBox;
   return MessageBox;
 }

@@ -225,52 +225,52 @@ GtkWidget* dialogUdpSetupCreate(void) {
   GtkWidget *idc_updsetupcmdnew;
 
   dialogUdpSetup = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_object_set_data (GTK_OBJECT (dialogUdpSetup), "dialogUdpSetup", dialogUdpSetup);
+  gtk_object_set_data (dialogUdpSetup, "dialogUdpSetup", dialogUdpSetup);
   gtk_container_set_border_width (GTK_CONTAINER (dialogUdpSetup), 15);
   gtk_window_set_title (GTK_WINDOW (dialogUdpSetup), "UDP (Internet) Setup");
   gtk_window_set_policy (GTK_WINDOW (dialogUdpSetup), FALSE, FALSE, FALSE);
   gtk_window_set_position (GTK_WINDOW (dialogUdpSetup), GTK_WIN_POS_CENTER);
   vbox1 = gtk_vbox_new (FALSE, 0);
   gtk_widget_ref (vbox1);
-  gtk_container_child_set (vbox1, GTK_OBJECT (dialogUdpSetup), "vbox1");
+  gtk_container_child_set (vbox1, dialogUdpSetup, "vbox1");
   gtk_widget_show (vbox1);
   gtk_container_add (GTK_CONTAINER (dialogUdpSetup), vbox1);
 
   label = gtk_label_new ("To join an internet Bolo game, you must give the name (or IP Address) of a host\nmachine running Bolo, and the UDP port number of the Bolo process on that\nmachine");
   gtk_widget_ref (label);
-  gtk_container_child_set (label, GTK_OBJECT (dialogUdpSetup), "label");
+  gtk_container_child_set (label, dialogUdpSetup, "label");
   gtk_widget_show (label);
   gtk_box_pack_start (GTK_BOX (vbox1), label, FALSE, FALSE, 0);
   gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
 
   hbox1 = gtk_hbox_new (FALSE, 0);
   gtk_widget_ref (hbox1);
-  gtk_container_child_set (hbox1, GTK_OBJECT (dialogUdpSetup), "hbox1");
+  gtk_container_child_set (hbox1, dialogUdpSetup, "hbox1");
   gtk_widget_show (hbox1);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox1, TRUE, TRUE, 6);
 
   label2 = gtk_label_new ("Machine Name (or IP address): ");
   gtk_widget_ref (label2);
-  gtk_container_child_set (label2, GTK_OBJECT (dialogUdpSetup), "label2");
+  gtk_container_child_set (label2, dialogUdpSetup, "label2");
   gtk_widget_show (label2);
   gtk_box_pack_start (GTK_BOX (hbox1), label2, FALSE, TRUE, 0);
   gtk_misc_set_alignment (GTK_MISC (label2), 0, 0.5);
 
   idc_udpmachinename = gtk_entry_new ();
   gtk_widget_ref (idc_udpmachinename);
-  gtk_container_child_set (idc_udpmachinename, GTK_OBJECT (dialogUdpSetup), "idc_udpmachinename");
+  gtk_container_child_set (idc_udpmachinename, dialogUdpSetup, "idc_udpmachinename");
   gtk_widget_show (idc_udpmachinename);
   gtk_box_pack_start (GTK_BOX (hbox1), idc_udpmachinename, TRUE, TRUE, 0);
 
   table1 = gtk_table_new (3, 2, FALSE);
   gtk_widget_ref (table1);
-  gtk_container_child_set (table1, GTK_OBJECT (dialogUdpSetup), "table1");
+  gtk_container_child_set (table1, dialogUdpSetup, "table1");
   gtk_widget_show (table1);
   gtk_box_pack_start (GTK_BOX (vbox1), table1, TRUE, TRUE, 0);
 
   idc_updsetuptxtthereport = gtk_entry_new ();
   gtk_widget_ref (idc_updsetuptxtthereport);
-  gtk_container_child_set (idc_updsetuptxtthereport, GTK_OBJECT (dialogUdpSetup), "idc_updsetuptxtthereport");
+  gtk_container_child_set (idc_updsetuptxtthereport, dialogUdpSetup, "idc_updsetuptxtthereport");
   gtk_widget_show (idc_updsetuptxtthereport);
   gtk_table_attach (GTK_TABLE (table1), idc_updsetuptxtthereport, 1, 2, 0, 1,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -278,7 +278,7 @@ GtkWidget* dialogUdpSetupCreate(void) {
 
   idc_updsetuptxtourport = gtk_entry_new ();
   gtk_widget_ref (idc_updsetuptxtourport);
-  gtk_container_child_set (idc_updsetuptxtourport, GTK_OBJECT (dialogUdpSetup), "idc_updsetuptxtourport");
+  gtk_container_child_set (idc_updsetuptxtourport, dialogUdpSetup, "idc_updsetuptxtourport");
   gtk_widget_show (idc_updsetuptxtourport);
   gtk_table_attach (GTK_TABLE (table1), idc_updsetuptxtourport, 1, 2, 1, 2,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -286,7 +286,7 @@ GtkWidget* dialogUdpSetupCreate(void) {
 
   idc_updsetuptxtplayername = gtk_entry_new ();
   gtk_widget_ref (idc_updsetuptxtplayername);
-  gtk_container_child_set (idc_updsetuptxtplayername, GTK_OBJECT (dialogUdpSetup), "idc_updsetuptxtplayername");
+  gtk_container_child_set (idc_updsetuptxtplayername, dialogUdpSetup, "idc_updsetuptxtplayername");
   gtk_widget_show (idc_updsetuptxtplayername);
   gtk_table_attach (GTK_TABLE (table1), idc_updsetuptxtplayername, 1, 2, 2, 3,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -294,7 +294,7 @@ GtkWidget* dialogUdpSetupCreate(void) {
 
   label5 = gtk_label_new ("Your players name for the game: ");
   gtk_widget_ref (label5);
-  gtk_container_child_set (label5, GTK_OBJECT (dialogUdpSetup), "label5");
+  gtk_container_child_set (label5, dialogUdpSetup, "label5");
   gtk_widget_show (label5);
   gtk_table_attach (GTK_TABLE (table1), label5, 0, 1, 2, 3,
                     (GtkAttachOptions) (GTK_FILL),
@@ -304,7 +304,7 @@ GtkWidget* dialogUdpSetupCreate(void) {
 
   label4 = gtk_label_new ("UDP port for the Bolo on this machine: ");
   gtk_widget_ref (label4);
-  gtk_container_child_set (label4, GTK_OBJECT (dialogUdpSetup), "label4");
+  gtk_container_child_set (label4, dialogUdpSetup, "label4");
   gtk_widget_show (label4);
   gtk_table_attach (GTK_TABLE (table1), label4, 0, 1, 1, 2,
                     (GtkAttachOptions) (GTK_FILL),
@@ -314,7 +314,7 @@ GtkWidget* dialogUdpSetupCreate(void) {
 
   label3 = gtk_label_new ("UDP port of Bolo on the server machine : ");
   gtk_widget_ref (label3);
-  gtk_container_child_set (label3, GTK_OBJECT (dialogUdpSetup), "label3");
+  gtk_container_child_set (label3, dialogUdpSetup, "label3");
   gtk_widget_show (label3);
   gtk_table_attach (GTK_TABLE (table1), label3, 0, 1, 0, 1,
                     (GtkAttachOptions) (GTK_FILL),
@@ -323,50 +323,50 @@ GtkWidget* dialogUdpSetupCreate(void) {
 
   hbox2 = gtk_hbox_new (FALSE, 0);
   gtk_widget_ref (hbox2);
-  gtk_container_child_set (hbox2, GTK_OBJECT (dialogUdpSetup), "hbox2");
+  gtk_container_child_set (hbox2, dialogUdpSetup, "hbox2");
   gtk_widget_show (hbox2);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox2, FALSE, FALSE, 8);
 
   label6 = gtk_label_new ("");
   gtk_widget_ref (label6);
-  gtk_container_child_set (label6, GTK_OBJECT (dialogUdpSetup), "label6");
+  gtk_container_child_set (label6, dialogUdpSetup, "label6");
   gtk_widget_show (label6);
   gtk_box_pack_start (GTK_BOX (hbox2), label6, TRUE, TRUE, 0);
 
   idc_updsetupremembername = gtk_check_button_new_with_label ("Remember player name");
   gtk_widget_ref (idc_updsetupremembername);
-  gtk_container_child_set (idc_updsetupremembername, GTK_OBJECT (dialogUdpSetup), "idc_updsetupremembername");
+  gtk_container_child_set (idc_updsetupremembername, dialogUdpSetup, "idc_updsetupremembername");
   gtk_widget_show (idc_updsetupremembername);
   gtk_box_pack_start (GTK_BOX (hbox2), idc_updsetupremembername, FALSE, FALSE, 0);
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (idc_updsetupremembername), TRUE);
 
   hbox3 = gtk_hbox_new (FALSE, 0);
   gtk_widget_ref (hbox3);
-  gtk_container_child_set (hbox3, GTK_OBJECT (dialogUdpSetup), "hbox3");
+  gtk_container_child_set (hbox3, dialogUdpSetup, "hbox3");
   gtk_widget_show (hbox3);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox3, TRUE, TRUE, 0);
 
   label7 = gtk_label_new ("");
   gtk_widget_ref (label7);
-  gtk_container_child_set (label7, GTK_OBJECT (dialogUdpSetup), "label7");
+  gtk_container_child_set (label7, dialogUdpSetup, "label7");
   gtk_widget_show (label7);
   gtk_box_pack_start (GTK_BOX (hbox3), label7, TRUE, TRUE, 0);
 
   idc_updsetuptracker = gtk_button_new_with_label ("Tracker Setup");
   gtk_widget_ref (idc_updsetuptracker);
-  gtk_container_child_set (idc_updsetuptracker, GTK_OBJECT (dialogUdpSetup), "idc_updsetuptracker");
+  gtk_container_child_set (idc_updsetuptracker, dialogUdpSetup, "idc_updsetuptracker");
   gtk_widget_show (idc_updsetuptracker);
   gtk_box_pack_start (GTK_BOX (hbox3), idc_updsetuptracker, FALSE, FALSE, 16);
 
   table2 = gtk_table_new (3, 3, FALSE);
   gtk_widget_ref (table2);
-  gtk_container_child_set (table2, GTK_OBJECT (dialogUdpSetup), "table2");
+  gtk_container_child_set (table2, dialogUdpSetup, "table2");
   gtk_widget_show (table2);
   gtk_box_pack_start (GTK_BOX (vbox1), table2, TRUE, TRUE, 9);
 
   idc_updsetupcmdcancel = gtk_button_new_with_label ("Cancel");
   gtk_widget_ref (idc_updsetupcmdcancel);
-  gtk_container_child_set (idc_updsetupcmdcancel, GTK_OBJECT (dialogUdpSetup), "idc_updsetupcmdcancel");
+  gtk_container_child_set (idc_updsetupcmdcancel, dialogUdpSetup, "idc_updsetupcmdcancel");
   gtk_widget_show (idc_updsetupcmdcancel);
   gtk_table_attach (GTK_TABLE (table2), idc_updsetupcmdcancel, 2, 3, 0, 1,
                     (GtkAttachOptions) (0),
@@ -374,7 +374,7 @@ GtkWidget* dialogUdpSetupCreate(void) {
 
   idc_updsetupcmdrejoin = gtk_button_new_with_label ("Rejoin");
   gtk_widget_ref (idc_updsetupcmdrejoin);
-  gtk_container_child_set (idc_updsetupcmdrejoin, GTK_OBJECT (dialogUdpSetup), "idc_updsetupcmdrejoin");
+  gtk_container_child_set (idc_updsetupcmdrejoin, dialogUdpSetup, "idc_updsetupcmdrejoin");
   gtk_widget_show (idc_updsetupcmdrejoin);
   gtk_table_attach (GTK_TABLE (table2), idc_updsetupcmdrejoin, 1, 2, 2, 3,
                     (GtkAttachOptions) (GTK_FILL),
@@ -382,7 +382,7 @@ GtkWidget* dialogUdpSetupCreate(void) {
 
   idc_updsetupcmdjoin = gtk_button_new_with_label ("Join");
   gtk_widget_ref (idc_updsetupcmdjoin);
-  gtk_container_child_set (idc_updsetupcmdjoin, GTK_OBJECT (dialogUdpSetup), "idc_updsetupcmdjoin");
+  gtk_container_child_set (idc_updsetupcmdjoin, dialogUdpSetup, "idc_updsetupcmdjoin");
   gtk_widget_show (idc_updsetupcmdjoin);
   gtk_table_attach (GTK_TABLE (table2), idc_updsetupcmdjoin, 1, 2, 1, 2,
                     (GtkAttachOptions) (GTK_FILL),
@@ -390,7 +390,7 @@ GtkWidget* dialogUdpSetupCreate(void) {
 
   idc_updsetupcmdnew = gtk_button_new_with_label ("New");
   gtk_widget_ref (idc_updsetupcmdnew);
-  gtk_container_child_set (idc_updsetupcmdnew, GTK_OBJECT (dialogUdpSetup), "idc_updsetupcmdnew");
+  gtk_container_child_set (idc_updsetupcmdnew, dialogUdpSetup, "idc_updsetupcmdnew");
   gtk_widget_show (idc_updsetupcmdnew);
   gtk_table_attach (GTK_TABLE (table2), idc_updsetupcmdnew, 1, 2, 0, 1,
                     (GtkAttachOptions) (GTK_FILL),
@@ -398,7 +398,7 @@ GtkWidget* dialogUdpSetupCreate(void) {
 
   label10 = gtk_label_new ("Click \"Rejoin\" to rejoin a game and\nreclaim your old posessions");
   gtk_widget_ref (label10);
-  gtk_container_child_set (label10, GTK_OBJECT (dialogUdpSetup), "label10");
+  gtk_container_child_set (label10, dialogUdpSetup, "label10");
   gtk_widget_show (label10);
   gtk_table_attach (GTK_TABLE (table2), label10, 0, 1, 2, 3,
                     (GtkAttachOptions) (GTK_FILL),
@@ -408,7 +408,7 @@ GtkWidget* dialogUdpSetupCreate(void) {
 
   label9 = gtk_label_new ("Click to \"Join\" an existing game");
   gtk_widget_ref (label9);
-  gtk_container_child_set (label9, GTK_OBJECT (dialogUdpSetup), "label9");
+  gtk_container_child_set (label9, dialogUdpSetup, "label9");
   gtk_widget_show (label9);
   gtk_table_attach (GTK_TABLE (table2), label9, 0, 1, 1, 2,
                     (GtkAttachOptions) (GTK_FILL),
@@ -418,7 +418,7 @@ GtkWidget* dialogUdpSetupCreate(void) {
 
   label8 = gtk_label_new ("Click \"New\" to begin a game                                             ");
   gtk_widget_ref (label8);
-  gtk_container_child_set (label8, GTK_OBJECT (dialogUdpSetup), "label8");
+  gtk_container_child_set (label8, dialogUdpSetup, "label8");
   gtk_widget_show (label8);
   gtk_table_attach (GTK_TABLE (table2), label8, 0, 1, 0, 1,
                     (GtkAttachOptions) (GTK_FILL),
@@ -426,13 +426,13 @@ GtkWidget* dialogUdpSetupCreate(void) {
   gtk_label_set_justify (GTK_LABEL (label8), GTK_JUSTIFY_LEFT);
   gtk_misc_set_alignment (GTK_MISC (label8), 0, 0);
 
-  gtk_signal_connect(GTK_OBJECT(idc_updsetupcmdcancel), "clicked", GTK_SIGNAL_FUNC(dialogUdpSetupCancel), 0);
-  gtk_signal_connect(GTK_OBJECT(idc_updsetupcmdjoin), "clicked", GTK_SIGNAL_FUNC(dialogUdpSetupJoin), 0);
-  gtk_signal_connect(GTK_OBJECT(idc_updsetupcmdrejoin), "clicked", GTK_SIGNAL_FUNC(dialogUdpSetupReJoin), 0);
-  gtk_signal_connect(GTK_OBJECT(idc_updsetuptracker), "clicked", GTK_SIGNAL_FUNC(dialogUdpSetupTracker), 0);
-  gtk_signal_connect(GTK_OBJECT(idc_updsetupcmdnew), "clicked", GTK_SIGNAL_FUNC(dialogUdpSetupNew), 0);
-  gtk_signal_connect(GTK_OBJECT(dialogUdpSetup), "delete_event", GTK_SIGNAL_FUNC(dialogUdpSetupCancel), 0);
-  gtk_signal_connect(GTK_OBJECT(dialogUdpSetup), "show", GTK_SIGNAL_FUNC(dialogUdpSetupShow), 0);
+  gtk_signal_connect(idc_updsetupcmdcancel, "clicked", G_CALLBACK(dialogUdpSetupCancel), 0);
+  gtk_signal_connect(idc_updsetupcmdjoin, "clicked", G_CALLBACK(dialogUdpSetupJoin), 0);
+  gtk_signal_connect(idc_updsetupcmdrejoin, "clicked", G_CALLBACK(dialogUdpSetupReJoin), 0);
+  gtk_signal_connect(idc_updsetuptracker, "clicked", G_CALLBACK(dialogUdpSetupTracker), 0);
+  gtk_signal_connect(idc_updsetupcmdnew, "clicked", G_CALLBACK(dialogUdpSetupNew), 0);
+  gtk_signal_connect(dialogUdpSetup, "delete_event", G_CALLBACK(dialogUdpSetupCancel), 0);
+  gtk_signal_connect(dialogUdpSetup, "show", G_CALLBACK(dialogUdpSetupShow), 0);
 
   us = dialogUdpSetup;
 

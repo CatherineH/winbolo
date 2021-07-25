@@ -135,7 +135,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
 
   dialogKeySetup = gtk_dialog_new();
-  gtk_object_set_data (GTK_OBJECT (dialogKeySetup), "dialogKeySetup", dialogKeySetup);
+  gtk_object_set_data (dialogKeySetup, "dialogKeySetup", dialogKeySetup);
   gtk_container_set_border_width (GTK_CONTAINER (dialogKeySetup), 15);
   gtk_window_set_title (GTK_WINDOW (dialogKeySetup), "Choose Key Settings");
   gtk_window_set_position (GTK_WINDOW (dialogKeySetup), GTK_WIN_POS_CENTER);
@@ -144,13 +144,13 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   vbox1 = gtk_vbox_new (FALSE, 0);
   gtk_widget_ref (vbox1);
-  gtk_container_child_set (vbox1, GTK_OBJECT (dialogKeySetup), "vbox1");
+  gtk_container_child_set (vbox1, dialogKeySetup, "vbox1");
   gtk_widget_show (vbox1);
   gtk_container_add (GTK_CONTAINER (dialogKeySetup), vbox1);
 
   label1 = gtk_label_new ("Click on the option you wish to change then the next key pressed will be assigned to it.");
   gtk_widget_ref (label1);
-  gtk_container_child_set (label1, GTK_OBJECT (dialogKeySetup), "label1");
+  gtk_container_child_set (label1, dialogKeySetup, "label1");
   gtk_widget_show (label1);
   gtk_box_pack_start (GTK_BOX (vbox1), label1, FALSE, FALSE, 0);
   gtk_label_set_justify (GTK_LABEL (label1), GTK_JUSTIFY_LEFT);
@@ -158,14 +158,14 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   table1 = gtk_table_new (17, 4, FALSE);
   gtk_widget_ref (table1);
-  gtk_container_child_set (table1, GTK_OBJECT (dialogKeySetup), "table1");
+  gtk_container_child_set (table1, dialogKeySetup, "table1");
   gtk_widget_show (table1);
   gtk_box_pack_start (GTK_BOX (vbox1), table1, TRUE, TRUE, 0);
   gtk_container_set_border_width (GTK_CONTAINER (table1), 6);
 
   label2 = gtk_label_new ("Drive tank");
   gtk_widget_ref (label2);
-  gtk_container_child_set (label2, GTK_OBJECT (dialogKeySetup), "label2");
+  gtk_container_child_set (label2, dialogKeySetup, "label2");
   gtk_widget_show (label2);
   gtk_table_attach (GTK_TABLE (table1), label2, 0, 1, 0, 1,
                     (GtkAttachOptions) (GTK_FILL),
@@ -175,7 +175,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   label3 = gtk_label_new ("Rotate Tank:");
   gtk_widget_ref (label3);
-  gtk_container_child_set (label3, GTK_OBJECT (dialogKeySetup), "label3");
+  gtk_container_child_set (label3, dialogKeySetup, "label3");
   gtk_widget_show (label3);
   gtk_table_attach (GTK_TABLE (table1), label3, 0, 1, 2, 3,
                     (GtkAttachOptions) (GTK_FILL),
@@ -184,7 +184,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   label4 = gtk_label_new ("Gun Range:");
   gtk_widget_ref (label4);
-  gtk_container_child_set (label4, GTK_OBJECT (dialogKeySetup), "label4");
+  gtk_container_child_set (label4, dialogKeySetup, "label4");
   gtk_widget_show (label4);
   gtk_table_attach (GTK_TABLE (table1), label4, 0, 1, 5, 6,
                     (GtkAttachOptions) (GTK_FILL),
@@ -193,7 +193,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   label5 = gtk_label_new ("Weapons:");
   gtk_widget_ref (label5);
-  gtk_container_child_set (label5, GTK_OBJECT (dialogKeySetup), "label5");
+  gtk_container_child_set (label5, dialogKeySetup, "label5");
   gtk_widget_show (label5);
   gtk_table_attach (GTK_TABLE (table1), label5, 0, 1, 8, 9,
                     (GtkAttachOptions) (GTK_FILL),
@@ -202,7 +202,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   label6 = gtk_label_new ("Change Views: ");
   gtk_widget_ref (label6);
-  gtk_container_child_set (label6, GTK_OBJECT (dialogKeySetup), "label6");
+  gtk_container_child_set (label6, dialogKeySetup, "label6");
   gtk_widget_show (label6);
   gtk_table_attach (GTK_TABLE (table1), label6, 0, 1, 10, 11,
                     (GtkAttachOptions) (GTK_FILL),
@@ -211,7 +211,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   label7 = gtk_label_new ("Scroll:");
   gtk_widget_ref (label7);
-  gtk_container_child_set (label7, GTK_OBJECT (dialogKeySetup), "label7");
+  gtk_container_child_set (label7, dialogKeySetup, "label7");
   gtk_widget_show (label7);
   gtk_table_attach (GTK_TABLE (table1), label7, 0, 1, 13, 14,
                     (GtkAttachOptions) (GTK_FILL),
@@ -220,7 +220,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   label8 = gtk_label_new ("Accelerate");
   gtk_widget_ref (label8);
-  gtk_container_child_set (label8, GTK_OBJECT (dialogKeySetup), "label8");
+  gtk_container_child_set (label8, dialogKeySetup, "label8");
   gtk_widget_show (label8);
   gtk_table_attach (GTK_TABLE (table1), label8, 1, 2, 0, 1,
                     (GtkAttachOptions) (GTK_FILL),
@@ -230,7 +230,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   label9 = gtk_label_new ("Decelerate");
   gtk_widget_ref (label9);
-  gtk_container_child_set (label9, GTK_OBJECT (dialogKeySetup), "label9");
+  gtk_container_child_set (label9, dialogKeySetup, "label9");
   gtk_widget_show (label9);
   gtk_table_attach (GTK_TABLE (table1), label9, 1, 2, 1, 2,
                     (GtkAttachOptions) (GTK_FILL),
@@ -240,7 +240,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   label10 = gtk_label_new ("Anti-clockwise");
   gtk_widget_ref (label10);
-  gtk_container_child_set (label10, GTK_OBJECT (dialogKeySetup), "label10");
+  gtk_container_child_set (label10, dialogKeySetup, "label10");
   gtk_widget_show (label10);
   gtk_table_attach (GTK_TABLE (table1), label10, 1, 2, 2, 3,
                     (GtkAttachOptions) (GTK_FILL),
@@ -250,7 +250,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   label11 = gtk_label_new ("Clockwise");
   gtk_widget_ref (label11);
-  gtk_container_child_set (label11, GTK_OBJECT (dialogKeySetup), "label11");
+  gtk_container_child_set (label11, dialogKeySetup, "label11");
   gtk_widget_show (label11);
   gtk_table_attach (GTK_TABLE (table1), label11, 1, 2, 3, 4,
                     (GtkAttachOptions) (GTK_FILL),
@@ -260,7 +260,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   label12 = gtk_label_new ("Increase");
   gtk_widget_ref (label12);
-  gtk_container_child_set (label12, GTK_OBJECT (dialogKeySetup), "label12");
+  gtk_container_child_set (label12, dialogKeySetup, "label12");
   gtk_widget_show (label12);
   gtk_table_attach (GTK_TABLE (table1), label12, 1, 2, 5, 6,
                     (GtkAttachOptions) (GTK_FILL),
@@ -270,7 +270,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   label13 = gtk_label_new ("Decrease");
   gtk_widget_ref (label13);
-  gtk_container_child_set (label13, GTK_OBJECT (dialogKeySetup), "label13");
+  gtk_container_child_set (label13, dialogKeySetup, "label13");
   gtk_widget_show (label13);
   gtk_table_attach (GTK_TABLE (table1), label13, 1, 2, 6, 7,
                     (GtkAttachOptions) (GTK_FILL),
@@ -280,7 +280,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   label14 = gtk_label_new ("Shoot");
   gtk_widget_ref (label14);
-  gtk_container_child_set (label14, GTK_OBJECT (dialogKeySetup), "label14");
+  gtk_container_child_set (label14, dialogKeySetup, "label14");
   gtk_widget_show (label14);
   gtk_table_attach (GTK_TABLE (table1), label14, 1, 2, 8, 9,
                     (GtkAttachOptions) (GTK_FILL),
@@ -290,7 +290,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   label15 = gtk_label_new ("Lay mine");
   gtk_widget_ref (label15);
-  gtk_container_child_set (label15, GTK_OBJECT (dialogKeySetup), "label15");
+  gtk_container_child_set (label15, dialogKeySetup, "label15");
   gtk_widget_show (label15);
   gtk_table_attach (GTK_TABLE (table1), label15, 1, 2, 9, 10,
                     (GtkAttachOptions) (GTK_FILL),
@@ -300,7 +300,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   label16 = gtk_label_new ("Tank view");
   gtk_widget_ref (label16);
-  gtk_container_child_set (label16, GTK_OBJECT (dialogKeySetup), "label16");
+  gtk_container_child_set (label16, dialogKeySetup, "label16");
   gtk_widget_show (label16);
   gtk_table_attach (GTK_TABLE (table1), label16, 1, 2, 10, 11,
                     (GtkAttachOptions) (GTK_FILL),
@@ -310,7 +310,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   label17 = gtk_label_new ("Pill view");
   gtk_widget_ref (label17);
-  gtk_container_child_set (label17, GTK_OBJECT (dialogKeySetup), "label17");
+  gtk_container_child_set (label17, dialogKeySetup, "label17");
   gtk_widget_show (label17);
   gtk_table_attach (GTK_TABLE (table1), label17, 1, 2, 11, 12,
                     (GtkAttachOptions) (GTK_FILL),
@@ -320,7 +320,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   label18 = gtk_label_new ("Up");
   gtk_widget_ref (label18);
-  gtk_container_child_set (label18, GTK_OBJECT (dialogKeySetup), "label18");
+  gtk_container_child_set (label18, dialogKeySetup, "label18");
   gtk_widget_show (label18);
   gtk_table_attach (GTK_TABLE (table1), label18, 1, 2, 13, 14,
                     (GtkAttachOptions) (GTK_FILL),
@@ -330,7 +330,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   label19 = gtk_label_new ("Down");
   gtk_widget_ref (label19);
-  gtk_container_child_set (label19, GTK_OBJECT (dialogKeySetup), "label19");
+  gtk_container_child_set (label19, dialogKeySetup, "label19");
   gtk_widget_show (label19);
   gtk_table_attach (GTK_TABLE (table1), label19, 1, 2, 14, 15,
                     (GtkAttachOptions) (GTK_FILL),
@@ -340,7 +340,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   label20 = gtk_label_new ("Left");
   gtk_widget_ref (label20);
-  gtk_container_child_set (label20, GTK_OBJECT (dialogKeySetup), "label20");
+  gtk_container_child_set (label20, dialogKeySetup, "label20");
   gtk_widget_show (label20);
   gtk_table_attach (GTK_TABLE (table1), label20, 1, 2, 15, 16,
                     (GtkAttachOptions) (GTK_FILL),
@@ -350,7 +350,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   label21 = gtk_label_new ("Right");
   gtk_widget_ref (label21);
-  gtk_container_child_set (label21, GTK_OBJECT (dialogKeySetup), "label21");
+  gtk_container_child_set (label21, dialogKeySetup, "label21");
   gtk_widget_show (label21);
   gtk_table_attach (GTK_TABLE (table1), label21, 1, 2, 16, 17,
                     (GtkAttachOptions) (GTK_FILL),
@@ -360,7 +360,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   idc_keyforward = gtk_entry_new();
   gtk_widget_ref (idc_keyforward);
-  gtk_container_child_set (idc_keyforward, GTK_OBJECT (dialogKeySetup), "idc_keyforward");
+  gtk_container_child_set (idc_keyforward, dialogKeySetup, "idc_keyforward");
   gtk_widget_show (idc_keyforward);
   gtk_table_attach (GTK_TABLE (table1), idc_keyforward, 2, 3, 0, 1,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -368,7 +368,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   idc_keybackward = gtk_entry_new();
   gtk_widget_ref (idc_keybackward);
-  gtk_container_child_set (idc_keybackward, GTK_OBJECT (dialogKeySetup), "idc_keybackward");
+  gtk_container_child_set (idc_keybackward, dialogKeySetup, "idc_keybackward");
   gtk_widget_show (idc_keybackward);
   gtk_table_attach (GTK_TABLE (table1), idc_keybackward, 2, 3, 1, 2,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -376,7 +376,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   idc_keyturnleft = gtk_entry_new();
   gtk_widget_ref (idc_keyturnleft);
-  gtk_container_child_set (idc_keyturnleft, GTK_OBJECT (dialogKeySetup), "idc_keyturnleft");
+  gtk_container_child_set (idc_keyturnleft, dialogKeySetup, "idc_keyturnleft");
   gtk_widget_show (idc_keyturnleft);
   gtk_table_attach (GTK_TABLE (table1), idc_keyturnleft, 2, 3, 2, 3,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -384,7 +384,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   idc_keyturnright = gtk_entry_new();
   gtk_widget_ref (idc_keyturnright);
-  gtk_container_child_set (idc_keyturnright, GTK_OBJECT (dialogKeySetup), "idc_keyturnright");
+  gtk_container_child_set (idc_keyturnright, dialogKeySetup, "idc_keyturnright");
   gtk_widget_show (idc_keyturnright);
   gtk_table_attach (GTK_TABLE (table1), idc_keyturnright, 2, 3, 3, 4,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -392,7 +392,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   idc_keyincrease = gtk_entry_new();
   gtk_widget_ref (idc_keyincrease);
-  gtk_container_child_set (idc_keyincrease, GTK_OBJECT (dialogKeySetup), "idc_keyincrease");
+  gtk_container_child_set (idc_keyincrease, dialogKeySetup, "idc_keyincrease");
   gtk_widget_show (idc_keyincrease);
   gtk_table_attach (GTK_TABLE (table1), idc_keyincrease, 2, 3, 5, 6,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -400,7 +400,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   idc_keydecrease = gtk_entry_new();
   gtk_widget_ref (idc_keydecrease);
-  gtk_container_child_set (idc_keydecrease, GTK_OBJECT (dialogKeySetup), "idc_keydecrease");
+  gtk_container_child_set (idc_keydecrease, dialogKeySetup, "idc_keydecrease");
   gtk_widget_show (idc_keydecrease);
   gtk_table_attach (GTK_TABLE (table1), idc_keydecrease, 2, 3, 6, 7,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -408,7 +408,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   idc_keyshoot = gtk_entry_new();
   gtk_widget_ref (idc_keyshoot);
-  gtk_container_child_set (idc_keyshoot, GTK_OBJECT (dialogKeySetup), "idc_keyshoot");
+  gtk_container_child_set (idc_keyshoot, dialogKeySetup, "idc_keyshoot");
   gtk_widget_show (idc_keyshoot);
   gtk_table_attach (GTK_TABLE (table1), idc_keyshoot, 2, 3, 8, 9,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -416,7 +416,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   idc_keymine = gtk_entry_new();
   gtk_widget_ref (idc_keymine);
-  gtk_container_child_set (idc_keymine, GTK_OBJECT (dialogKeySetup), "idc_keymine");
+  gtk_container_child_set (idc_keymine, dialogKeySetup, "idc_keymine");
   gtk_widget_show (idc_keymine);
   gtk_table_attach (GTK_TABLE (table1), idc_keymine, 2, 3, 9, 10,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -424,7 +424,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   idc_keypillview = gtk_entry_new();
   gtk_widget_ref (idc_keypillview);
-  gtk_container_child_set (idc_keypillview, GTK_OBJECT (dialogKeySetup), "idc_keypillview");
+  gtk_container_child_set (idc_keypillview, dialogKeySetup, "idc_keypillview");
   gtk_widget_show (idc_keypillview);
   gtk_table_attach (GTK_TABLE (table1), idc_keypillview, 2, 3, 11, 12,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -432,7 +432,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   idc_keytankview = gtk_entry_new();
   gtk_widget_ref (idc_keytankview);
-  gtk_container_child_set (idc_keytankview, GTK_OBJECT (dialogKeySetup), "idc_keytankview");
+  gtk_container_child_set (idc_keytankview, dialogKeySetup, "idc_keytankview");
   gtk_widget_show (idc_keytankview);
   gtk_table_attach (GTK_TABLE (table1), idc_keytankview, 2, 3, 10, 11,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -440,7 +440,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   idc_keyup = gtk_entry_new();
   gtk_widget_ref (idc_keyup);
-  gtk_container_child_set (idc_keyup, GTK_OBJECT (dialogKeySetup), "idc_keyup");
+  gtk_container_child_set (idc_keyup, dialogKeySetup, "idc_keyup");
   gtk_widget_show (idc_keyup);
   gtk_table_attach (GTK_TABLE (table1), idc_keyup, 2, 3, 13, 14,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -448,7 +448,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   idc_keydown = gtk_entry_new();
   gtk_widget_ref (idc_keydown);
-  gtk_container_child_set (idc_keydown, GTK_OBJECT (dialogKeySetup), "idc_keydown");
+  gtk_container_child_set (idc_keydown, dialogKeySetup, "idc_keydown");
   gtk_widget_show (idc_keydown);
   gtk_table_attach (GTK_TABLE (table1), idc_keydown, 2, 3, 14, 15,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -456,7 +456,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   idc_keyleft = gtk_entry_new();
   gtk_widget_ref (idc_keyleft);
-  gtk_container_child_set (idc_keyleft, GTK_OBJECT (dialogKeySetup), "idc_keyleft");
+  gtk_container_child_set (idc_keyleft, dialogKeySetup, "idc_keyleft");
   gtk_widget_show (idc_keyleft);
   gtk_table_attach (GTK_TABLE (table1), idc_keyleft, 2, 3, 15, 16,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -464,7 +464,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   label22 = gtk_label_new ("(left)");
   gtk_widget_ref (label22);
-  gtk_container_child_set (label22, GTK_OBJECT (dialogKeySetup), "label22");
+  gtk_container_child_set (label22, dialogKeySetup, "label22");
   gtk_widget_show (label22);
   gtk_table_attach (GTK_TABLE (table1), label22, 3, 4, 2, 3,
                     (GtkAttachOptions) (GTK_FILL),
@@ -474,7 +474,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   label23 = gtk_label_new ("(right)");
   gtk_widget_ref (label23);
-  gtk_container_child_set (label23, GTK_OBJECT (dialogKeySetup), "label23");
+  gtk_container_child_set (label23, dialogKeySetup, "label23");
   gtk_widget_show (label23);
   gtk_table_attach (GTK_TABLE (table1), label23, 3, 4, 3, 4,
                     (GtkAttachOptions) (GTK_FILL),
@@ -484,7 +484,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   idc_keyright = gtk_entry_new();
   gtk_widget_ref (idc_keyright);
-  gtk_container_child_set (idc_keyright, GTK_OBJECT (dialogKeySetup), "idc_keyright");
+  gtk_container_child_set (idc_keyright, dialogKeySetup, "idc_keyright");
   gtk_widget_show (idc_keyright);
   gtk_table_attach (GTK_TABLE (table1), idc_keyright, 2, 3, 16, 17,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -492,7 +492,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   idc_keyautoshow = gtk_check_button_new_with_label ("Enable Automatic\nshow and hide of\nthe gunsight");
   gtk_widget_ref (idc_keyautoshow);
-  gtk_container_child_set (idc_keyautoshow, GTK_OBJECT (dialogKeySetup), "idc_keyautoshow");
+  gtk_container_child_set (idc_keyautoshow, dialogKeySetup, "idc_keyautoshow");
   gtk_widget_show (idc_keyautoshow);
   gtk_table_attach (GTK_TABLE (table1), idc_keyautoshow, 3, 4, 5, 6,
                     (GtkAttachOptions) (GTK_FILL),
@@ -500,7 +500,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   idc_keyautoslow = gtk_check_button_new_with_label ("Auto slowdown");
   gtk_widget_ref (idc_keyautoslow);
-  gtk_container_child_set (idc_keyautoslow, GTK_OBJECT (dialogKeySetup), "idc_keyautoslow");
+  gtk_container_child_set (idc_keyautoslow, dialogKeySetup, "idc_keyautoslow");
   gtk_widget_show (idc_keyautoslow);
   gtk_table_attach (GTK_TABLE (table1), idc_keyautoslow, 3, 4, 0, 1,
                     (GtkAttachOptions) (GTK_FILL),
@@ -508,7 +508,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   label24 = gtk_label_new ("");
   gtk_widget_ref (label24);
-  gtk_container_child_set (label24, GTK_OBJECT (dialogKeySetup), "label24");
+  gtk_container_child_set (label24, dialogKeySetup, "label24");
   gtk_widget_show (label24);
   gtk_table_attach (GTK_TABLE (table1), label24, 2, 3, 12, 13,
                     (GtkAttachOptions) (0),
@@ -516,7 +516,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   label25 = gtk_label_new ("");
   gtk_widget_ref (label25);
-  gtk_container_child_set (label25, GTK_OBJECT (dialogKeySetup), "label25");
+  gtk_container_child_set (label25, dialogKeySetup, "label25");
   gtk_widget_show (label25);
   gtk_table_attach (GTK_TABLE (table1), label25, 2, 3, 7, 8,
                     (GtkAttachOptions) (0),
@@ -524,7 +524,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   label26 = gtk_label_new ("");
   gtk_widget_ref (label26);
-  gtk_container_child_set (label26, GTK_OBJECT (dialogKeySetup), "label26");
+  gtk_container_child_set (label26, dialogKeySetup, "label26");
   gtk_widget_show (label26);
   gtk_table_attach (GTK_TABLE (table1), label26, 2, 3, 4, 5,
                     (GtkAttachOptions) (0),
@@ -532,7 +532,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   button2 = gtk_button_new_with_label ("Cancel");
   gtk_widget_ref (button2);
-  gtk_container_child_set (button2, GTK_OBJECT (dialogKeySetup), "button2");
+  gtk_container_child_set (button2, dialogKeySetup, "button2");
   gtk_widget_show (button2);
   gtk_table_attach (GTK_TABLE (table1), button2, 3, 4, 16, 17,
                     (GtkAttachOptions) (GTK_FILL),
@@ -540,7 +540,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
 
   button1 = gtk_button_new_with_label ("OK");
   gtk_widget_ref (button1);
-  gtk_container_child_set (button1, GTK_OBJECT (dialogKeySetup), "button1");
+  gtk_container_child_set (button1, dialogKeySetup, "button1");
   gtk_widget_show (button1);
   gtk_table_attach (GTK_TABLE (table1), button1, 3, 4, 15, 16,
                     (GtkAttachOptions) (GTK_FILL),
@@ -563,53 +563,53 @@ gtk_entry_set_text(GTK_ENTRY(idc_keydown),gdk_keyval_name(gdk_keyval_to_upper(ke
   gtk_entry_set_text(GTK_ENTRY(idc_keyincrease),gdk_keyval_name(gdk_keyval_to_upper(keySetupKeys.kiGunIncrease)));
   gtk_entry_set_text(GTK_ENTRY(idc_keydecrease),gdk_keyval_name(gdk_keyval_to_upper(keySetupKeys.kiGunDecrease)));
 
-  gtk_signal_connect (GTK_OBJECT (idc_keyforward), "key_press_event",
-                      GTK_SIGNAL_FUNC (on_press),
+  gtk_signal_connect (idc_keyforward, "key_press_event",
+                      G_CALLBACK(on_press),
                       &(keySetupKeys.kiForward));
-  gtk_signal_connect (GTK_OBJECT (idc_keybackward), "key_press_event",
-                      GTK_SIGNAL_FUNC (on_press),
+  gtk_signal_connect (idc_keybackward, "key_press_event",
+                      G_CALLBACK(on_press),
                       &(keySetupKeys.kiBackward));
-  gtk_signal_connect (GTK_OBJECT (idc_keyturnleft), "key_press_event",
-                      GTK_SIGNAL_FUNC (on_press),
+  gtk_signal_connect (idc_keyturnleft, "key_press_event",
+                      G_CALLBACK(on_press),
                       &(keySetupKeys.kiLeft));
-  gtk_signal_connect (GTK_OBJECT (idc_keyturnright), "key_press_event",
-                      GTK_SIGNAL_FUNC (on_press),
+  gtk_signal_connect (idc_keyturnright, "key_press_event",
+                      G_CALLBACK(on_press),
                       &(keySetupKeys.kiRight));
-  gtk_signal_connect (GTK_OBJECT (idc_keyincrease), "key_press_event",
-                      GTK_SIGNAL_FUNC (on_press),
+  gtk_signal_connect (idc_keyincrease, "key_press_event",
+                      G_CALLBACK(on_press),
                       &(keySetupKeys.kiGunIncrease));
-  gtk_signal_connect (GTK_OBJECT (idc_keydecrease), "key_press_event",
-                      GTK_SIGNAL_FUNC (on_press),
+  gtk_signal_connect (idc_keydecrease, "key_press_event",
+                      G_CALLBACK(on_press),
                       &(keySetupKeys.kiGunDecrease));
-  gtk_signal_connect (GTK_OBJECT (idc_keyshoot), "key_press_event",
-                      GTK_SIGNAL_FUNC (on_press),
+  gtk_signal_connect (idc_keyshoot, "key_press_event",
+                      G_CALLBACK(on_press),
                       &(keySetupKeys.kiShoot));
-  gtk_signal_connect (GTK_OBJECT (idc_keymine), "key_press_event",
-                      GTK_SIGNAL_FUNC (on_press),
+  gtk_signal_connect (idc_keymine, "key_press_event",
+                      G_CALLBACK(on_press),
                       &(keySetupKeys.kiLayMine));
-  gtk_signal_connect (GTK_OBJECT (idc_keypillview), "key_press_event",
-                      GTK_SIGNAL_FUNC (on_press),
+  gtk_signal_connect (idc_keypillview, "key_press_event",
+                      G_CALLBACK(on_press),
                       &(keySetupKeys.kiPillView));
-  gtk_signal_connect (GTK_OBJECT (idc_keytankview), "key_press_event",
-                      GTK_SIGNAL_FUNC (on_press),
+  gtk_signal_connect (idc_keytankview, "key_press_event",
+                      G_CALLBACK(on_press),
                       &(keySetupKeys.kiTankView));
-  gtk_signal_connect (GTK_OBJECT (idc_keyup), "key_press_event",
-                      GTK_SIGNAL_FUNC (on_press),
+  gtk_signal_connect (idc_keyup, "key_press_event",
+                      G_CALLBACK(on_press),
                       &(keySetupKeys.kiScrollUp));
-  gtk_signal_connect (GTK_OBJECT (idc_keydown), "key_press_event",
-                      GTK_SIGNAL_FUNC (on_press),
+  gtk_signal_connect (idc_keydown, "key_press_event",
+                      G_CALLBACK(on_press),
                       &(keySetupKeys.kiScrollDown));
-  gtk_signal_connect (GTK_OBJECT (idc_keyleft), "key_press_event",
-                      GTK_SIGNAL_FUNC (on_press),
+  gtk_signal_connect (idc_keyleft, "key_press_event",
+                      G_CALLBACK(on_press),
                       &(keySetupKeys.kiScrollLeft));
-  gtk_signal_connect (GTK_OBJECT (idc_keyright), "key_press_event",
-                      GTK_SIGNAL_FUNC (on_press),
+  gtk_signal_connect (idc_keyright, "key_press_event",
+                      G_CALLBACK(on_press),
                       &(keySetupKeys.kiScrollRight));
-  gtk_signal_connect (GTK_OBJECT (button2), "clicked",
-                      GTK_SIGNAL_FUNC (on_button2_clicked),
+  gtk_signal_connect (button2, "clicked",
+                      G_CALLBACK(on_button2_clicked),
                       NULL);
-  gtk_signal_connect (GTK_OBJECT (button1), "clicked",
-                      GTK_SIGNAL_FUNC (on_button1_clicked),
+  gtk_signal_connect (button1, "clicked",
+                      G_CALLBACK(on_button1_clicked),
                       NULL);
 
   gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(idc_keyautoslow), screenGetTankAutoSlowdown());

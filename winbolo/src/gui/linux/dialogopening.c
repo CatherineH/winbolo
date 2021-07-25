@@ -117,14 +117,14 @@ GtkWidget* dialogOpeningCreate(void) {
 
 
   dialogOpening = gtk_dialog_new();
-  gtk_object_set_data (GTK_OBJECT (dialogOpening), "dialogOpening", dialogOpening);
+  gtk_object_set_data (dialogOpening, "dialogOpening", dialogOpening);
   gtk_container_set_border_width (GTK_CONTAINER (dialogOpening), 20);
   gtk_window_set_title (GTK_WINDOW (dialogOpening), "Network Selection");
   gtk_window_set_policy (GTK_WINDOW (dialogOpening), FALSE, FALSE, FALSE);
   gtk_window_set_position (GTK_WINDOW (dialogOpening), GTK_WIN_POS_CENTER);
   vbox1 = gtk_vbox_new (FALSE, 0);
   gtk_widget_ref (vbox1);
-  gtk_container_child_set (vbox1, GTK_OBJECT (dialogOpening), "vbox1");
+  gtk_container_child_set (vbox1, dialogOpening, "vbox1");
   gtk_widget_show (vbox1);
   gtk_container_add (GTK_CONTAINER (dialogOpening), vbox1);
 
@@ -133,13 +133,13 @@ GtkWidget* dialogOpeningCreate(void) {
   gtk_widget_ref (pixmap1);
   gdk_pixmap_unref(pixmap_data);
   gdk_pixmap_unref(pixmap_mask);
-  gtk_container_child_set (pixmap1, GTK_OBJECT (dialogOpening), "pixmap1");
+  gtk_container_child_set (pixmap1, dialogOpening, "pixmap1");
   gtk_widget_show (pixmap1);
   gtk_box_pack_start (GTK_BOX (vbox1), pixmap1, TRUE, TRUE, 0);
   */
   label1 = gtk_label_new ("Welcome to LinBolo, the multiplayer tank game.\nPlease choose a game type from the list below:\n");
   gtk_widget_ref (label1);
-  gtk_container_child_set (label1, GTK_OBJECT (dialogOpening), "label1");
+  gtk_container_child_set (label1, dialogOpening, "label1");
   gtk_widget_show (label1);
   gtk_box_pack_start (GTK_BOX (vbox1), label1, FALSE, FALSE, 0);
   gtk_label_set_justify (GTK_LABEL (label1), GTK_JUSTIFY_LEFT);
@@ -147,54 +147,54 @@ GtkWidget* dialogOpeningCreate(void) {
   idc_opentutorial = gtk_radio_button_new_with_label (vbox1_group, "Tutorial (Instruction for first-time player)");
   vbox1_group = gtk_radio_button_group (GTK_RADIO_BUTTON (idc_opentutorial));
   gtk_widget_ref (idc_opentutorial);
-  gtk_container_child_set (idc_opentutorial, GTK_OBJECT (dialogOpening), "idc_opentutorial");
+  gtk_container_child_set (idc_opentutorial, dialogOpening, "idc_opentutorial");
   gtk_widget_show (idc_opentutorial);
   gtk_box_pack_start (GTK_BOX (vbox1), idc_opentutorial, FALSE, FALSE, 0);
 
   idc_opensingle = gtk_radio_button_new_with_label (vbox1_group, "Practise (Single Player; No Network)");
   vbox1_group = gtk_radio_button_group (GTK_RADIO_BUTTON (idc_opensingle));
   gtk_widget_ref (idc_opensingle);
-  gtk_container_child_set (idc_opensingle, GTK_OBJECT (dialogOpening), "idc_opensingle");
+  gtk_container_child_set (idc_opensingle, dialogOpening, "idc_opensingle");
   gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(idc_opensingle), TRUE);
   gtk_widget_show (idc_opensingle);
   gtk_box_pack_start (GTK_BOX (vbox1), idc_opensingle, FALSE, FALSE, 0);
   idc_opentcp = gtk_radio_button_new_with_label (vbox1_group, "TCP/IP");
   vbox1_group = gtk_radio_button_group (GTK_RADIO_BUTTON (idc_opentcp));
   gtk_widget_ref (idc_opentcp);
-  gtk_container_child_set (idc_opentcp, GTK_OBJECT (dialogOpening), "idc_opentcp");
+  gtk_container_child_set (idc_opentcp, dialogOpening, "idc_opentcp");
   gtk_widget_show (idc_opentcp);
   gtk_box_pack_start (GTK_BOX (vbox1), idc_opentcp, FALSE, FALSE, 0);
 
   idc_openlocal = gtk_radio_button_new_with_label (vbox1_group, "Local Network (Broadcast Search)");
   vbox1_group = gtk_radio_button_group (GTK_RADIO_BUTTON (idc_openlocal));
   gtk_widget_ref (idc_openlocal);
-  gtk_container_child_set (idc_openlocal, GTK_OBJECT (dialogOpening), "idc_openlocal");
+  gtk_container_child_set (idc_openlocal, dialogOpening, "idc_openlocal");
   gtk_widget_show (idc_openlocal);
   gtk_box_pack_start (GTK_BOX (vbox1), idc_openlocal, FALSE, FALSE, 0);
 
   idc_openinternet = gtk_radio_button_new_with_label (vbox1_group, "Internet (Tracker Search)");
   vbox1_group = gtk_radio_button_group (GTK_RADIO_BUTTON (idc_openinternet));
   gtk_widget_ref (idc_openinternet);
-  gtk_container_child_set (idc_openinternet, GTK_OBJECT (dialogOpening), "idc_openinternet");
+  gtk_container_child_set (idc_openinternet, dialogOpening, "idc_openinternet");
   gtk_widget_show (idc_openinternet);
   gtk_box_pack_start (GTK_BOX (vbox1), idc_openinternet, FALSE, FALSE, 0);
 
   idc_openskip = gtk_check_button_new_with_label ("Skip this dialog next time");
   gtk_widget_ref (idc_openskip);
-  gtk_container_child_set (idc_openskip, GTK_OBJECT (dialogOpening), "idc_openskip");
+  gtk_container_child_set (idc_openskip, dialogOpening, "idc_openskip");
   gtk_widget_show (idc_openskip);
   gtk_box_pack_start (GTK_BOX (vbox1), idc_openskip, FALSE, FALSE, 10);
   gtk_widget_set_sensitive (idc_openskip, FALSE);
 
   table1 = gtk_table_new (2, 2, FALSE);
   gtk_widget_ref (table1);
-  gtk_container_child_set (table1, GTK_OBJECT (dialogOpening), "table1");
+  gtk_container_child_set (table1, dialogOpening, "table1");
   gtk_widget_show (table1);
   gtk_box_pack_start (GTK_BOX (vbox1), table1, TRUE, TRUE, 0);
 
   idc_openquit = gtk_button_new_with_label ("Quit");
   gtk_widget_ref (idc_openquit);
-  gtk_container_child_set (idc_openquit, GTK_OBJECT (dialogOpening), "idc_openquit");
+  gtk_container_child_set (idc_openquit, dialogOpening, "idc_openquit");
   gtk_widget_show (idc_openquit);
   gtk_table_attach (GTK_TABLE (table1), idc_openquit, 1, 2, 1, 2,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
@@ -202,7 +202,7 @@ GtkWidget* dialogOpeningCreate(void) {
 
   idc_openhelp = gtk_button_new_with_label ("Help");
   gtk_widget_ref (idc_openhelp);
-  gtk_container_child_set (idc_openhelp, GTK_OBJECT (dialogOpening), "idc_openhelp");
+  gtk_container_child_set (idc_openhelp, dialogOpening, "idc_openhelp");
   gtk_widget_show (idc_openhelp);
   gtk_table_attach (GTK_TABLE (table1), idc_openhelp, 1, 2, 0, 1,
                     (GtkAttachOptions) (GTK_FILL),
@@ -210,7 +210,7 @@ GtkWidget* dialogOpeningCreate(void) {
 
   idc_openlanguages = gtk_button_new_with_label ("WinBolo.net");
   gtk_widget_ref (idc_openlanguages);
-  gtk_container_child_set (idc_openlanguages, GTK_OBJECT (dialogOpening), "idc_openlanguages");
+  gtk_container_child_set (idc_openlanguages, dialogOpening, "idc_openlanguages");
   gtk_widget_set_sensitive(idc_openlanguages, TRUE);
   gtk_widget_show (idc_openlanguages);
   gtk_table_attach (GTK_TABLE (table1), idc_openlanguages, 0, 1, 0, 1,
@@ -219,21 +219,21 @@ GtkWidget* dialogOpeningCreate(void) {
 
   idc_openok = gtk_button_new_with_label ("OK");
   gtk_widget_ref (idc_openok);
-  gtk_container_child_set (idc_openok, GTK_OBJECT (dialogOpening), "idc_openok");
+  gtk_container_child_set (idc_openok, dialogOpening, "idc_openok");
   gtk_widget_show (idc_openok);
   gtk_table_attach (GTK_TABLE (table1), idc_openok, 0, 1, 1, 2,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
-  gtk_signal_connect(GTK_OBJECT(dialogOpening), "delete_event", GTK_SIGNAL_FUNC (dialogOpeningClose), NULL);
-  gtk_signal_connect(GTK_OBJECT(idc_openquit), "clicked", GTK_SIGNAL_FUNC(dialogOpeningQuit), 0);
-  gtk_signal_connect(GTK_OBJECT(idc_openok), "clicked", GTK_SIGNAL_FUNC(dialogOpeningOK), 0);
-  gtk_signal_connect(GTK_OBJECT(idc_openhelp), "clicked", GTK_SIGNAL_FUNC(dialogOpeningHelp), 0);
-  gtk_signal_connect(GTK_OBJECT(idc_openlanguages), "clicked", GTK_SIGNAL_FUNC(dialogOpeningWinbolonet), 0);
-  gtk_signal_connect(GTK_OBJECT(dialogOpening), "destroy", GTK_SIGNAL_FUNC(dialogOpeningCloseBox), 0);
+  gtk_signal_connect(dialogOpening, "delete_event", G_CALLBACK(dialogOpeningClose), NULL);
+  gtk_signal_connect(idc_openquit, "clicked", G_CALLBACK(dialogOpeningQuit), 0);
+  gtk_signal_connect(idc_openok, "clicked", G_CALLBACK(dialogOpeningOK), 0);
+  gtk_signal_connect(idc_openhelp, "clicked", G_CALLBACK(dialogOpeningHelp), 0);
+  gtk_signal_connect(idc_openlanguages, "clicked", G_CALLBACK(dialogOpeningWinbolonet), 0);
+  gtk_signal_connect(dialogOpening, "destroy", G_CALLBACK(dialogOpeningCloseBox), 0);
   us = dialogOpening;
 
-  gtk_signal_connect(GTK_OBJECT(us), "configure_event", GTK_SIGNAL_FUNC(opening_configure_event), 0);
+  gtk_signal_connect(us, "configure_event", G_CALLBACK(opening_configure_event), 0);
 
 
   return dialogOpening;
