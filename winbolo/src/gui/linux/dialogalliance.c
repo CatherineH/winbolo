@@ -97,7 +97,7 @@ GtkWidget* dialogAllianceCreate (void) {
   gtk_container_child_set (button1, GTK_OBJECT (dialogAlliance), "button1");
   gtk_widget_show (button1);
   gtk_box_pack_start (GTK_BOX (hbox1), button1, TRUE, TRUE, 0);
-  GTK_WIDGET_UNSET_FLAGS (button1, GTK_CAN_FOCUS);
+  gtk_widget_set_can_focus(button1, TRUE);
 
   button2 = gtk_button_new_with_label ("Reject");
   gtk_widget_ref (button2);

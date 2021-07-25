@@ -63,7 +63,7 @@ linbolo:    global.o bases.o util.o crc.o pillbox.o lgm.o shells.o tank.o \
 	bigd.o bigdigits.o bigdigitsRand.o bigdRand.o
 	${CC} -o ${APPNAME} `sdl-config --libs` `gtk-config --libs` ${CFLAGS} \
 	-lSDL_ttf -lSDL_mixer `glib-config --libs gthread` \
-	-L -L/usr/X11/lib -lX11 \
+	-L -L/usr/X11/lib -lX11 -lm \
 	global.o bases.o util.o crc.o pillbox.o lgm.o \
 	shells.o tank.o allience.o bolo_map.o building.o \
 	explosions.o floodfill.o gametype.o grass.o labels.o \
@@ -318,7 +318,7 @@ screen.o: ${BOLODIR}screen.c ${BOLODIR}screen.h
 	${CC} ${CFLAGS} -c ${BOLODIR}screen.c
 
 mathWinbolo.o: ${BOLODIR}mathWinbolo.c ${BOLODIR}mathWinbolo.h
-	${CC} ${CFLAGS} -c ${BOLODIR}mathWinbolo.c
+	${CC} ${CFLAGS} -lm -c ${BOLODIR}mathWinbolo.c
 
 netplayers.o: ${BOLODIR}netplayers.c ${BOLODIR}netplayers.h
 	${CC} ${CFLAGS} -c ${BOLODIR}netplayers.c

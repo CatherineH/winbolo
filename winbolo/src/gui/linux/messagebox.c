@@ -57,7 +57,7 @@ GtkWidget* create_MessageBox (char *name, char *label) {
   GtkWidget *label1;
   GtkWidget *idc_messageboxok;
 
-  MessageBox = gtk_window_new (GTK_WINDOW_DIALOG);
+  MessageBox = gtk_dialog_new();
   gtk_object_set_data (GTK_OBJECT (MessageBox), "name", MessageBox);
   gtk_window_set_title (GTK_WINDOW (MessageBox), name);
   gtk_window_set_policy (GTK_WINDOW (MessageBox), FALSE, FALSE, FALSE);
@@ -84,7 +84,7 @@ GtkWidget* create_MessageBox (char *name, char *label) {
   gtk_container_set_border_width (GTK_CONTAINER (idc_messageboxok), 5);
   gtk_widget_show (idc_messageboxok);
   gtk_box_pack_start (GTK_BOX (vbox1), idc_messageboxok, FALSE, FALSE, 5);
-  GTK_WIDGET_SET_FLAGS (idc_messageboxok, GTK_CAN_DEFAULT);
+  gtk_widget_set_can_default(idc_messageboxok, TRUE);
 
   gtk_widget_grab_focus (idc_messageboxok);
   gtk_widget_grab_default (idc_messageboxok);

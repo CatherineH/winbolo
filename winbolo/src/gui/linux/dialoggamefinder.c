@@ -495,7 +495,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
 
   useTracker = useTrack;
 
-  dialogGameFinder = gtk_window_new (GTK_WINDOW_DIALOG);
+  dialogGameFinder = gtk_dialog_new();
   gtk_object_set_data (GTK_OBJECT (dialogGameFinder), "dialogGameFinder", dialogGameFinder);
   gtk_container_set_border_width (GTK_CONTAINER (dialogGameFinder), 15);
   gtk_window_set_title (GTK_WINDOW (dialogGameFinder), title);

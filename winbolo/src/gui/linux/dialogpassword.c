@@ -66,7 +66,7 @@ GtkWidget* dialogPasswordCreate(void) {
   GtkWidget *hbox1;
   GtkWidget *button1;
 
-  dailogPassword = gtk_window_new (GTK_WINDOW_DIALOG);
+  dailogPassword = gtk_dialog_new();
   gtk_object_set_data (GTK_OBJECT (dailogPassword), "dailogPassword", dailogPassword);
   gtk_container_set_border_width (GTK_CONTAINER (dailogPassword), 7);
   gtk_window_set_title (GTK_WINDOW (dailogPassword), "Password");
@@ -105,8 +105,7 @@ GtkWidget* dialogPasswordCreate(void) {
   gtk_container_child_set (button1, GTK_OBJECT (dailogPassword), "button1");
   gtk_widget_show (button1);
   gtk_box_pack_start (GTK_BOX (hbox1), button1, TRUE, TRUE, 0);
-  GTK_WIDGET_SET_FLAGS (button1, GTK_CAN_DEFAULT);
-
+  gtk_widget_set_can_default(button1, TRUE);
   gtk_widget_grab_focus (idc_passwordtxt);
   gtk_widget_grab_default (button1);
 

@@ -134,7 +134,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
   keySetupKeys.kiScrollRight = value->kiScrollRight;
 
 
-  dialogKeySetup = gtk_window_new (GTK_WINDOW_DIALOG);
+  dialogKeySetup = gtk_dialog_new();
   gtk_object_set_data (GTK_OBJECT (dialogKeySetup), "dialogKeySetup", dialogKeySetup);
   gtk_container_set_border_width (GTK_CONTAINER (dialogKeySetup), 15);
   gtk_window_set_title (GTK_WINDOW (dialogKeySetup), "Choose Key Settings");
@@ -545,7 +545,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
   gtk_table_attach (GTK_TABLE (table1), button1, 3, 4, 15, 16,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 10, 0);
-  GTK_WIDGET_SET_FLAGS (button1, GTK_CAN_DEFAULT);
+  gtk_widget_set_can_default(button1, TRUE);
 
 
   gtk_entry_set_text(GTK_ENTRY(idc_keyforward),gdk_keyval_name(gdk_keyval_to_upper(keySetupKeys.kiForward)));

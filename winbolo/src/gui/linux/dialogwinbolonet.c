@@ -97,8 +97,8 @@ GtkWidget* dialogWinboloNetCreate() {
   gtk_window_set_position (GTK_WINDOW (Winbolo_net_settings), GTK_WIN_POS_CENTER);
   gtk_window_set_modal (GTK_WINDOW (Winbolo_net_settings), TRUE);
 
-  dialog_vbox1 = GTK_DIALOG (Winbolo_net_settings)->vbox;
-  gtk_object_set_data (GTK_OBJECT (Winbolo_net_settings), "dialog_vbox1", dialog_vbox1);
+  dialog_vbox1 = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  gtk_box_set_child_packing (dialog_vbox1, GTK_DIALOG (Winbolo_net_settings), TRUE, TRUE, 0, GTK_PACK_END);
   gtk_widget_show (dialog_vbox1);
 
   vbox1 = gtk_vbox_new (FALSE, 0);
@@ -154,7 +154,7 @@ GtkWidget* dialogWinboloNetCreate() {
   gtk_label_set_line_wrap (GTK_LABEL (label1), TRUE);
   gtk_misc_set_padding (GTK_MISC (label1), 0, 23);
 
-  dialog_action_area1 = GTK_DIALOG (Winbolo_net_settings)->action_area;
+  dialog_action_area1 = gtk_dialog_get_action_area(GTK_DIALOG (Winbolo_net_settings));
   gtk_object_set_data (GTK_OBJECT (Winbolo_net_settings), "dialog_action_area1", dialog_action_area1);
   gtk_widget_show (dialog_action_area1);
   gtk_container_set_border_width (GTK_CONTAINER (dialog_action_area1), 10);

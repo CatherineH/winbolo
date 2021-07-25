@@ -88,7 +88,7 @@ GtkWidget* dialogTrackerCreate(void) {
   unsigned short port;     /* Port              */
   bool enabled;            /* Use of tracker enabled */
 
-  dialogTracker = gtk_window_new (GTK_WINDOW_DIALOG);
+  dialogTracker = gtk_dialog_new();
   gtk_object_set_data (GTK_OBJECT (dialogTracker), "dialogTracker", dialogTracker);
   gtk_container_set_border_width (GTK_CONTAINER (dialogTracker), 10);
   gtk_window_set_title (GTK_WINDOW (dialogTracker), "Tracker Config");

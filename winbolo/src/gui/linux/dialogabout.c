@@ -51,10 +51,11 @@ GtkWidget* dialogAboutCreate(void) {
   GtkWidget *label2;
   GtkWidget *label1;
   GtkWidget *button1;
-  GdkBitmap *pixmap_mask;
-  GdkPixmap *pixmap_data;
+  //TODO: replace these with cairo pixmaps
+  //GdkBitmap *pixmap_mask;
+  //GdkPixmap *pixmap_data;
 
-  dialogAbout = gtk_window_new (GTK_WINDOW_DIALOG);
+  dialogAbout = gtk_dialog_new();
   gtk_object_set_data (GTK_OBJECT (dialogAbout), "dialogAbout", dialogAbout);
   gtk_window_set_position (GTK_WINDOW (dialogAbout), GTK_WIN_POS_CENTER);
   gtk_window_set_modal (GTK_WINDOW (dialogAbout), TRUE);
@@ -71,8 +72,8 @@ GtkWidget* dialogAboutCreate(void) {
   gtk_container_child_set (hbox1, GTK_OBJECT (dialogAbout), "hbox1");
   gtk_widget_show (hbox1);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox1, TRUE, TRUE, 0);
-
-  pixmap_data = gdk_pixmap_colormap_create_from_xpm_d(NULL, gtk_widget_get_colormap(dialogAbout), &pixmap_mask, NULL, boloicon_xpm);
+  //TODO: replace with Cairo
+  /*pixmap_data = gdk_pixmap_colormap_create_from_xpm_d(NULL, gtk_widget_get_colormap(dialogAbout), &pixmap_mask, NULL, boloicon_xpm);
   pixmap1 = gtk_pixmap_new(pixmap_data, pixmap_mask);
   gtk_widget_ref (pixmap1);
   gdk_pixmap_unref(pixmap_data);
@@ -82,7 +83,7 @@ GtkWidget* dialogAboutCreate(void) {
   gtk_container_child_set (pixmap1, GTK_OBJECT (dialogAbout), "pixmap1");
   gtk_widget_show (pixmap1);
   gtk_box_pack_start (GTK_BOX (hbox1), pixmap1, TRUE, TRUE, 0);
-
+  */
   label2 = gtk_label_new ("LinBolo  - v1.13\nLinBolo Copyright 1998-2003 John Morrison\nBolo Copyright 1987-1995 Stuart Cheshire\n");
   gtk_label_set_justify (GTK_LABEL (label2), GTK_JUSTIFY_LEFT);
   gtk_widget_ref (label2);
@@ -102,7 +103,7 @@ GtkWidget* dialogAboutCreate(void) {
   gtk_container_child_set (button1, GTK_OBJECT (dialogAbout), "button1");
   gtk_widget_show (button1);
   gtk_box_pack_start (GTK_BOX (vbox1), button1, FALSE, FALSE, 0);
-  GTK_WIDGET_SET_FLAGS (button1, GTK_CAN_DEFAULT);
+  gtk_widget_set_can_default(button1, TRUE);
 
   gtk_widget_grab_focus (button1);
   gtk_widget_grab_default (button1);

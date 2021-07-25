@@ -117,7 +117,7 @@ GtkWidget* dialogSetNameCreate(bool inGame) {
 
   setNameInGame = inGame;
 
-  dialogSetName = gtk_window_new (GTK_WINDOW_DIALOG);
+  dialogSetName = gtk_dialog_new();
   gtk_object_set_data (GTK_OBJECT (dialogSetName), "dialogSetName", dialogSetName);
   gtk_container_set_border_width (GTK_CONTAINER (dialogSetName), 10);
   gtk_window_set_title (GTK_WINDOW (dialogSetName), "Enter Player Name");

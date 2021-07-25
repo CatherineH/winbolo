@@ -96,9 +96,9 @@ void brainsHandlerSelect(GtkWidget *widget, gpointer user_data) {
   FILE *fp;
   gchar *menuStr;
 
-  if (GTK_CHECK_MENU_ITEM(widget)->active == TRUE && isInMenu == FALSE) {
+  if (gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget)) == TRUE && isInMenu == FALSE) {
     isInMenu = TRUE;
-    gtk_label_get(GTK_LABEL(GTK_BIN(widget)->child), &menuStr);
+    gtk_label_get(GTK_LABEL(gtk_bin_get_child (GTK_BIN(widget))), &menuStr);
 
     /* First shut down the last brain if it is running */
     if (brainsRunning == TRUE) {
