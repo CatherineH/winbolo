@@ -16,6 +16,8 @@
 
 CC = gcc
 CFLAGS = -g `sdl-config --cflags` `pkg-config --cflags gtk+-3.0` -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration -Wno-format -Wno-deprecated-declarations
+LDFLAGS = `sdl-config --libs` `pkg-config --libs gtk+-3.0` `pkg-config --libs glib-2.0` -lm
+
 #-s
 #CFLAGS = -s -O3 -ffast-math -fomit-frame-pointer -mpentium -march=pentium `sdl-config --cflags` `pkg-config --cflags gtk+-3.0` `glib-config --cflags`
 BOLODIR = ../../bolo/
@@ -61,9 +63,9 @@ linbolo:    global.o bases.o util.o crc.o pillbox.o lgm.o shells.o tank.o \
 	servercore.o servermessages.o debug_file_output.o \
 	servernet.o servertransport.o threads.o \
 	bigd.o bigdigits.o bigdigitsRand.o bigdRand.o
-	${CC} -o ${APPNAME} `sdl-config --libs` `gtk-config --libs` ${CFLAGS} \
-	-lSDL_ttf -lSDL_mixer `glib-config --libs gthread` \
-	-L -L/usr/X11/lib -lX11 -lm \
+	${CC} -o ${APPNAME} ${CFLAGS} \
+	-lSDL_ttf -lSDL_mixer \
+	-L -L/usr/X11/lib -lX11 \
 	global.o bases.o util.o crc.o pillbox.o lgm.o \
 	shells.o tank.o allience.o bolo_map.o building.o \
 	explosions.o floodfill.o gametype.o grass.o labels.o \
@@ -86,7 +88,7 @@ linbolo:    global.o bases.o util.o crc.o pillbox.o lgm.o shells.o tank.o \
 	unzip.o zip.o zutil.o bigd.o bigdigits.o bigdigitsRand.o bigdRand.o \
 	mathWinbolo.o debug_file_output.o \
 	servercore.o servermessages.o \
-	servernet.o servertransport.o threads.o
+	servernet.o servertransport.o threads.o ${LDFLAGS}
 
 
 winbolonet.o: ${WBNETDIR}winbolonet.c ${WBNETDIR}winbolonet.h
