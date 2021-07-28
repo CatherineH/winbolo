@@ -93,7 +93,7 @@ GtkWidget* dialogWinboloNetCreate() {
   g_object_set_data (Winbolo_net_settings, "Winbolo_net_settings", Winbolo_net_settings);
   gtk_container_set_border_width (GTK_CONTAINER (Winbolo_net_settings), 10);
   gtk_window_set_title (GTK_WINDOW (Winbolo_net_settings), "Winbolo.net settings");
-  gtk_window_set_policy (GTK_WINDOW (Winbolo_net_settings), FALSE, FALSE, FALSE);
+  gtk_window_set_resizable (GTK_WINDOW (Winbolo_net_settings), FALSE);
   gtk_window_set_position (GTK_WINDOW (Winbolo_net_settings), GTK_WIN_POS_CENTER);
   gtk_window_set_modal (GTK_WINDOW (Winbolo_net_settings), TRUE);
 
@@ -120,7 +120,8 @@ GtkWidget* dialogWinboloNetCreate() {
   gtk_box_pack_start (GTK_BOX (hbox4), label2, FALSE, FALSE, 0);
   gtk_label_set_justify (GTK_LABEL (label2), GTK_JUSTIFY_RIGHT);
 
-  password = gtk_entry_new_with_max_length (32);
+  password = gtk_entry_new ();
+  gtk_entry_set_max_width_chars(password, 32);
   gtk_entry_set_text(GTK_ENTRY(password), passwordStr);
   g_object_ref (password);
   gtk_container_child_set (password, Winbolo_net_settings, "password");

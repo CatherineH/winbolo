@@ -114,10 +114,10 @@ GtkWidget* dialogGameInfoCreate(void) {
 
   dialogGameInfo = gtk_dialog_new();
   g_object_set_data (dialogGameInfo, "dialogGameInfo", dialogGameInfo);
-  gtk_widget_set_usize (dialogGameInfo, 300, 150);
+  gtk_widget_set_size_request (dialogGameInfo, 300, 150);
   gtk_container_set_border_width (GTK_CONTAINER (dialogGameInfo), 15);
   gtk_window_set_title (GTK_WINDOW (dialogGameInfo), "LinBolo Game Information");
-    gtk_window_set_policy(GTK_WINDOW(dialogGameInfo), FALSE, FALSE, FALSE);
+    gtk_window_set_resizable (GTK_WINDOW (dialogGameInfo), FALSE);
   vbox1 = gtk_vbox_new (FALSE, 0);
   g_object_ref (vbox1);
   gtk_container_child_set (vbox1, dialogGameInfo, "vbox1");

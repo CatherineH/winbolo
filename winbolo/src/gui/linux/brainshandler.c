@@ -98,7 +98,7 @@ void brainsHandlerSelect(GtkWidget *widget, gpointer user_data) {
 
   if (gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget)) == TRUE && isInMenu == FALSE) {
     isInMenu = TRUE;
-    gtk_label_get(GTK_LABEL(gtk_bin_get_child (GTK_BIN(widget))), &menuStr);
+    menuStr = gtk_label_get_label(GTK_LABEL(gtk_bin_get_child (GTK_BIN(widget))));
 
     /* First shut down the last brain if it is running */
     if (brainsRunning == TRUE) {
@@ -180,7 +180,7 @@ bool brainsHandlerLoadBrainMenuItems(GtkWidget *menu) {
           strcpy(fileName, ent->d_name);
           fileName[strlen(fileName)-3] = '\0';
           item = gtk_radio_menu_item_new_with_label(brainsGroup, fileName);
-	  brainsGroup = gtk_radio_menu_item_group (GTK_RADIO_MENU_ITEM(item));
+	  brainsGroup = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM(item));
 	  g_object_ref(item);
           gtk_container_child_set (fileName, window, "fileName");
           gtk_widget_show (item);
@@ -208,7 +208,7 @@ bool brainsHandlerLoadBrainMenuItems(GtkWidget *menu) {
           strcpy(fileName, ent->d_name);
           fileName[strlen(fileName)-3] = '\0';
           item = gtk_radio_menu_item_new_with_label(brainsGroup, fileName);
-	  brainsGroup = gtk_radio_menu_item_group (GTK_RADIO_MENU_ITEM(item));
+	  brainsGroup = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM(item));
 	  g_object_ref(item);
           gtk_container_child_set (fileName, window, "fileName");
           gtk_widget_show (item);

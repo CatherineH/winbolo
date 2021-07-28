@@ -107,10 +107,10 @@ dialogNetworkInformationCreate(void)
 
   dialogNetworkInformation = gtk_dialog_new();
   g_object_set_data (dialogNetworkInformation, "dialogNetworkInformation", dialogNetworkInformation);
-  gtk_widget_set_usize (dialogNetworkInformation, 300, 150);
+  gtk_widget_set_size_request (dialogNetworkInformation, 300, 150);
   gtk_container_set_border_width (GTK_CONTAINER (dialogNetworkInformation), 15);
   gtk_window_set_title (GTK_WINDOW (dialogNetworkInformation), "LinBolo Network Information");
-  gtk_window_set_policy(GTK_WINDOW(dialogNetworkInformation), FALSE, FALSE, FALSE);
+  gtk_window_set_resizable (GTK_WINDOW (dialogNetworkInformation), FALSE);
   vbox1 = gtk_vbox_new (FALSE, 0);
   g_object_ref (vbox1);
   gtk_container_child_set (vbox1, dialogNetworkInformation, "vbox1");

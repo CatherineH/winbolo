@@ -285,7 +285,7 @@ gint windowclose(GtkWidget *widget, gpointer gdata) {
     gtk_widget_destroy(windowNetInfo);
     windowNetInfo = NULL;
   }
-  gdk_key_repeat_restore();
+  // gdk_key_repeat_restore();
   gtk_main_quit();
   return FALSE;
 }
@@ -357,7 +357,7 @@ gboolean release_event(GtkWidget *widget, GdkEventKey *event, gpointer user_data
 }
 
 gint windowLoseFocus(GtkWidget *widget, gpointer data) {
-  gdk_key_repeat_restore();
+  // gdk_key_repeat_restore();
 }
 
 gint windowGetFocus(GtkWidget *widget, gpointer data) {
@@ -370,7 +370,7 @@ gint windowGetFocus(GtkWidget *widget, gpointer data) {
    drawRedrawAll(SCREEN_SIZE_X, SCREEN_SIZE_Y, BsLinuxCurrent, FALSE, FALSE);
    frameMutexRelease();
    clientMutexRelease();
-  gdk_key_repeat_disable();
+  // gdk_key_repeat_disable();
 }
 
 /* The frame rate */
@@ -626,7 +626,7 @@ gboolean windowMouseClick(GtkWidget *widget,  GdkEventButton *event, gpointer us
 GtkWidget* windowCreate() {
   GtkWidget *ret = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 //   gtk_window_set_default_size (GTK_WINDOW (ret), 400, 400);
-  gtk_window_set_policy (GTK_WINDOW (ret), FALSE, FALSE, FALSE);
+  gtk_window_set_resizable (GTK_WINDOW (ret), FALSE);
 gtk_widget_set_app_paintable(ret, FALSE);
   gtk_widget_add_events(ret, GDK_BUTTON_PRESS_MASK | GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_KEY_RELEASE_MASK);
   g_signal_connect(ret, "button_press_event", G_CALLBACK(windowMouseClick), 0);
@@ -640,7 +640,7 @@ gtk_widget_set_app_paintable(ret, FALSE);
 
       menus(ret);
    gtk_widget_size_request(menu_bar, &req);
-  gtk_widget_set_usize(ret, SCREEN_SIZE_X, SCREEN_SIZE_Y + req.height);
+  gtk_widget_set_size_request(ret, SCREEN_SIZE_X, SCREEN_SIZE_Y + req.height);
  gtk_window_set_title(GTK_WINDOW(ret), "LinBolo");
   gtk_widget_realize(ret);
   gtk_widget_realize(drawingarea1);
@@ -1364,7 +1364,7 @@ frameRateTime = (int) (MILLISECONDS / FRAME_RATE_30) - 1;
     gdk_threads_enter();
     gtk_main();
     gdk_threads_leave();
-    gdk_key_repeat_restore();
+    // gdk_key_repeat_restore();
     if (isQuiting == FALSE) {
       gtk_widget_hide(window);
     }
@@ -2735,7 +2735,7 @@ on_network_information1_activate       (GtkMenuItem     *menuitem,
 {
   if (windowNetInfo == NULL) {
     windowNetInfo = dialogNetworkInformationCreate();
-    gtk_window_set_policy (GTK_WINDOW (windowNetInfo), FALSE, FALSE, FALSE);
+    gtk_window_set_resizable (GTK_WINDOW (windowNetInfo), FALSE);
     gtk_widget_realize(windowNetInfo);
     gtk_widget_show(windowNetInfo);
   } else {
@@ -3534,7 +3534,7 @@ GtkWidget *background_sound1;
   frame_rate1_menu_accels = gtk_menu_ensure_uline_accel_group (GTK_MENU (frame_rate1_menu));
 
   _4 = gtk_radio_menu_item_new_with_label (_2_group, "60");
-  _2_group = gtk_radio_menu_item_group (GTK_RADIO_MENU_ITEM (_4));
+  _2_group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (_4));
   g_object_ref (_4);
   gtk_container_child_set (_4, window, "_4");
   gtk_widget_show (_4);
@@ -3542,42 +3542,42 @@ GtkWidget *background_sound1;
   gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (_4), TRUE);
 
   _8 = gtk_radio_menu_item_new_with_label (_2_group, "50");
-  _2_group = gtk_radio_menu_item_group (GTK_RADIO_MENU_ITEM (_8));
+  _2_group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (_8));
   g_object_ref (_8);
   gtk_container_child_set (_8, window, "_8");
   gtk_widget_show (_8);
   gtk_container_add (GTK_CONTAINER (frame_rate1_menu), _8);
 
   _10 = gtk_radio_menu_item_new_with_label (_2_group, "30");
-  _2_group = gtk_radio_menu_item_group (GTK_RADIO_MENU_ITEM (_10));
+  _2_group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (_10));
   g_object_ref (_10);
   gtk_container_child_set (_10, window, "_10");
   gtk_widget_show (_10);
   gtk_container_add (GTK_CONTAINER (frame_rate1_menu), _10);
 
   _11 = gtk_radio_menu_item_new_with_label (_2_group, "20");
-  _2_group = gtk_radio_menu_item_group (GTK_RADIO_MENU_ITEM (_11));
+  _2_group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (_11));
   g_object_ref (_11);
   gtk_container_child_set (_11, window, "_11");
   gtk_widget_show (_11);
   gtk_container_add (GTK_CONTAINER (frame_rate1_menu), _11);
 
   _12 = gtk_radio_menu_item_new_with_label (_2_group, "15");
-  _2_group = gtk_radio_menu_item_group (GTK_RADIO_MENU_ITEM (_12));
+  _2_group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (_12));
   g_object_ref (_12);
   gtk_container_child_set (_12, window, "_12");
   gtk_widget_show (_12);
   gtk_container_add (GTK_CONTAINER (frame_rate1_menu), _12);
 
   _13 = gtk_radio_menu_item_new_with_label (_2_group, "12");
-  _2_group = gtk_radio_menu_item_group (GTK_RADIO_MENU_ITEM (_13));
+  _2_group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (_13));
   g_object_ref (_13);
   gtk_container_child_set (_13, window, "_13");
   gtk_widget_show (_13);
   gtk_container_add (GTK_CONTAINER (frame_rate1_menu), _13);
 
   _14 = gtk_radio_menu_item_new_with_label (_2_group, "10");
-  _2_group = gtk_radio_menu_item_group (GTK_RADIO_MENU_ITEM (_14));
+  _2_group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (_14));
   g_object_ref (_14);
   gtk_container_child_set (_14, window, "_14");
   gtk_widget_show (_14);
@@ -3596,7 +3596,7 @@ GtkWidget *background_sound1;
   window_size1_menu_accels = gtk_menu_ensure_uline_accel_group (GTK_MENU (window_size1_menu));
 
   normal1 = gtk_radio_menu_item_new_with_label (_3_group, "Normal");
-  _3_group = gtk_radio_menu_item_group (GTK_RADIO_MENU_ITEM (normal1));
+  _3_group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (normal1));
   g_object_ref (normal1);
   gtk_container_child_set (normal1, window, "normal1");
   gtk_widget_show (normal1);
@@ -3604,14 +3604,14 @@ GtkWidget *background_sound1;
   gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (normal1), TRUE);
 
   double1 = gtk_radio_menu_item_new_with_label (_3_group, "Double");
-  _3_group = gtk_radio_menu_item_group (GTK_RADIO_MENU_ITEM (double1));
+  _3_group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (double1));
   g_object_ref (double1);
   gtk_container_child_set (double1, window, "double1");
   gtk_widget_show (double1);
   gtk_container_add (GTK_CONTAINER (window_size1_menu), double1);
 
   quad1 = gtk_radio_menu_item_new_with_label (_3_group, "Quad");
-  _3_group = gtk_radio_menu_item_group (GTK_RADIO_MENU_ITEM (quad1));
+  _3_group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (quad1));
   g_object_ref (quad1);
   gtk_container_child_set (quad1, window, "quad1");
   gtk_widget_show (quad1);
@@ -3648,7 +3648,7 @@ GtkWidget *background_sound1;
   message_sender_names1_menu_accels = gtk_menu_ensure_uline_accel_group (GTK_MENU (message_sender_names1_menu));
 
   short1 = gtk_radio_menu_item_new_with_label (_0_group, "Short");
-  _0_group = gtk_radio_menu_item_group (GTK_RADIO_MENU_ITEM (short1));
+  _0_group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (short1));
   g_object_ref (short1);
   gtk_container_child_set (short1, window, "short1");
   gtk_widget_show (short1);
@@ -3656,7 +3656,7 @@ GtkWidget *background_sound1;
   gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (short1), TRUE);
 
   long1 = gtk_radio_menu_item_new_with_label (_0_group, "Long");
-  _0_group = gtk_radio_menu_item_group (GTK_RADIO_MENU_ITEM (long1));
+  _0_group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (long1));
   g_object_ref (long1);
   gtk_container_child_set (long1, window, "long1");
   gtk_widget_show (long1);
@@ -3675,7 +3675,7 @@ GtkWidget *background_sound1;
   tank_labels1_menu_accels = gtk_menu_ensure_uline_accel_group (GTK_MENU (tank_labels1_menu));
 
   none1 = gtk_radio_menu_item_new_with_label (_1_group, "None");
-  _1_group = gtk_radio_menu_item_group (GTK_RADIO_MENU_ITEM (none1));
+  _1_group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (none1));
   g_object_ref (none1);
   gtk_container_child_set (none1, window, "none1");
   gtk_widget_show (none1);
@@ -3685,7 +3685,7 @@ GtkWidget *background_sound1;
                               GTK_ACCEL_VISIBLE);
 
   short2 = gtk_radio_menu_item_new_with_label (_1_group, "Short");
-  _1_group = gtk_radio_menu_item_group (GTK_RADIO_MENU_ITEM (short2));
+  _1_group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (short2));
   g_object_ref (short2);
   gtk_container_child_set (short2, window, "short2");
   gtk_widget_show (short2);
@@ -3696,7 +3696,7 @@ GtkWidget *background_sound1;
   gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (short2), TRUE);
 
   long2 = gtk_radio_menu_item_new_with_label (_1_group, "Long");
-  _1_group = gtk_radio_menu_item_group (GTK_RADIO_MENU_ITEM (long2));
+  _1_group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (long2));
   g_object_ref (long2);
   gtk_container_child_set (long2, window, "long2");
   gtk_widget_show (long2);
@@ -4037,7 +4037,7 @@ GtkWidget *background_sound1;
   brains1_menu_accels = gtk_menu_ensure_uline_accel_group (GTK_MENU (brains1_menu));
 
   manual1 = gtk_radio_menu_item_new_with_label (brainsGroup, "Manual");
-  brainsGroup = gtk_radio_menu_item_group (GTK_RADIO_MENU_ITEM (manual1));
+  brainsGroup = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (manual1));
 
   g_object_ref (manual1);
   gtk_container_child_set (manual1, window, "manual1");

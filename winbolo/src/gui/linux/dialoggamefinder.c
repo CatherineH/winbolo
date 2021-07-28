@@ -60,7 +60,7 @@ GtkWidget *idc_gamefindbrains;
 GtkWidget *idc_gamefindstatus;
 GtkWidget *idc_gamefindjoin;
 GtkWidget *idc_gamefindrejoin;
-GtkWidget *list1;
+GList *list1;
 GtkWidget *button9;
 GtkWidget *button1;
 GtkWidget *button2;
@@ -101,8 +101,7 @@ void dialogGameFinderClear() {
 
   gtk_widget_set_sensitive (idc_gamefindjoin, FALSE);
   gtk_widget_set_sensitive (idc_gamefindrejoin, FALSE);
-
- gtk_list_clear_items(GTK_LIST(list1), 0, -1);
+  g_list_free(list1);
 }
 
 gboolean dialogGameFinderCancel(GtkWidget *widget,  GdkEventButton *event, gpointer user_data) {
@@ -134,14 +133,14 @@ bool dialogGameFinderJoinTest() {
   gchar *str;
 
   returnValue = TRUE;
-  gtk_label_get(GTK_LABEL(idc_gamefindversion), &str);
+  str = gtk_label_get_label(GTK_LABEL(idc_gamefindversion));
   if (strncmp(str, STRVER,4) != 0) {
     MessageBox(langGetText(STR_DLGGAMEFINDER_WRONGVERSION),DIALOG_BOX_TITLE);
     returnValue = FALSE;
   } else {
-    gtk_label_get(GTK_LABEL(idc_gamefindport), &str);
+    str = gtk_label_get_label(GTK_LABEL(idc_gamefindport));
     port = atoi(str);
-    gtk_label_get(GTK_LABEL(idc_address), &str);
+    str = gtk_label_get_label(GTK_LABEL(idc_address));
     strcpy(address, str);
     gameFrontGetPlayerName(playerName);
     gameFrontSetUdpOptions(playerName, address, port, 0);
@@ -184,9 +183,9 @@ gboolean dialogGameFinderJoinByAddress(GtkWidget *widget,  GdkEventButton *event
   gchar *str;
 
   if (strlen(str) > 0 ) {
-    gtk_label_get(GTK_LABEL(idc_gamefindport), &str);
+    str = gtk_label_get_label(GTK_LABEL(idc_gamefindport));
     port = atoi(str);
-    gtk_label_get(GTK_LABEL(idc_address), &str);
+    str = gtk_label_get_label(GTK_LABEL(idc_address));
     strcpy(address, str);
     gameFrontGetPlayerName(playerName);
     gameFrontSetUdpOptions(playerName, address, port, 0);
@@ -238,7 +237,7 @@ void dialogGameFinderBuildList() {
   int count; /* Looping variable */
   int total; /* Total number of games found */
   char server[FILENAME_MAX]; /* Server name */
-  GtkWidget *item;
+  GList *item;
 
   gtk_widget_set_sensitive (idc_gamefindjoin, FALSE);
   gtk_widget_set_sensitive (idc_gamefindrejoin, FALSE);
@@ -247,7 +246,7 @@ void dialogGameFinderBuildList() {
     count = 1;
     while (count <= total) {
       currentGamesGetServerName(&cg, count, server);
-      item = gtk_list_item_new_with_label(server);
+      item = g_list_append(item, server);
       g_signal_connect (item, "select", G_CALLBACK(dialogGameFinderSelect), (gpointer) count);
       gtk_container_add (GTK_CONTAINER (list1), item);
       gtk_widget_show(item);
@@ -501,7 +500,7 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
   gtk_window_set_title (GTK_WINDOW (dialogGameFinder), title);
   gtk_window_set_modal (GTK_WINDOW (dialogGameFinder), TRUE);
   gtk_window_set_position (GTK_WINDOW (dialogGameFinder), GTK_WIN_POS_CENTER);
-  gtk_window_set_policy (GTK_WINDOW (dialogGameFinder), FALSE, FALSE, FALSE);
+  gtk_window_set_resizable (GTK_WINDOW (dialogGameFinder), FALSE);
   vbox1 = gtk_vbox_new (FALSE, 0);
   g_object_ref (vbox1);
   gtk_container_child_set (vbox1, dialogGameFinder, "vbox1");
@@ -514,7 +513,6 @@ GtkWidget* dialogGameFinderCreate(bool useTrack, char *title) {
   gtk_widget_show (hbox1);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox1, TRUE, TRUE, 0);
 
-  list1 = gtk_list_new ();
   g_object_ref (list1);
   gtk_container_child_set (list1, dialogGameFinder, "list1");
   gtk_widget_show (list1);

@@ -130,7 +130,7 @@ gboolean dialogUdpSetupShow(GtkWidget *widget,  GdkEventButton *event, gpointer 
   gtk_entry_set_text(GTK_ENTRY(idc_updsetuptxtplayername), pn);
   gtk_entry_set_text(GTK_ENTRY(idc_udpmachinename), add);
 
-  gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(idc_updsetupremembername), gameFrontGetRemeber());
+  gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(idc_updsetupremembername), gameFrontGetRemeber());
 }
 
 gboolean dialogUdpSetupReJoin(GtkWidget *widget,  GdkEventButton *event, gpointer user_data) {
@@ -228,7 +228,7 @@ GtkWidget* dialogUdpSetupCreate(void) {
   g_object_set_data (dialogUdpSetup, "dialogUdpSetup", dialogUdpSetup);
   gtk_container_set_border_width (GTK_CONTAINER (dialogUdpSetup), 15);
   gtk_window_set_title (GTK_WINDOW (dialogUdpSetup), "UDP (Internet) Setup");
-  gtk_window_set_policy (GTK_WINDOW (dialogUdpSetup), FALSE, FALSE, FALSE);
+  gtk_window_set_resizable (GTK_WINDOW (dialogUdpSetup), FALSE);
   gtk_window_set_position (GTK_WINDOW (dialogUdpSetup), GTK_WIN_POS_CENTER);
   vbox1 = gtk_vbox_new (FALSE, 0);
   g_object_ref (vbox1);

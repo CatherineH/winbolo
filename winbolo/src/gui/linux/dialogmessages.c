@@ -140,7 +140,7 @@ dialogMessagesCreate(void)
   g_object_set_data (dialogMessages, "dialogMessages", dialogMessages);
   gtk_container_set_border_width (GTK_CONTAINER (dialogMessages), 20);
   gtk_window_set_title (GTK_WINDOW (dialogMessages), "Send Message");
-  gtk_window_set_policy (GTK_WINDOW (dialogMessages), FALSE, FALSE, FALSE);
+  gtk_window_set_resizable (GTK_WINDOW (dialogMessages), FALSE);
   gtk_window_set_position (GTK_WINDOW (dialogMessages), GTK_WIN_POS_CENTER);
 
   vbox1 = gtk_vbox_new (FALSE, 0);
@@ -151,28 +151,28 @@ dialogMessagesCreate(void)
   gtk_container_add (GTK_CONTAINER (dialogMessages), vbox1);
 
   idc_allplayers = gtk_radio_button_new_with_label (vbox1_group, "All players");
-  vbox1_group = gtk_radio_button_group (GTK_RADIO_BUTTON (idc_allplayers));
+  vbox1_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (idc_allplayers));
   g_object_ref (idc_allplayers);
   gtk_container_child_set (idc_allplayers, dialogMessages, "idc_allplayers");
   gtk_widget_show (idc_allplayers);
   gtk_box_pack_start (GTK_BOX (vbox1), idc_allplayers, FALSE, FALSE, 0);
 
   idc_allallies = gtk_radio_button_new_with_label (vbox1_group, "All allies");
-  vbox1_group = gtk_radio_button_group (GTK_RADIO_BUTTON (idc_allallies));
+  vbox1_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (idc_allallies));
   g_object_ref (idc_allallies);
   gtk_container_child_set (idc_allallies, dialogMessages, "idc_allallies");
   gtk_widget_show (idc_allallies);
   gtk_box_pack_start (GTK_BOX (vbox1), idc_allallies, FALSE, FALSE, 0);
 
   idc_allnearby = gtk_radio_button_new_with_label (vbox1_group, "All nearby tanks");
-  vbox1_group = gtk_radio_button_group (GTK_RADIO_BUTTON (idc_allnearby));
+  vbox1_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (idc_allnearby));
   g_object_ref (idc_allnearby);
   gtk_container_child_set (idc_allnearby, dialogMessages, "idc_allnearby");
   gtk_widget_show (idc_allnearby);
   gtk_box_pack_start (GTK_BOX (vbox1), idc_allnearby, FALSE, FALSE, 0);
 
   idc_selection = gtk_radio_button_new_with_label (vbox1_group, "Selection on the Players menu");
-  vbox1_group = gtk_radio_button_group (GTK_RADIO_BUTTON (idc_selection));
+  vbox1_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (idc_selection));
   g_object_ref (idc_selection);
   gtk_container_child_set (idc_selection, dialogMessages, "idc_selection");
   gtk_widget_show (idc_selection);
@@ -195,14 +195,14 @@ dialogMessagesCreate(void)
   gtk_container_child_set (idc_textmessage, dialogMessages, "idc_textmessage");
   gtk_widget_show (idc_textmessage);
   gtk_box_pack_start (GTK_BOX (hbox1), idc_textmessage, TRUE, TRUE, 0);
-  gtk_widget_set_usize (idc_textmessage, -2, 22);
+  gtk_widget_set_size_request (idc_textmessage, -2, 22);
 
   idc_sendbutton = gtk_button_new_with_label ("Send");
   g_object_ref (idc_sendbutton);
   gtk_container_child_set (idc_sendbutton, dialogMessages, "idc_sendbutton");
   gtk_widget_show (idc_sendbutton);
   gtk_box_pack_end (GTK_BOX (hbox1), idc_sendbutton, FALSE, FALSE, 1);
-  gtk_widget_set_usize (idc_sendbutton, -2, 22);
+  gtk_widget_set_size_request (idc_sendbutton, -2, 22);
 
   gtk_widget_grab_focus (idc_textmessage);
   /* Connect Signals */

@@ -123,7 +123,7 @@ GtkWidget* dialogSetNameCreate(bool inGame) {
   gtk_window_set_title (GTK_WINDOW (dialogSetName), "Enter Player Name");
   gtk_window_set_position (GTK_WINDOW (dialogSetName), GTK_WIN_POS_CENTER);
   gtk_window_set_modal (GTK_WINDOW (dialogSetName), TRUE);
-  gtk_window_set_policy (GTK_WINDOW (dialogSetName), FALSE, FALSE, FALSE);
+  gtk_window_set_resizable (GTK_WINDOW (dialogSetName), FALSE);
 
   vbox1 = gtk_vbox_new (FALSE, 0);
   g_object_ref (vbox1);

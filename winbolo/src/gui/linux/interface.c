@@ -41,7 +41,7 @@ create_dialogGameFinder (void)
   GtkWidget *dialogGameFinder;
   GtkWidget *vbox1;
   GtkWidget *hbox1;
-  GtkWidget *list1;
+  GList *list1;
   GtkWidget *vbox2;
   GtkWidget *frame1;
   GtkWidget *table2;
@@ -100,7 +100,6 @@ create_dialogGameFinder (void)
   gtk_widget_show (hbox1);
   gtk_box_pack_start (GTK_BOX (vbox1), hbox1, TRUE, TRUE, 0);
 
-  list1 = gtk_list_new ();
   g_object_ref (list1);
   gtk_container_child_set (list1, dialogGameFinder, "list1");
   gtk_widget_show (list1);

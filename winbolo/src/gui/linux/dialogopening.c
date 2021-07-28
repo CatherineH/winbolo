@@ -83,12 +83,14 @@ void dialogOpeningOK(GtkWidget *widget, gpointer user_data) {
 }
 
 void dialogOpeningQuit(GtkWidget *widget, gpointer user_data) {
-  gdk_key_repeat_restore();
+  // TODO: figure out whether this is essential
+  // gdk_key_repeat_restore();
   exit(0);
 }
 
 void dialogOpeningCloseBox(GtkWidget *widget, gpointer user_data) {
-  gdk_key_repeat_restore();
+  // TODO: figure out whether this is essential
+  // gdk_key_repeat_restore();
   exit(0);
 }
 
@@ -120,7 +122,7 @@ GtkWidget* dialogOpeningCreate(void) {
   g_object_set_data (dialogOpening, "dialogOpening", dialogOpening);
   gtk_container_set_border_width (GTK_CONTAINER (dialogOpening), 20);
   gtk_window_set_title (GTK_WINDOW (dialogOpening), "Network Selection");
-  gtk_window_set_policy (GTK_WINDOW (dialogOpening), FALSE, FALSE, FALSE);
+  gtk_window_set_resizable (GTK_WINDOW (dialogOpening), FALSE);
   gtk_window_set_position (GTK_WINDOW (dialogOpening), GTK_WIN_POS_CENTER);
   vbox1 = gtk_vbox_new (FALSE, 0);
   g_object_ref (vbox1);
@@ -145,35 +147,35 @@ GtkWidget* dialogOpeningCreate(void) {
   gtk_label_set_justify (GTK_LABEL (label1), GTK_JUSTIFY_LEFT);
 
   idc_opentutorial = gtk_radio_button_new_with_label (vbox1_group, "Tutorial (Instruction for first-time player)");
-  vbox1_group = gtk_radio_button_group (GTK_RADIO_BUTTON (idc_opentutorial));
+  vbox1_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (idc_opentutorial));
   g_object_ref (idc_opentutorial);
   gtk_container_child_set (idc_opentutorial, dialogOpening, "idc_opentutorial");
   gtk_widget_show (idc_opentutorial);
   gtk_box_pack_start (GTK_BOX (vbox1), idc_opentutorial, FALSE, FALSE, 0);
 
   idc_opensingle = gtk_radio_button_new_with_label (vbox1_group, "Practise (Single Player; No Network)");
-  vbox1_group = gtk_radio_button_group (GTK_RADIO_BUTTON (idc_opensingle));
+  vbox1_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (idc_opensingle));
   g_object_ref (idc_opensingle);
   gtk_container_child_set (idc_opensingle, dialogOpening, "idc_opensingle");
-  gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(idc_opensingle), TRUE);
+  gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(idc_opensingle), TRUE);
   gtk_widget_show (idc_opensingle);
   gtk_box_pack_start (GTK_BOX (vbox1), idc_opensingle, FALSE, FALSE, 0);
   idc_opentcp = gtk_radio_button_new_with_label (vbox1_group, "TCP/IP");
-  vbox1_group = gtk_radio_button_group (GTK_RADIO_BUTTON (idc_opentcp));
+  vbox1_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (idc_opentcp));
   g_object_ref (idc_opentcp);
   gtk_container_child_set (idc_opentcp, dialogOpening, "idc_opentcp");
   gtk_widget_show (idc_opentcp);
   gtk_box_pack_start (GTK_BOX (vbox1), idc_opentcp, FALSE, FALSE, 0);
 
   idc_openlocal = gtk_radio_button_new_with_label (vbox1_group, "Local Network (Broadcast Search)");
-  vbox1_group = gtk_radio_button_group (GTK_RADIO_BUTTON (idc_openlocal));
+  vbox1_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (idc_openlocal));
   g_object_ref (idc_openlocal);
   gtk_container_child_set (idc_openlocal, dialogOpening, "idc_openlocal");
   gtk_widget_show (idc_openlocal);
   gtk_box_pack_start (GTK_BOX (vbox1), idc_openlocal, FALSE, FALSE, 0);
 
   idc_openinternet = gtk_radio_button_new_with_label (vbox1_group, "Internet (Tracker Search)");
-  vbox1_group = gtk_radio_button_group (GTK_RADIO_BUTTON (idc_openinternet));
+  vbox1_group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (idc_openinternet));
   g_object_ref (idc_openinternet);
   gtk_container_child_set (idc_openinternet, dialogOpening, "idc_openinternet");
   gtk_widget_show (idc_openinternet);

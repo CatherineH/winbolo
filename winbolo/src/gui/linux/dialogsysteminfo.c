@@ -144,10 +144,10 @@ GtkWidget* dialogSystemInfoCreate(void) {
 
   dialogSystemInfo = gtk_dialog_new ();
   g_object_set_data (dialogSystemInfo, "dialogSystemInfo", dialogSystemInfo);
-  gtk_widget_set_usize (dialogSystemInfo, 300, 150);
+  gtk_widget_set_size_request (dialogSystemInfo, 300, 150);
   gtk_container_set_border_width (GTK_CONTAINER (dialogSystemInfo), 15);
   gtk_window_set_title (GTK_WINDOW (dialogSystemInfo), "LinBolo System Information");
-    gtk_window_set_policy(GTK_WINDOW(dialogSystemInfo), FALSE, FALSE, FALSE);
+    gtk_window_set_resizable (GTK_WINDOW (dialogSystemInfo), FALSE);
   vbox1 = gtk_vbox_new (FALSE, 0);
   g_object_ref (vbox1);
   gtk_container_child_set (vbox1, dialogSystemInfo, "vbox1");

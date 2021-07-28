@@ -39,7 +39,8 @@ gboolean on_press(GtkWidget *widget, GdkEventKey *event, gpointer user_data) {
 
   *ptr = gdk_keyval_to_upper(event->keyval);
   gtk_entry_set_text(GTK_ENTRY(widget), gdk_keyval_name(gdk_keyval_to_upper(event->keyval)));
-  gtk_signal_emit_stop_by_name (widget, "key_press_event");
+  // TODO : figure out if this is important
+  //gtk_signal_emit_stop_by_name (widget, "key_press_event");
   return FALSE;
 }
 
@@ -140,7 +141,7 @@ GtkWidget* dialogKeySetupCreate(keyItems *value) {
   gtk_window_set_title (GTK_WINDOW (dialogKeySetup), "Choose Key Settings");
   gtk_window_set_position (GTK_WINDOW (dialogKeySetup), GTK_WIN_POS_CENTER);
   gtk_window_set_modal (GTK_WINDOW (dialogKeySetup), TRUE);
-  gtk_window_set_policy (GTK_WINDOW (dialogKeySetup), FALSE, FALSE, FALSE);
+  gtk_window_set_resizable (GTK_WINDOW (dialogKeySetup), FALSE);
 
   vbox1 = gtk_vbox_new (FALSE, 0);
   g_object_ref (vbox1);

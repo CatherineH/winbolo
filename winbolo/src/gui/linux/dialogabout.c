@@ -59,7 +59,7 @@ GtkWidget* dialogAboutCreate(void) {
   g_object_set_data (dialogAbout, "dialogAbout", dialogAbout);
   gtk_window_set_position (GTK_WINDOW (dialogAbout), GTK_WIN_POS_CENTER);
   gtk_window_set_modal (GTK_WINDOW (dialogAbout), TRUE);
-  gtk_window_set_policy (GTK_WINDOW (dialogAbout), FALSE, FALSE, FALSE);
+  gtk_window_set_resizable (GTK_WINDOW (dialogAbout), FALSE);
   gtk_container_set_border_width (GTK_CONTAINER (dialogAbout), 10);
   vbox1 = gtk_vbox_new (FALSE, 0);
   g_object_ref (vbox1);

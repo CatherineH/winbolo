@@ -94,7 +94,7 @@ GtkWidget* dialogTrackerCreate(void) {
   gtk_window_set_title (GTK_WINDOW (dialogTracker), "Tracker Config");
   gtk_window_set_position (GTK_WINDOW (dialogTracker), GTK_WIN_POS_CENTER);
   gtk_window_set_modal (GTK_WINDOW (dialogTracker), TRUE);
-  gtk_window_set_policy (GTK_WINDOW (dialogTracker), FALSE, FALSE, FALSE);
+  gtk_window_set_resizable (GTK_WINDOW (dialogTracker), FALSE);
 
   vbox1 = gtk_vbox_new (FALSE, 0);
   g_object_ref (vbox1);
@@ -193,12 +193,12 @@ GtkWidget* dialogTrackerCreate(void) {
   sprintf(addr, "%i", port);
   gtk_entry_set_text(GTK_ENTRY(entry2), addr);
   if (enabled == TRUE) {
-    gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(dialogTrackerUse), TRUE);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(dialogTrackerUse), TRUE);
     gtk_widget_set_sensitive (entry2, TRUE);
     gtk_widget_set_sensitive (entry1, TRUE);
 
   } else {
-    gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(dialogTrackerUse), FALSE);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(dialogTrackerUse), FALSE);
     gtk_widget_set_sensitive (entry2, FALSE);
     gtk_widget_set_sensitive (entry1, FALSE);
   }

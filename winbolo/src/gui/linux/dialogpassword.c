@@ -71,7 +71,7 @@ GtkWidget* dialogPasswordCreate(void) {
   gtk_container_set_border_width (GTK_CONTAINER (dailogPassword), 7);
   gtk_window_set_title (GTK_WINDOW (dailogPassword), "Password");
   gtk_window_set_modal (GTK_WINDOW (dailogPassword), TRUE);
-  gtk_window_set_policy (GTK_WINDOW (dailogPassword), FALSE, FALSE, FALSE);
+  gtk_window_set_resizable (GTK_WINDOW (dailogPassword), FALSE);
 
   vbox1 = gtk_vbox_new (FALSE, 0);
   g_object_ref (vbox1);

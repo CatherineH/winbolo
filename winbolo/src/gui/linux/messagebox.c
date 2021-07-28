@@ -60,7 +60,7 @@ GtkWidget* create_MessageBox (char *name, char *label) {
   MessageBox = gtk_dialog_new();
   g_object_set_data (MessageBox, "name", MessageBox);
   gtk_window_set_title (GTK_WINDOW (MessageBox), name);
-  gtk_window_set_policy (GTK_WINDOW (MessageBox), FALSE, FALSE, FALSE);
+  gtk_window_set_resizable (GTK_WINDOW (MessageBox), FALSE);
   gtk_window_set_position (GTK_WINDOW (MessageBox), GTK_WIN_POS_CENTER);
   gtk_window_set_modal (GTK_WINDOW (MessageBox), TRUE);
 
