@@ -270,18 +270,18 @@ gint windowclose(GtkWidget *widget, gpointer gdata) {
     windowMessages = NULL;
   }
   if (windowGameInfo != NULL) {
-    gtk_timeout_remove(timerGameInfo);
+    g_source_remove(timerGameInfo);
     gtk_widget_destroy(windowGameInfo);
     windowGameInfo = NULL;
   }
  if (windowSysInfo != NULL) {
-    gtk_timeout_remove(sysInfoTimer);
+    g_source_remove(sysInfoTimer);
     gtk_widget_destroy(windowSysInfo);
     windowSysInfo = NULL;
   }
 
   if (windowNetInfo != NULL) {
-    gtk_timeout_remove(timerNetworkInfo);
+    g_source_remove(timerNetworkInfo);
     gtk_widget_destroy(windowNetInfo);
     windowNetInfo = NULL;
   }
@@ -636,7 +636,7 @@ gtk_widget_set_app_paintable(ret, FALSE);
   g_signal_connect(ret, "key_press_event", G_CALLBACK(press_event), 0);
   g_signal_connect(ret, "key_release_event", G_CALLBACK(release_event), 0);
   g_signal_connect(ret, "focus_out_event", G_CALLBACK(windowLoseFocus), 0);
-  gtk_timeout_add(500, windowMessageCheck, NULL);
+  g_timeout_add(500, windowMessageCheck, NULL);
 
       menus(ret);
    gtk_widget_size_request(menu_bar, &req);
@@ -1305,7 +1305,7 @@ int main(int argc, char **argv) {
   mkdir(mkDirPath, S_IRWXU | S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH);
   g_free(mkDirPath);
 
-  g_thread_init(NULL);
+  //g_thread_init(NULL);
   gtk_init(&argc, &argv);
 
 
@@ -1324,7 +1324,7 @@ int main(int argc, char **argv) {
 //XSync(GDK_DISPLAY(), FALSE);
  /* Hack to get SDL to use GTK window */
     //sprintf(SDL_windowhack, "SDL_WINDOWID=%ld", GDK_WINDOW_XWINDOW(gtk_widget_get_window(window)));
-    sprintf(SDL_windowhack, "SDL_WINDOWID=%ld", GDK_WINDOW_XWINDOW(gtk_widget_get_window(drawingarea1)));
+    //sprintf(SDL_windowhack, "SDL_WINDOWID=%ld", GDK_WINDOW_XWINDOW(gtk_widget_get_window(drawingarea1)));
     putenv(SDL_windowhack);
     brainsHandlerLoadBrains(NULL);
 
@@ -2664,10 +2664,12 @@ on_save_map1_activate                  (GtkMenuItem     *menuitem,
   /* Get the name of the map */
   screenGetMapName(saveFileName);
   strcat(saveFileName, ".map");
-  saveFileW = gtk_file_chooser_dialog_new("Save Map File...", NULL, GTK_FILE_CHOOSER_ACTION_SAVE,
-                                      _("_Cancel"),
+  saveFileW = gtk_file_chooser_dialog_new("Save Map File...",
+																			NULL,
+																			GTK_FILE_CHOOSER_ACTION_SAVE,
+                                      "_Cancel",
                                       GTK_RESPONSE_CANCEL,
-                                      _("_Save"),
+                                      "_Save",
                                       GTK_RESPONSE_ACCEPT,
                                       NULL);
   gint res = gtk_dialog_run(GTK_DIALOG(saveFileW));
@@ -2675,7 +2677,7 @@ on_save_map1_activate                  (GtkMenuItem     *menuitem,
         saveFileName = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(saveFileW));
   }
   gtk_widget_destroy (saveFileW);
-  gtk_file_selection_set_filename (GTK_FILE_SELECTION(saveFileW), saveFileName);
+  gtk_file_chooser_set_current_name (GTK_FILE_CHOOSER(saveFileW), saveFileName);
   gtk_widget_show (saveFileW);
 
   gtk_grab_add (saveFileW);
@@ -3451,7 +3453,7 @@ GtkWidget *background_sound1;
   g_object_ref (file1_menu);
   gtk_container_child_set (file1_menu, window, "file1_menu");
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (file1), file1_menu);
-  file1_menu_accels = gtk_menu_ensure_uline_accel_group (GTK_MENU (file1_menu));
+  file1_menu_accels = gtk_accel_group_new();
 
   new1 = gtk_menu_item_new_with_label ("New");
   g_object_ref (new1);
@@ -3519,7 +3521,7 @@ GtkWidget *background_sound1;
   g_object_ref (edit1_menu);
   gtk_container_child_set (edit1_menu, window, "edit1_menu");
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (edit1), edit1_menu);
-  edit1_menu_accels = gtk_menu_ensure_uline_accel_group (GTK_MENU (edit1_menu));
+  edit1_menu_accels = gtk_accel_group_new();
 
   frame_rate1 = gtk_menu_item_new_with_label ("Frame Rate");
   g_object_ref (frame_rate1);
@@ -3531,7 +3533,7 @@ GtkWidget *background_sound1;
   g_object_ref (frame_rate1_menu);
   gtk_container_child_set (frame_rate1_menu, window, "frame_rate1_menu");
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (frame_rate1), frame_rate1_menu);
-  frame_rate1_menu_accels = gtk_menu_ensure_uline_accel_group (GTK_MENU (frame_rate1_menu));
+  frame_rate1_menu_accels = gtk_accel_group_new();
 
   _4 = gtk_radio_menu_item_new_with_label (_2_group, "60");
   _2_group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (_4));
@@ -3593,7 +3595,7 @@ GtkWidget *background_sound1;
   g_object_ref (window_size1_menu);
   gtk_container_child_set (window_size1_menu, window, "window_size1_menu");
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (window_size1), window_size1_menu);
-  window_size1_menu_accels = gtk_menu_ensure_uline_accel_group (GTK_MENU (window_size1_menu));
+  window_size1_menu_accels = gtk_accel_group_new();
 
   normal1 = gtk_radio_menu_item_new_with_label (_3_group, "Normal");
   _3_group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (normal1));
@@ -3645,7 +3647,7 @@ GtkWidget *background_sound1;
   g_object_ref (message_sender_names1_menu);
   gtk_container_child_set (message_sender_names1_menu, window, "message_sender_names1_menu");
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (message_sender_names1), message_sender_names1_menu);
-  message_sender_names1_menu_accels = gtk_menu_ensure_uline_accel_group (GTK_MENU (message_sender_names1_menu));
+  message_sender_names1_menu_accels = gtk_accel_group_new();
 
   short1 = gtk_radio_menu_item_new_with_label (_0_group, "Short");
   _0_group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (short1));
@@ -3672,7 +3674,7 @@ GtkWidget *background_sound1;
   g_object_ref (tank_labels1_menu);
   gtk_container_child_set (tank_labels1_menu, window, "tank_labels1_menu");
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (tank_labels1), tank_labels1_menu);
-  tank_labels1_menu_accels = gtk_menu_ensure_uline_accel_group (GTK_MENU (tank_labels1_menu));
+  tank_labels1_menu_accels = gtk_accel_group_new();
 
   none1 = gtk_radio_menu_item_new_with_label (_1_group, "None");
   _1_group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (none1));
@@ -3755,7 +3757,7 @@ GtkWidget *background_sound1;
   g_object_ref (linbolo1_menu);
   gtk_container_child_set (linbolo1_menu, window, "linbolo1_menu");
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (linbolo1), linbolo1_menu);
-  linbolo1_menu_accels = gtk_menu_ensure_uline_accel_group (GTK_MENU (linbolo1_menu));
+  linbolo1_menu_accels = gtk_accel_group_new();
 
   allow_new_players1 = gtk_check_menu_item_new_with_label ("Allow New Players");
   g_object_ref (allow_new_players1);
@@ -3804,7 +3806,6 @@ GtkWidget *background_sound1;
   g_object_ref (background_sound1);
   gtk_container_child_set (background_sound1, window, "background_sound1");
   gtk_widget_show (background_sound1);
-  gtk_check_menu_item_set_state(GTK_CHECK_MENU_ITEM(background_sound1), FALSE);
   gtk_widget_set_sensitive(background_sound1, FALSE);
   gtk_container_add (GTK_CONTAINER (linbolo1_menu), background_sound1);
 
@@ -3877,7 +3878,7 @@ GtkWidget *background_sound1;
   g_object_ref (players1_menu);
   gtk_container_child_set (players1_menu, window, "players1_menu");
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (players1), players1_menu);
-  players1_menu_accels = gtk_menu_ensure_uline_accel_group (GTK_MENU (players1_menu));
+  players1_menu_accels = gtk_accel_group_new();
 
   send_message1 = gtk_menu_item_new_with_label ("Send Message");
   g_object_ref (send_message1);
@@ -4034,7 +4035,7 @@ GtkWidget *background_sound1;
   g_object_ref (brains1_menu);
   gtk_container_child_set (brains1_menu, window, "brains1_menu");
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (brains1), brains1_menu);
-  brains1_menu_accels = gtk_menu_ensure_uline_accel_group (GTK_MENU (brains1_menu));
+  brains1_menu_accels = gtk_accel_group_new();
 
   manual1 = gtk_radio_menu_item_new_with_label (brainsGroup, "Manual");
   brainsGroup = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (manual1));
@@ -4062,7 +4063,7 @@ GtkWidget *background_sound1;
   g_object_ref (help1_menu);
   gtk_container_child_set (help1_menu, window, "help1_menu");
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (help1), help1_menu);
-  help1_menu_accels = gtk_menu_ensure_uline_accel_group (GTK_MENU (help1_menu));
+  help1_menu_accels = gtk_accel_group_new();
 
   help2 = gtk_menu_item_new_with_label ("Help");
   g_object_ref (help2);

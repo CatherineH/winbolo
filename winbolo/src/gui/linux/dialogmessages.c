@@ -75,7 +75,7 @@
 
 gint dialogMessagesEnableButton(gpointer data) {
   gtk_widget_set_sensitive (idc_sendbutton, TRUE);
-  gtk_timeout_remove(dialogMessagesTimeoutId);
+  g_source_remove(dialogMessagesTimeoutId);
   dialogMessagesEnabled = TRUE;
   return FALSE;
 }
@@ -98,7 +98,7 @@ gboolean dialogMessagesSend(GtkWidget *widget,  GdkEventButton *event, gpointer 
       screenSendMessageAllSelected(message);
     }
   }
-  dialogMessagesTimeoutId = gtk_timeout_add (WAIT_TIME, dialogMessagesEnableButton, 0);
+  dialogMessagesTimeoutId = g_timeout_add (WAIT_TIME, dialogMessagesEnableButton, 0);
   gtk_editable_select_region(GTK_EDITABLE(idc_textmessage), 0, -1);
   dialogMessagesEnabled = FALSE;
   gtk_widget_set_sensitive (idc_sendbutton, FALSE);
@@ -120,7 +120,7 @@ void windowMessagesClose();
 
 gboolean dialogMessagesClose(GtkWidget *widget,  GdkEventButton *event, gpointer user_data) {
   if (dialogMessagesEnabled == FALSE) {
-    gtk_timeout_remove(dialogMessagesTimeoutId);
+    g_source_remove(dialogMessagesTimeoutId);
   }
   windowMessagesClose();
   gtk_widget_destroy(widget);

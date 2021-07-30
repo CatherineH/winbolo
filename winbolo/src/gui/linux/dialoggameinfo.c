@@ -86,7 +86,7 @@ char str[FILENAME_MAX];    /* Used to update things as required */
 void windowGameInfoClose();
 
 gint dialogGameInfoClose(GtkWidget *widget, gpointer gdata) {
-  gtk_timeout_remove(timerGameInfo);
+  g_source_remove(timerGameInfo);
   windowGameInfoClose();
   return FALSE;
 }
@@ -289,7 +289,7 @@ GtkWidget* dialogGameInfoCreate(void) {
 
   dialogGameInfoUpdate(NULL);
 
-  timerGameInfo = gtk_timeout_add (SECOND, dialogGameInfoUpdate, (gpointer) NULL);
+  timerGameInfo = g_timeout_add (SECOND, dialogGameInfoUpdate, (gpointer) NULL);
    g_signal_connect(dialogGameInfo, "delete_event", G_CALLBACK(dialogGameInfoClose), NULL);
    return dialogGameInfo;
 }

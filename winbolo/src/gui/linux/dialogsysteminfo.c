@@ -116,7 +116,7 @@ gint dialogSysInfoUpdate(gpointer data) {
 void windowSystemInfoClose();
 
 gint dialogSystemInfoClose(GtkWidget *widget, gpointer gdata) {
-  gtk_timeout_remove(sysInfoTimer);
+  g_source_remove(sysInfoTimer);
   windowSystemInfoClose();
   return FALSE;
 }
@@ -292,7 +292,7 @@ GtkWidget* dialogSystemInfoCreate(void) {
   gtk_widget_show (lblFPS);
   gtk_box_pack_end (GTK_BOX (hbox13), lblFPS, FALSE, FALSE, 0);
 
-  sysInfoTimer = gtk_timeout_add (SECOND, dialogSysInfoUpdate, (gpointer) NULL);
+  sysInfoTimer = g_timeout_add (SECOND, dialogSysInfoUpdate, (gpointer) NULL);
   g_signal_connect(dialogSystemInfo, "delete_event", G_CALLBACK(dialogSystemInfoClose), NULL);
   dialogSysInfoUpdate(NULL);
   return dialogSystemInfo;

@@ -80,7 +80,7 @@ gint dialogNetInfoUpdate(gpointer data) {
 void windowNetworkInfoClose();
 
 gint dialogNetworkInfoClose(GtkWidget *widget, gpointer gdata) {
-  gtk_timeout_remove(timerNetworkInfo);
+  g_source_remove(timerNetworkInfo);
   windowNetworkInfoClose();
   return FALSE;
 }
@@ -243,7 +243,7 @@ dialogNetworkInformationCreate(void)
   gtk_widget_show (lblErrors);
   gtk_box_pack_end (GTK_BOX (hbox18), lblErrors, FALSE, FALSE, 0);
 
-  timerNetworkInfo = gtk_timeout_add(250/* SECOND */, dialogNetInfoUpdate, (gpointer) NULL);
+  timerNetworkInfo = g_timeout_add(250/* SECOND */, dialogNetInfoUpdate, (gpointer) NULL);
   g_signal_connect(dialogNetworkInformation, "delete_event", G_CALLBACK(dialogNetworkInfoClose), NULL);
 
   netGetOurAddressStr(str);
