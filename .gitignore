@@ -1,2 +1,4 @@
 *.o
+winbolo/src/gui/linux/linbolo
+*.ttf
 winbolo/src/server/linbolods

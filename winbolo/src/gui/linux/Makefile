@@ -14,7 +14,7 @@
 # GNU General Public License for more details.
 
 
-CC = gcc -Xlinker --verbose 
+CC = gcc
 CFLAGS = -g `sdl-config --cflags` `pkg-config --cflags gtk+-3.0` -Wl,--copy-dt-needed-entries -Wno-int-conversion -Wno-incompatible-pointer-types  -Wno-implicit-function-declaration -Wno-format -Wno-deprecated-declarations
 LDFLAGS = -L. `sdl-config --libs` `pkg-config --libs gtk+-3.0` `pkg-config --libs glib-2.0` -lm -lSDL_ttf -lSDL_mixer -lX11
 
@@ -63,7 +63,6 @@ linbolo:    global.o bases.o util.o crc.o pillbox.o lgm.o shells.o tank.o \
 	servercore.o servermessages.o debug_file_output.o \
 	servernet.o servertransport.o threads.o \
 	bigd.o bigdigits.o bigdigitsRand.o bigdRand.o
-	echo ${LDFLAGS}
 	${CC} -o ${APPNAME} ${CFLAGS} \
 	global.o bases.o util.o crc.o pillbox.o lgm.o \
 	shells.o tank.o allience.o bolo_map.o building.o \

@@ -190,13 +190,13 @@ BYTE zoomFactor = 1; //FIXME: ZOOM_FACTOR_NORMAL;
 
 keyItems keys;
 
-GtkWidget *window;
+GtkWindow *window;
 GtkWidget *menu_bar;
 GtkWidget *drawingarea1;
-GtkWidget *windowSysInfo;
-GtkWidget *windowNetInfo;
-GtkWidget *windowGameInfo;
-GtkWidget *windowMessages;
+GtkWindow *windowSysInfo;
+GtkWindow *windowNetInfo;
+GtkWindow *windowGameInfo;
+GtkWindow *windowMessages;
 GtkWidget *change_player_name1;
 GSList *brainsGroup = NULL;
 GtkWidget *brains1_menu;
@@ -623,8 +623,8 @@ gboolean windowMouseClick(GtkWidget *widget,  GdkEventButton *event, gpointer us
 }
 
 
-GtkWidget* windowCreate() {
-  GtkWidget *ret = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+GtkWindow* windowCreate() {
+  GtkWindow *ret = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 //   gtk_window_set_default_size (GTK_WINDOW (ret), 400, 400);
   gtk_window_set_resizable (GTK_WINDOW (ret), FALSE);
 gtk_widget_set_app_paintable(ret, FALSE);
@@ -3339,7 +3339,7 @@ on_quad1_activate                      (GtkMenuItem     *menuitem,
 
 
 void menus(GtkWidget *window) {
-  GtkWidget *vbox1;
+  GtkVBox *vbox1;
   GtkWidget *file1;
   GtkWidget *file1_menu;
   GtkAccelGroup *file1_menu_accels;
