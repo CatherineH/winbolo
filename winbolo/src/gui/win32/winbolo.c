@@ -218,8 +218,8 @@ int PASCAL WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, LPSTR szCmdLine, int nC
     Sleep(500);
     oldTick = winboloTimer();
     oldFrameTick = oldTick;
-    timerGameID = timeSetEvent(GAME_TICK_LENGTH, 10000, windowGameTimer, 0, TIME_PERIODIC);
-    timerFrameID = timeSetEvent(frameRateTime, 10000, windowFrameRateTimer, 0, TIME_PERIODIC);
+    CreateTimerQueueTimer( &timerGameID, NULL, (WAITORTIMERCALLBACK)windowGameTimer, 0, GAME_TICK_LENGTH, 1, 0);
+    CreateTimerQueueTimer( &timerFrameID, NULL, (WAITORTIMERCALLBACK)windowFrameRateTimer, 0, frameRateTime, 1, 0);
     winboloQuit = TRUE;
     finishedLoop = FALSE;
     gameFrontRun(hInst, appWnd, hAccel, nCmdShow);
@@ -1007,7 +1007,7 @@ void windowSetFrameRate(HWND hWnd, int newFrameRate, bool setTimer) {
   frameRate = newFrameRate;
   if (setTimer == TRUE) {
     timeKillEvent(timerFrameID);
-    timerFrameID = timeSetEvent(frameRateTime, 10000, windowFrameRateTimer, 0, TIME_PERIODIC);
+    CreateTimerQueueTimer( &timerFrameID, NULL, (WAITORTIMERCALLBACK)windowFrameRateTimer, 0, frameRateTime, 1, 0);
   }
 }
 

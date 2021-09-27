@@ -235,7 +235,7 @@ GtkWidget* dialogOpeningCreate(void) {
   g_signal_connect(dialogOpening, "destroy", G_CALLBACK(dialogOpeningCloseBox), 0);
   us = dialogOpening;
 
-  g_signal_connect(us, "configure_event", G_CALLBACK(opening_configure_event), 0);
+//g_signal_connect(us, "configure_event", G_CALLBACK(opening_configure_event), 0);
 
 
   return dialogOpening;

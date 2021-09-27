@@ -43,6 +43,49 @@ zlib:   adler32.o compress.o crc32.o deflate.o gzio.o \
 	inffast.o inflate.o inftrees.o trees.o ioapi.o uncompr.o \
 	unzip.o zip.o zutil.o
 
+linbolo_gtk3: global.o bases.o util.o crc.o pillbox.o lgm.o shells.o tank.o \
+	allience.o bolo_map.o building.o explosions.o floodfill.o \
+	gametype.o grass.o labels.o messages.o mines.o minesexp.o \
+	netmt.o netpnb.o players.o rubble.o backend.o netplayers.o \
+	screenbrainmap.o screenbullet.o screencalc.o screenlgm.o \
+	screentank.o scroll.o sounddist.o starts.o swamp.o \
+	tankexp.o treegrow.o playersrejoin.o network.o screen.o \
+	main_gtk3.o draw.o lang.o netclient.o clientmutex.o framemutex.o \
+	dcodlzw.o ecodlzw.o input.o cursor.o sound.o preferences.o \
+	dialogsysteminfo.o dialognetworkinfo.o dialoggameinfo.o \
+	dialogmessages.o dialogopening.o dialoggamesetup.o \
+	dialogudpsetup.o dialogtrackersetup.o dialogabout.o winbolonetthread.o \
+	messagebox.o dialogpassword.o dialogsetname.o dialogalliance.o \
+	currentgames.o dialoggamefinder.o brainshandler.o dialogkeysetup.o \
+	log.o winbolonet.o udppackets.o winbolonetevents.o  \
+	http.o dnslookups.o dialogwinbolonet.o zlib mathWinbolo.o \
+	servercore.o servermessages.o debug_file_output.o \
+	servernet.o servertransport.o threads.o \
+	bigd.o bigdigits.o bigdigitsRand.o bigdRand.o
+	${CC} -o ${APPNAME} ${CFLAGS} \
+	global.o bases.o util.o crc.o pillbox.o lgm.o \
+	shells.o tank.o allience.o bolo_map.o building.o \
+	explosions.o floodfill.o gametype.o grass.o labels.o \
+	messages.o mines.o minesexp.o  netmt.o  backend.o \
+	netpnb.o players.o rubble.o screenbrainmap.o netplayers.o \
+	screenbullet.o screencalc.o screenlgm.o screentank.o \
+	scroll.o sounddist.o starts.o swamp.o tankexp.o \
+	treegrow.o playersrejoin.o network.o screen.o \
+	lang.o main_gtk3.o draw.o netclient.o clientmutex.o framemutex.o \
+	dcodlzw.o ecodlzw.o input.o cursor.o sound.o \
+	dialogsysteminfo.o dialognetworkinfo.o dialoggameinfo.o \
+	dialogmessages.o dialogopening.o dialoggamesetup.o winbolonetthread.o \
+	dialogudpsetup.o dialogtrackersetup.o dialogabout.o preferences.o \
+	messagebox.o dialogpassword.o dialogsetname.o dialogalliance.o \
+	currentgames.o dialoggamefinder.o brainshandler.o dialogkeysetup.o \
+	log.o http.o winbolonet.o winbolonetevents.o udppackets.o \
+	dnslookups.o dialogwinbolonet.o \
+	adler32.o compress.o crc32.o deflate.o gzio.o  \
+	inffast.o inflate.o inftrees.o trees.o ioapi.o uncompr.o \
+	unzip.o zip.o zutil.o bigd.o bigdigits.o bigdigitsRand.o bigdRand.o \
+	mathWinbolo.o debug_file_output.o \
+	servercore.o servermessages.o \
+	servernet.o servertransport.o threads.o ${LDFLAGS}
 
 linbolo:    global.o bases.o util.o crc.o pillbox.o lgm.o shells.o tank.o \
 	allience.o bolo_map.o building.o explosions.o floodfill.o \
@@ -107,6 +150,9 @@ debug_file_output.o: ${BOLODIR}debug_file_output.c ${BOLODIR}debug_file_output.h
 
 main.o: main.c
 	${CC} ${CFLAGS} -c main.c -Wno-int-conversion -Wno-implicit-function-declaration
+
+main_gtk3.o: main_gtk3.c
+	${CC} ${CFLAGS} -c main_gtk3.c
 
 dialogkeysetup.o: dialogkeysetup.c dialogkeysetup.h
 	${CC} ${CFLAGS} -c dialogkeysetup.c
