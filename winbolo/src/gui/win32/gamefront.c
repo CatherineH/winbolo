@@ -1271,7 +1271,7 @@ void gameFrontShutdownServer() {
     isServer = FALSE;
     threadsSetContext(TRUE);
     serverNetSendQuitMessage();
-    timeKillEvent(serverTimerGameID);
+    DeleteTimerQueue(serverTimerGameID);
     serverNetDestroy();
     winbolonetDestroy();
     serverCoreDestroy();
@@ -1358,7 +1358,7 @@ bool gameFrontSetupServer() {
   if (returnValue == TRUE) {
     isServer = TRUE;
     serverOldTick = winboloTimer();
-    serverTimerGameID = timeSetEvent(SERVER_TICK_LENGTH, 10000, serverGameTimer, 0, TIME_PERIODIC);
+    CreateTimerQueueTimer( &serverTimerGameID, NULL, (WAITORTIMERCALLBACK)serverGameTimer, 0, SERVER_TICK_LENGTH, 1, 0);
   }
  
   return returnValue;;

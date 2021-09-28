@@ -11,5 +11,7 @@ aux_source_directory(${SRC_DIR}/winbolonet WINBOLONET_SOURCES)
 aux_source_directory(${SRC_DIR}/server SERVER_SOURCES)
 set(winbolo_SRC ${SOURCES} ${BOLO_SOURCES} ${WINBOLONET_SOURCES} 
 ${SRC_DIR}/server/threads.h ${SRC_DIR}/server/threads.c
+${SRC_DIR}/server/servercore.c
 )
+
 add_executable(Winbolo WIN32 ${winbolo_SRC})

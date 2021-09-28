@@ -226,8 +226,8 @@ int PASCAL WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, LPSTR szCmdLine, int nC
     finishedLoop = TRUE;
   
     /* Kill Timers */
-    timeKillEvent(timerGameID);
-    timeKillEvent(timerFrameID);
+    DeleteTimerQueue(timerGameID);
+    DeleteTimerQueue(timerFrameID);
     timerFlush = 0;
     while (timerFlush<10000) {
       timerFlush++;
@@ -1006,7 +1006,7 @@ void windowSetFrameRate(HWND hWnd, int newFrameRate, bool setTimer) {
   }
   frameRate = newFrameRate;
   if (setTimer == TRUE) {
-    timeKillEvent(timerFrameID);
+    DeleteTimerQueue(timerFrameID);
     CreateTimerQueueTimer( &timerFrameID, NULL, (WAITORTIMERCALLBACK)windowFrameRateTimer, 0, frameRateTime, 1, 0);
   }
 }
@@ -3076,7 +3076,7 @@ bool frontEndTutorial(BYTE pos) {
         MessageBoxA(appWnd, (LPCTSTR) langGetText(STR_TUTORIAL25), DIALOG_BOX_TITLE, MB_ICONINFORMATION | MB_SETFOREGROUND | MB_APPLMODAL );        
         returnValue = TRUE;
         upTo++;
-        timeKillEvent(timerGameID);
+        DeleteTimerQueue(timerGameID);
 
         clientMutexWaitFor();
         doingTutorial = FALSE;
