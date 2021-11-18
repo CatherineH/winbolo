@@ -65,6 +65,7 @@ void serverTransportSendUDP(BYTE *buff, int len, struct sockaddr_in *addr);
 *********************************************************/
 bool serverTransportCreate(unsigned short port, char *addrToUse);
 
+
 /*********************************************************
 *NAME:          serverTransportDestroy
 *AUTHOR:        John Morrison
@@ -162,5 +163,5 @@ bool serverTransportSetTracker(char *address, unsigned short port);
 *  len   - length of the buffer
 *********************************************************/
 void serverTransportSendUdpTracker(BYTE *buff, int len);
-
+void serverTransportDoChecks();
 #endif /* SERVER_TRANSPORT_H */

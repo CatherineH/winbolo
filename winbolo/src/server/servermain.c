@@ -827,7 +827,7 @@ return 0;
   screenServerConsoleMessage("Type \"help\" for help, \"quit\" to exit.");
 #ifdef _WIN32
   oldTick = winboloTimer();
-  serverTimerGameID = timeSetEvent(SERVER_TICK_LENGTH, 10, serverGameTimer, 0, TIME_PERIODIC);
+  CreateTimerQueueTimer( &serverTimerGameID, NULL, (WAITORTIMERCALLBACK)serverGameTimer, 0, SERVER_TICK_LENGTH, 1, 0);
 #else
   oldTick = winboloTimer();
   serverTimerGameID = SDL_SetTimer(SERVER_TICK_LENGTH, (SDL_TimerCallback) serverGameTimer);

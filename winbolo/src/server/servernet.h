@@ -1016,6 +1016,8 @@ void serverNetReturnLockStatus(bool statusFile);
 *********************************************************/
 void serverNetKickPlayer(char *player);
 
+
+void playerNeedUpdateDone();
 #pragma pack(pop)
 
 #endif /* _NETSERVER_H */

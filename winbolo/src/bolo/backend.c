@@ -26,7 +26,8 @@
 #include "backend.h"
 
 #ifdef _WIN32
-	
+LARGE_INTEGER start_time;
+LARGE_INTEGER frequency;	
 #else
 #include <sys/time.h>
 #include <sys/types.h>
@@ -745,7 +746,7 @@ void setBuildCurrentSelect(buildSelect bs) {
 *********************************************************/
 void initWinboloTimer(void){
 #ifdef _WIN32
-	timeBeginPeriod(1);
+	QueryPerformanceCounter(&start_time);
 #else
 	// inset linux stuff here
     gettimeofday(&start_time, NULL);
@@ -754,7 +755,9 @@ void initWinboloTimer(void){
 
 DWORD winboloTimer(void) {
 #ifdef _WIN32
-	return timeGetTime();
+  LARGE_INTEGER end_time;
+  QueryPerformanceCounter(&end_time);
+	return (DWORD)(end_time.QuadPart - start_time.QuadPart) / frequency.QuadPart;;
 #else
 	// insert linux stuff here
 	// return SDL_GetTicks();
@@ -766,7 +769,7 @@ DWORD winboloTimer(void) {
 
 void endWinboloTimer(void){
 #ifdef _WIN32
-	timeEndPeriod(1);
+	//timeEndPeriod(1);
 #else
 	// insert linux stuff here
 #endif	

@@ -71,42 +71,6 @@
 #define COPYRIGHT_STRING "LinBolo Copyright 1998-2006 John Morrison\nBolo Copyright 1987-1995 Stuart Cheshire\0"
 #endif
 
-map mp;
-bases bs;
-pillboxes pb;
-starts ss;
-tank tk[MAX_TANKS];
-lgm lgman[MAX_TANKS];
-shells shs;
-players splrs;
-building serverBlds = NULL;
-explosions serverExpl = NULL;
-floodFill serverFF = NULL;
-grass serverGrass = NULL;
-mines serverMines = NULL;
-minesExp serverMinesExp = NULL;
-rubble serverRubble = NULL;
-swamp serverSwamp = NULL;
-tkExplosion serverTankExp = NULL;
-netPnbContext serverPNB = NULL; 
-netMntContext serverNMT = NULL;
-
-gameType sGame;
-
-/* Map name */
-char sMapName[MAP_STR_SIZE];
-
-/* Game length and start delay */
-int sGmeStartDelay;
-long sGmeLength;
-
-/* Time game was created */
-time_t sTimeStart;
-
-/* Are we running? */
-bool serverCoreGameRunning = FALSE;
-
-void serverMessagesSetLogFile(char *logFile);
 
 /*********************************************************
 *NAME:          serverCoreCreate

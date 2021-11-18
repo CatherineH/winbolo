@@ -71,7 +71,11 @@ static unsigned long getaddrbyany(char *sp_name)  {
   for(i=0;i<100;i++) {                       
     sp_he = gethostbyname(sp_name);
     if(!(sp_he)) {
+      #ifdef WIN32
+        Sleep(1);
+      #else
       sleep(1);
+      #endif
      if(i>=3) {
        return(0);
      }
@@ -134,6 +138,8 @@ bool serverTransportCreate(unsigned short port, char *addrToUse) {
     }
   }
   
+  #ifdef _WIN32
+  #else
 
   /* Set to non blocking */
   if (returnValue == TRUE) {
@@ -144,7 +150,7 @@ bool serverTransportCreate(unsigned short port, char *addrToUse) {
     }
 
   }
-
+  #endif
   return returnValue;
 }
 

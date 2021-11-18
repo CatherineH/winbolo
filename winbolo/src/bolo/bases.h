@@ -745,5 +745,5 @@ BYTE basesGetNumberOwnedByPlayer(bases *value, BYTE playerNum);
 int basesHalfTickCalulator(int typeSelector);
 
 void basesSetBaseCompressData(bases *value, BYTE *buff, int dataLen);
-
+void basesRemoveTimer(int playerNumber);
 #endif /* BASES_H */

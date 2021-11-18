@@ -350,7 +350,8 @@ bool serverCoreTankInView(BYTE playerNum, BYTE checkX, BYTE checkY);
 *ARGUMENTS:
 *********************************************************/
 void serverCorePreparePosPackets();
-
+void serverMessageSetQuietMode(bool modeOn);
+void serverMessageConsoleMessage(char *msg);
 /*********************************************************
 *NAME:          serverCoreMakePosPackets
 *AUTHOR:        John Morrison
@@ -1042,5 +1043,42 @@ void serverCoreBasesMigrate(BYTE playerNumOldOwner, BYTE playerNumNewOwner);
 * playerNumNewOwner - new owner
 *********************************************************/
 void serverCorePillsMigratePlanted(BYTE playerNumOldOwner, BYTE playerNumNewOwner);
+
+map mp;
+bases bs;
+pillboxes pb;
+starts ss;
+tank tk[MAX_TANKS];
+lgm lgman[MAX_TANKS];
+shells shs;
+players splrs;
+building serverBlds = NULL;
+explosions serverExpl = NULL;
+floodFill serverFF = NULL;
+grass serverGrass = NULL;
+mines serverMines = NULL;
+minesExp serverMinesExp = NULL;
+rubble serverRubble = NULL;
+swamp serverSwamp = NULL;
+tkExplosion serverTankExp = NULL;
+netPnbContext serverPNB = NULL; 
+netMntContext serverNMT = NULL;
+
+gameType sGame;
+
+/* Map name */
+char sMapName[MAP_STR_SIZE];
+
+/* Game length and start delay */
+int sGmeStartDelay;
+long sGmeLength;
+
+/* Time game was created */
+time_t sTimeStart;
+
+/* Are we running? */
+bool serverCoreGameRunning = FALSE;
+
+void serverMessagesSetLogFile(char *logFile);
 
 #endif /* SERVER_CORE_H */

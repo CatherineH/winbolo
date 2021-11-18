@@ -9,9 +9,10 @@ get_filename_component(SRC_DIR ${GUI_DIR} DIRECTORY)
 aux_source_directory(${SRC_DIR}/bolo BOLO_SOURCES)
 aux_source_directory(${SRC_DIR}/winbolonet WINBOLONET_SOURCES)
 aux_source_directory(${SRC_DIR}/server SERVER_SOURCES)
-set(winbolo_SRC ${SOURCES} ${BOLO_SOURCES} ${WINBOLONET_SOURCES} 
-${SRC_DIR}/server/threads.h ${SRC_DIR}/server/threads.c
-${SRC_DIR}/server/servercore.c
+aux_source_directory(${SRC_DIR}/zlib ZLIB_SOURCES)
+aux_source_directory(${SRC_DIR}/server/BigDigits BIGDIG_SOURCES)
+set(winbolo_SRC ${SOURCES} ${WINBOLONET_SOURCES} ${BIGDIG_SOURCES} ${SERVER_SOURCES} ${BOLO_SOURCES}
+        
 )
 
 add_executable(Winbolo WIN32 ${winbolo_SRC})

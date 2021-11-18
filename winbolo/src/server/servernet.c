@@ -42,13 +42,18 @@
 #include "../bolo/netpnb.h"
 #include "../bolo/messages.h"
 #include "../bolo/backend.h"
+#include "../bolo/bases.h"
 #include "servertransport.h"
 #include "servercore.h"
+#include "servertransport.h"
 #include "threads.h"
+#include "BigDigits/bigdRand.h"
+#include "BigDigits/bigd.h"
 #include "../bolo/netpacks.h"
 #include "../bolo/log.h"
 #include "../winbolonet/winbolonet.h"
 #include "servernet.h"
+#include "../bolo/netmt.h"
 #include "rsaalgorithm.h"
 
 #define RSA_RANDOMMESSAGENUMBER 5
@@ -1065,8 +1070,6 @@ void serverNetChangePlayerName(BYTE playerNum, BYTE *buff) {
   }
 }
 
-void serverTransportDoChecks();
-void playerNeedUpdateDone();
 /*********************************************************
 *NAME:          serverNetMakePosPackets
 *AUTHOR:        John Morrison

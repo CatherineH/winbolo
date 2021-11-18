@@ -1352,6 +1352,7 @@ int tankGetLastTankDeath(tank *value);
 *  value  - Pointer to the tank structure
 *********************************************************/
 int tankGetDeathWait(tank *value);
+bool pillsIsCapturable(pillboxes *value, BYTE xValue, BYTE yValue);
 
 #endif
 

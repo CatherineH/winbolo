@@ -1730,8 +1730,6 @@ void tankAccel(tank *value, map *mp, pillboxes *pb, bases *bs, BYTE bmx, BYTE bm
   }
 }
 
-bool pillsIsCapturable(pillboxes *value, BYTE xValue, BYTE yValue);
-
 /*********************************************************
 *NAME:          tankCheckPillCapture
 *AUTHOR:        John Morrison

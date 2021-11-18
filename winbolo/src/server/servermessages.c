@@ -27,7 +27,7 @@
 
 #include <stdio.h>
 #include "../bolo/messages.h"
-
+#include "servercore.h"
 
 bool isServerQuiet = FALSE;              /* Is the server running in quiet mode */
 char serverMessageLogFile[FILENAME_MAX]; /* FileName to save to */
