@@ -2138,11 +2138,11 @@ int PASCAL WinMain(HINSTANCE hInst, HINSTANCE hInstPrev, LPSTR szCmdLine, int nC
 
   /* Set the edit control callback for pasting */
   dlgElemWnd = GetDlgItem(hGameEventsWnd, IDC_LIST);
-  oldWndProc = (FARPROC) SetWindowLong(dlgElemWnd, GWL_WNDPROC, (DWORD)copyClipboardCallback);
+  oldWndProc = (FARPROC) SetWindowLong(dlgElemWnd, GWLP_WNDPROC, (DWORD)copyClipboardCallback);
   dlgElemWnd = GetDlgItem(hGameInfoWnd, IDC_WBN);
-  oldURLLabelProc = (FARPROC) SetWindowLong(dlgElemWnd, GWL_WNDPROC, (DWORD)urlClickableCallback);
+  oldURLLabelProc = (FARPROC) SetWindowLong(dlgElemWnd, GWLP_WNDPROC, (DWORD)urlClickableCallback);
   dlgElemWnd = GetDlgItem(hControlsWnd, ID_FORWARD);
-  oldButtonProc = (FARPROC) SetWindowLong(dlgElemWnd, GWL_WNDPROC, (DWORD)forwardButtonCallback);
+  oldButtonProc = (FARPROC) SetWindowLong(dlgElemWnd, GWLP_WNDPROC, (DWORD)forwardButtonCallback);
   if (oldWndProc == 0 || oldURLLabelProc == 0 || oldButtonProc == 0) {
     MessageBox(hMainWnd, "Subclass bad", "bad!", MB_ICONEXCLAMATION);
   }

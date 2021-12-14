@@ -44,11 +44,11 @@
 #include "log.h"
 #include "screenbrainmap.h"
 #include "screen.h"
+#include "../lzw/dcodlzw.h"
 
 #undef MAP_MAX_SERVER_WAIT
 #define MAP_MAX_SERVER_WAIT 200
 
-int lzwdecoding(char *src, char *dest, int len);
 int lzwencoding(char *src, char *dest, int len);
 
 /*********************************************************
@@ -1834,7 +1834,7 @@ void mapNetCheckWater(map *value, pillboxes *pb, bases *bs, BYTE xValue, BYTE yV
   }
 }
 
-int lzwdecoding(char *src, char *dest, int len);
+
 int lzwencoding(char *src, char *dest, int len);
 
 /*********************************************************

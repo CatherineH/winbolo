@@ -55,7 +55,6 @@ struct sockaddr_in addrTracker;    /* Tracker machine */
 
 #define BUFFER_PREFIX_SIZE 2
 
-int lzwdecoding(char *src, char *dest, int len);
 int lzwencoding(char *src, char *dest, int len);
 
 

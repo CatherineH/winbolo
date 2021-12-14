@@ -736,5 +736,6 @@ int mapSaveCompressedMap(map *value, pillboxes *pb, bases *bs, starts *ss, BYTE 
 *  pb      - Pointer to the pillbox structure
 *********************************************************/
 void mapCenter(map *value, pillboxes *pb, bases *bs, starts *ss);
+int lzwdecoding(char *src, char *dest, int len);
 
 #endif /* MAP_H */

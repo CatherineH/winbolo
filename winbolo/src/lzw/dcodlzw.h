@@ -1,0 +1,1 @@
+int lzwdecoding(char *src, char *dest, int len);

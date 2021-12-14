@@ -249,7 +249,7 @@ void dialogUdpSetupInit(HWND hWnd) {
 
   /* Set the edit control callback for pasting */
   dlgElemWnd = GetDlgItem(hWnd, IDC_EDITIP);
-  oldWndProc = (FARPROC) SetWindowLong(dlgElemWnd, GWL_WNDPROC, (DWORD)dialogUdpSetupIpCallback);
+  oldWndProc = (FARPROC) SetWindowLong(dlgElemWnd, GWLP_WNDPROC, (DWORD)dialogUdpSetupIpCallback);
   if (oldWndProc == 0) {
     MessageBoxA(hWnd, langGetText(STR_ERR_DLGTCP_SUBCLASS), DIALOG_BOX_TITLE, MB_ICONEXCLAMATION);
   }

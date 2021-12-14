@@ -36,7 +36,7 @@
 #include "bases.h"
 #include "log.h"
 #include "netpacks.h"
-#include "../zlib/zip.h"
+#include "zip.h" # from minizip
 #include "../server/servercore.h"
 #include "../server/servernet.h"
 #include "../winbolonet/winbolonet.h"

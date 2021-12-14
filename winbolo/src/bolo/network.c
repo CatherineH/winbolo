@@ -26,7 +26,7 @@
 *********************************************************/
 
 #ifdef _WIN32
-#include <windows.h>
+  #include <windows.h>
   HWND dlgAllianceWnd;
   #include "../gui/gamefront.h"
   #include "../gui/winbolo.h"
@@ -114,7 +114,6 @@ udpPackets udpp;
 DWORD dwSysNetTotal = 0;
 DWORD dwSysNet = 0;
 
-int lzwdecoding(char *src, char *dest, int len);
 
 /*********************************************************
 *NAME:          netSetup

@@ -29,7 +29,7 @@
 #define __WINBOLO_NET_DIALOG_H
 
 #include <windows.h>
-#include "..\..\bolo\global.h"
+#include "..\bolo\global.h"
 
 
 /*********************************************************
